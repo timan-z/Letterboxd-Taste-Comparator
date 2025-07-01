@@ -1,3 +1,4 @@
+// DESIGN-CHOICE: Let's cap the number of accounts you can provide to six. (This is fair -- don't want to go overboard for ethical reasons).
 package main
 
 import (
@@ -20,9 +21,10 @@ var ratingMap = map[string]float32{
 	"★★★★★": 5,
 } // because Letterboxd stores their film ratings as these symbols even in the raw HTML code. (Only need float32).
 
-var userFilms = make(map[string]FilmDetails)
+// var userFilms = make(map[string]FilmDetails) <-- do this in-function and add them to a slice that keeps track of this stuff! (see line below):
+var allUsersData []map[string]FilmDetails
 
-var filmTitles []string
+//var filmTitles []string
 
 type FilmDetails struct {
 	FilmUrl    string
@@ -30,10 +32,7 @@ type FilmDetails struct {
 }
 
 func main() {
-	/* when we want to make a scraper, first task is to make a collector.
-	The collector will accept a list of options that we can pass to it.
-	- the AllowedDomains option will tell c what domains you are allowed to scrape.
-	*/
+	// Declare the collector with supported domains:
 	c := colly.NewCollector(colly.AllowedDomains("www.letterboxd.com", "letterboxd.com", "https://letterboxd.com"))
 	c.Limit(&colly.LimitRule{
 		DomainGlob:  "letterboxd.com/*", // domains that will be affected here.
@@ -60,6 +59,9 @@ func main() {
 
 	// Here's where I can start working to extract a list of the films + ratings:
 	c.OnHTML("ul.poster-list", func(h *colly.HTMLElement) {
+		var userFilms = make(map[string]FilmDetails)
+		var filmTitles []string
+
 		h.ForEach("li.poster-container", func(_ int, e *colly.HTMLElement) {
 			liElem := e.DOM
 			childNodes := liElem.Children().Nodes
@@ -94,17 +96,11 @@ func main() {
 			}
 		})
 
-		// Debug: Printing out the contents of array filmTitles etc:
-		/* To make sure filmTitles and userFilms have been populated properly, I should make a
-		loop that iterates through filmTitles. And for each filmTitle iterated through, I'd plug it into userFilms
-		and see the value that's output: */
-		for i, filmTitle := range filmTitles {
-			fmt.Printf("DEBUG: Element at index %d: %s\n", i, filmTitle)
-			fmt.Printf("Debug: Now, the value of userFilms[filmTitle].FilmUrl => %s\n", userFilms[filmTitle].FilmUrl)
-			fmt.Printf("Debug: Now, the value of userFilms[filmTitle].FilmRating => %.1f\n", userFilms[filmTitle].FilmRating)
-		}
+		/* Once the ForEach loop above has iterated to completion, userFilms will be populated with all the movie data for this particular user,
+		and its information can be appended to Slice "allUsersData": */
+		//allUsersData = append(allUsersData, userFilms)
 
 	})
 
-	c.Visit("https://letterboxd.com/jacquesrivette_/films/rated/.5-5/")
+	//c.Visit("https://letterboxd.com/jacquesrivette_/films/rated/.5-5/")
 }
