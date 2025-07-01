@@ -129,6 +129,9 @@ func main() {
 				//fmt.Printf("The value of the rating => %.1f\n", rating)
 
 				if fupExists && fnExists {
+
+					fmt.Printf("DEBUG: The value of filmName is (%s), filmUrlPath is (%s), and rating is (%.1f)\n", filmName, filmUrlPath, rating)
+
 					filmTitles = append(filmTitles, filmName) // ADDING FILM TITLE TO MY FILMTITLES SLICE.
 					userFilms[filmName] = FilmDetails{FilmUrl: filmUrlPath, FilmRating: rating}
 				}
@@ -173,8 +176,18 @@ func main() {
 	}
 
 	// Now I can iterate through the allUsersData map using userUrls:
-	/*for i := 0; i < len(userUrls); i++ {
+	for i := 0; i < len(userUrls); i++ {
+		userDataVar := allUsersData[userUrls[i]] // Retrieve the userData val.
+		listOfFilms := userDataVar.FilmNames
+		theFilmMap := userDataVar.FilmMap
 
-	}*/
+		fmt.Printf("Printing out the list of Films+ for user (URL: %s)\n", userUrls[i])
+		fmt.Printf("**************************************************\n")
+		for index, value := range listOfFilms {
+			fmt.Printf("For Film \"%s\" (index %d):\n ", value, index)
+			theFilmDetails := theFilmMap[listOfFilms[index]]
+			fmt.Printf("- The FilmUrl: (%s) and the FilmRating: (%.1f)\n", theFilmDetails.FilmUrl, theFilmDetails.FilmRating)
+		}
+	}
 
 }
