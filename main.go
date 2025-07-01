@@ -7,8 +7,27 @@ import (
 	"github.com/gocolly/colly/v2"
 )
 
-/* Colly is event-based. So we're going to need to register functions that are triggered
-when our crawler sees specific things (i.e., HTML-related). */
+var ratingMap = map[string]float32{
+	"½":     0.5,
+	"★":     1,
+	"★½":    1.5,
+	"★★":    2,
+	"★★½":   2.5,
+	"★★★":   3,
+	"★★★½":  3.5,
+	"★★★★":  4,
+	"★★★★½": 4.5,
+	"★★★★★": 5,
+} // because Letterboxd stores their film ratings as these symbols even in the raw HTML code. (Only need float32).
+
+var userFilms = make(map[string]FilmDetails)
+
+var filmTitles []string
+
+type FilmDetails struct {
+	FilmUrl    string
+	FilmRating float32
+}
 
 func main() {
 	/* when we want to make a scraper, first task is to make a collector.
@@ -41,42 +60,50 @@ func main() {
 
 	// Here's where I can start working to extract a list of the films + ratings:
 	c.OnHTML("ul.poster-list", func(h *colly.HTMLElement) {
-		h.ForEach("li.poster-container", func(i int, e *colly.HTMLElement) {
-			//fmt.Printf("DEBUG: How many lines? 72 right?\n")
-			fmt.Printf("DEBUG: Currently iterating through <li> #%d\n", i)
-
-			/* Inside each <li class="poster-container"> element will be two children:
-			[1] - <div> [2] - <p>, you can search into <div> to extract the film name and release year, <p> for the rating...*/
+		h.ForEach("li.poster-container", func(_ int, e *colly.HTMLElement) {
 			liElem := e.DOM
 			childNodes := liElem.Children().Nodes
 
-			html, _ := e.DOM.Html()
-			fmt.Println("Debug: The <li> html is => ", html)
+			/* This whole DOM traversal and the values I'm retrieving will be based on the raw (pre-JS injection DOM) HTML of the LB webpage.
+			(That's the HTML page DOM you see when you click "View Page Source" instead of looking at what's inside Inspect Element). This is
+			because Letterboxd, like many modern sites, load an initial HTML structure and uses JavaScript to "hydrate" it later and flesh it out.
+			I'm using Colly, which will only look at this initial HTML structure. */
 
-			// Expect that there are exactly two children elements. Need to account for expected DOM, code is fragile in that respect.
+			// There will be two child elements: a <div> and a <p>. Here's a guard to ensure of that:
 			if len(childNodes) == 2 {
-				//divElem := liElem.Find("div").First()
-				// Latching onto this <div> element, we can just scan through its entire depth and extract what I want (<a> element with data-original-title attr):
-				//aElem := divElem.Find("div > a[data-original-title]").First()
-				//aElem := e.DOM.Find("div > div > a[data-original-title]").First()
-				//filmTitleYear, exists := aElem.Attr("data-original-title") // returns the value and ig a boolean for if it exists or not.
-				/*if exists {
-					fmt.Printf("Value of filmTitleYear %s\n", filmTitleYear)
-				}*/
+				// Getting the name of the film and URL path (/films/{URL-path}):
+				divElem := liElem.Find("div[data-film-slug]").First()
+				filmUrlPath, fupExists := divElem.Attr("data-film-slug")
 
-				divElemOne := liElem.Find("div").First()
-				divElemTwo := divElemOne.Find("div").First()
-				//aElem := divElemTwo.Find("a[data-original-title]").First()
-				aElem := divElemTwo.Find("a[href]").First()
-				filmTitleYear, exists := aElem.Attr("href")
+				imgElem := divElem.Find("img[alt]").First()
+				filmName, fnExists := imgElem.Attr("alt")
 
-				if exists {
-					fmt.Printf("The value of filmTitleYear %s\n", filmTitleYear)
-				} else {
-					//fmt.Printf("Nah still not here.")
+				pElem := liElem.Find("p.poster-viewingdata").First()
+				spanElem := pElem.Find("span.rating").First()
+				rawRating := spanElem.Text()
+				rating := ratingMap[rawRating]
+
+				//fmt.Printf("The value of filmName => %s\n", filmName)
+				//fmt.Printf("The value of filmUrlPath => %s\n", filmUrlPath)
+				//fmt.Printf("The value of the rating => %.1f\n", rating)
+
+				if fupExists && fnExists {
+					filmTitles = append(filmTitles, filmName) // ADDING FILM TITLE TO MY FILMTITLES SLICE.
+					userFilms[filmName] = FilmDetails{FilmUrl: filmUrlPath, FilmRating: rating}
 				}
 			}
 		})
+
+		// Debug: Printing out the contents of array filmTitles etc:
+		/* To make sure filmTitles and userFilms have been populated properly, I should make a
+		loop that iterates through filmTitles. And for each filmTitle iterated through, I'd plug it into userFilms
+		and see the value that's output: */
+		for i, filmTitle := range filmTitles {
+			fmt.Printf("DEBUG: Element at index %d: %s\n", i, filmTitle)
+			fmt.Printf("Debug: Now, the value of userFilms[filmTitle].FilmUrl => %s\n", userFilms[filmTitle].FilmUrl)
+			fmt.Printf("Debug: Now, the value of userFilms[filmTitle].FilmRating => %.1f\n", userFilms[filmTitle].FilmRating)
+		}
+
 	})
 
 	c.Visit("https://letterboxd.com/jacquesrivette_/films/rated/.5-5/")
