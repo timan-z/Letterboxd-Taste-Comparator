@@ -10,6 +10,8 @@ import (
 	"github.com/gocolly/colly/v2"
 )
 
+var currentUrl string
+
 var userUrls []string // <-- store the user urls here (slice of strings).
 
 var profilePageRegex = regexp.MustCompile(`^https://letterboxd\.com/[^/]+/?$`)
@@ -46,9 +48,10 @@ func main() {
 
 	c := colly.NewCollector(colly.AllowedDomains("www.letterboxd.com", "letterboxd.com", "https://letterboxd.com"))
 	c.Limit(&colly.LimitRule{
-		DomainGlob:  "letterboxd.com/*", // domains that will be affected here.
-		Delay:       2 * time.Second,    // Set a delay between requests to these domains.
-		RandomDelay: 2 * time.Second,    // Addtional random delay.
+		DomainGlob:  "*letterboxd./*", // domains that will be affected here.
+		Parallelism: 1,                // "parallelism refers to the ability to process multiple web requests concurrently."
+		Delay:       5 * time.Second,  // Set a delay between requests to these domains.
+		RandomDelay: 5 * time.Second,  // Addtional random delay.
 	}) // <-- Definitely should add a delay effect so Letterboxd doesn't IP-ban me.
 
 	// MY OBLIGATORY [1] ON-REQUEST AND [2] ON-ERROR METHODS:
@@ -85,6 +88,17 @@ func main() {
 	})
 	// ^ UPDATE: Nevermind, seems like I don't need this OnHTML function at all? c.OnError will catch failed traversal.
 
+	// This OnHTML method will target any <a class="next"> element that's within an element with class "paginate-nextprev"
+	c.OnHTML(".paginate-nextprev a.next", func(e *colly.HTMLElement) {
+		if profilePageRegex.MatchString(e.Request.URL.String()) {
+			return
+		}
+		// Getting the next button:
+		nextPage := e.Request.AbsoluteURL(e.Attr("href"))
+		fmt.Println("Visiting the next page: ", nextPage)
+		e.Request.Visit(nextPage)
+	})
+
 	// We will iterate through userUrls now, and for each URL, we will visit them to see if c.OnHTML("title") catches an error or not.
 	for i := 0; i < len(userUrls); i++ {
 		urlToInspect := "https://letterboxd.com/"
@@ -93,10 +107,24 @@ func main() {
 
 		c.Visit(urlToInspect)
 	} // <-- Once this for-loop iterates completely, the value of ValidUrls should be checked.
-
 	if ValidUrls {
 		fmt.Println("The value of ValidUrls is True.")
 	} else {
-		fmt.Println("The value of ValidUrls is False.")
+		fmt.Println("ERROR: The value of ValidUrls is False.")
+		return
 	}
+
+	// Write some code to iterate through the pages now until I reach the end!
+
+	// Iterate through userUrls again, this time to visit the proper pages for the purpose of data scraping:
+	for i := 0; i < len(userUrls); i++ {
+		currentUrl = userUrls[i]
+		urlToScrape := "https://letterboxd.com/"
+		urlToScrape += currentUrl
+		urlToScrape += "/films/rated/.5-5/"
+
+		fmt.Printf("The value of urlToScrape => %s\n", urlToScrape)
+		c.Visit(urlToScrape)
+	}
+
 }

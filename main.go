@@ -3,6 +3,8 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"regexp"
 	"time"
 
 	"github.com/gocolly/colly/v2"
@@ -21,36 +23,67 @@ var ratingMap = map[string]float32{
 	"★★★★★": 5,
 } // because Letterboxd stores their film ratings as these symbols even in the raw HTML code. (Only need float32).
 
-// var userFilms = make(map[string]FilmDetails) <-- do this in-function and add them to a slice that keeps track of this stuff! (see line below):
-var allUsersData []map[string]FilmDetails
+var userUrls []string // <-- store the user urls here (slice of strings).
 
-//var filmTitles []string
+var currentUrl string // <-- keeps track of current URL. (Probably isn't great practice tbh, but this is just a learning exercise for now).
+
+var ValidUrls bool = true // <-- global flag that keeps track of if URLs passed by CLI (eventually HTML form) are valid (true by default).
 
 type FilmDetails struct {
 	FilmUrl    string
 	FilmRating float32
 }
 
-func main() {
-	// Declare the collector with supported domains:
-	c := colly.NewCollector(colly.AllowedDomains("www.letterboxd.com", "letterboxd.com", "https://letterboxd.com"))
-	c.Limit(&colly.LimitRule{
-		DomainGlob:  "letterboxd.com/*", // domains that will be affected here.
-		Delay:       2 * time.Second,    // Set a delay between requests to these domains.
-		RandomDelay: 2 * time.Second,    // Addtional random delay.
-	}) // <-- Definitely should add a delay effect so Letterboxd doesn't IP-ban me.
+type UserData struct {
+	FilmNames []string
+	FilmMap   map[string]FilmDetails
+}
 
-	// Should have these two functions below (just for debugging, lets you know when the crawling starts + if any errors come your way):
+var allUsersData map[string]UserData // username will be mapped to a UserData struct var (contains all the assoc films + details).
+
+var profilePageRegex = regexp.MustCompile(`^https://letterboxd\.com/[^/]+/?$`)
+
+func main() {
+	// Expect minimum two additional arguments on the CLI (for rep'ing Profile URLs) with a maximum of six:
+	// [NOTE: ^ Transition using CLI arguments (for passing in Profile URLs) away to HTML Form Data later (when I get to site rendering).]
+	argsListC := len(os.Args)
+	if !(argsListC > 2 && argsListC < 8) {
+		// > 2 and < 8 instead of 1 and 7 to adjust for the "go run..." command.
+		fmt.Println("ERROR: Must provide at least two Profile URLs OR there is a maximum limit of six.")
+		return
+	}
+
+	for i := 1; i < argsListC; i++ {
+		userUrls = append(userUrls, os.Args[i])
+	}
+
+	allUsersData = make(map[string]UserData) // Initializing this global map that I have.
+
+	// Declare the collector with supported domains:
+	c := colly.NewCollector(colly.AllowedDomains("www.letterboxd.com", "letterboxd.com", "https://letterboxd.com"), colly.Async(false)) // disabling async to reduce load (ethics!)
+	c.Limit(&colly.LimitRule{
+		DomainGlob:  "*letterboxd./*", // domains that will be affected here.
+		Parallelism: 1,                // "parallelism refers to the ability to process multiple web requests concurrently."
+		Delay:       5 * time.Second,  // Set a delay between requests to these domains.
+		RandomDelay: 5 * time.Second,  // Addtional random delay.
+	}) // <-- Definitely should add a delay effect so Letterboxd doesn't IP-ban me.
+	c.UserAgent = "JustPlayingAroundBot/0.1 (Learning Golang Colly, have delays put in effect, async disabled, and more to REDUCE TRAFFIC!!!)"
+
+	// My obligatory [1] On-Request method and my [2] On-Error method:
 	c.OnRequest(func(r *colly.Request) {
 		fmt.Printf("Visiting %s\n", r.URL)
 	})
 	c.OnError(func(r *colly.Response, e error) {
 		fmt.Printf("Error while scraping: %s\n", e.Error())
-	})
+		cWebPageUrl := r.Request.URL.String()
+		fmt.Printf("Error: The value of cWebPageUrl is %s\n", cWebPageUrl)
 
-	// let's define URL variables for two profiles (we'll take this as CLI arguments later, and eventually from an HTML Form):
-	//urlOne = "jacquesrivette_"
-	//urlTwo = "jeanluc_godard"
+		// Notify in case any of the profile URLs provided on the CLI/Form Data don't correspond to valid webpages:
+		if profilePageRegex.MatchString(cWebPageUrl) && e.Error() == "Not Found" {
+			fmt.Printf("Invalid Letterboxd Profiles are caught auto.\n")
+			ValidUrls = false
+		}
+	})
 
 	// Extracting the username of the profile whose films section you're crawling over (not URL ID):
 	c.OnHTML("h1.title-3", func(h *colly.HTMLElement) {
@@ -58,7 +91,14 @@ func main() {
 	})
 
 	// Here's where I can start working to extract a list of the films + ratings:
+	// DEBUG: This OnHTML method below is where a lot of the work happens -- BE SURE TO RETURN HERE AND DEBUG IT EXTRA HARD!!!
 	c.OnHTML("ul.poster-list", func(h *colly.HTMLElement) {
+		// NOTE: I should add guards to make sure this OnHTML method only executes for the proper form page (not the base profile page):
+		if profilePageRegex.MatchString(h.Request.URL.String()) {
+			fmt.Printf("DEBUG: c.OnHTML(\"ul.poster-list\") prevented from running...\n")
+			return
+		}
+
 		var userFilms = make(map[string]FilmDetails)
 		var filmTitles []string
 
@@ -84,7 +124,6 @@ func main() {
 				spanElem := pElem.Find("span.rating").First()
 				rawRating := spanElem.Text()
 				rating := ratingMap[rawRating]
-
 				//fmt.Printf("The value of filmName => %s\n", filmName)
 				//fmt.Printf("The value of filmUrlPath => %s\n", filmUrlPath)
 				//fmt.Printf("The value of the rating => %.1f\n", rating)
@@ -95,12 +134,47 @@ func main() {
 				}
 			}
 		})
+		allUsersData[currentUrl] = UserData{FilmNames: filmTitles, FilmMap: userFilms}
+	})
+	// DEBUG: This OnHTML method above is where a lot of the work happens -- BE SURE TO RETURN HERE AND DEBUG IT EXTRA HARD!!!
 
-		/* Once the ForEach loop above has iterated to completion, userFilms will be populated with all the movie data for this particular user,
-		and its information can be appended to Slice "allUsersData": */
-		//allUsersData = append(allUsersData, userFilms)
-
+	// This c.OnHTML method will be what performs pagination (important to have **after** the ul.poster-list method above):
+	c.OnHTML(".paginate-nextprev a.next", func(e *colly.HTMLElement) {
+		if profilePageRegex.MatchString(e.Request.URL.String()) {
+			return
+		}
+		// Getting the next button:
+		nextPage := e.Request.AbsoluteURL(e.Attr("href"))
+		fmt.Println("Visiting the next page: ", nextPage)
+		e.Request.Visit(nextPage)
 	})
 
-	//c.Visit("https://letterboxd.com/jacquesrivette_/films/rated/.5-5/")
+	// First iterate through all the provided URLs to inspect their validity:
+	for i := 0; i < len(userUrls); i++ {
+		urlToInspect := "https://letterboxd.com/"
+		urlToInspect += userUrls[i]
+		urlToInspect += "/"
+		c.Visit(urlToInspect)
+	}
+	// Global boolean flag ValidUrls will be set to false if any of the URLs were invalid:
+	if !(ValidUrls) {
+		fmt.Println("ERROR: One (or more) of the Profile URLs provided led to an invalid page.")
+		return
+	}
+	// Iterate through userUrls again, this time to visit the proper pages for the purpose of data scraping:
+	for i := 0; i < len(userUrls); i++ {
+		currentUrl = userUrls[i]
+		urlToScrape := "https://letterboxd.com/"
+		urlToScrape += currentUrl
+		urlToScrape += "/films/rated/.5-5/"
+
+		fmt.Printf("The value of urlToScrape => %s\n", urlToScrape)
+		c.Visit(urlToScrape)
+	}
+
+	// Now I can iterate through the allUsersData map using userUrls:
+	/*for i := 0; i < len(userUrls); i++ {
+
+	}*/
+
 }
