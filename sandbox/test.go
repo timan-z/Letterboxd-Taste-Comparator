@@ -69,6 +69,24 @@ func main() {
 		}
 	})
 
+	// Extracting the [username] and [film avatar link] of the profile whose films section you're crawling over:
+	// NOTE: Probably will make the OnHTML("h1.title-3") method obsolete, so remove that afterwards.
+	// NOTE: ^ Maybe position this after the OnHTML("ul.poster-list") method?
+	c.OnHTML("div.profile-mini-person", func(e *colly.HTMLElement) {
+		divElem := e.DOM
+		// Extracting username:
+		h1Elem := divElem.Find("h1.title-3").First()
+		profileUser := h1Elem.Text() // This will be the username of the Letterboxd profile you're crawling over.
+
+		// Extracting avatar link:
+		imgElem := divElem.Find("a.avatar img").First()
+		avatarLink, avLinkExists := imgElem.Attr("src")
+
+		if avLinkExists {
+			fmt.Printf("debug: The value of profileUser: (%s) and avatarLink: (%s)\n", profileUser, avatarLink)
+		}
+	})
+
 	// MY METHOD FOR CHECKING IF THE <title> TAG GOT TEXT VALUE OF "Letterboxd - Not Found":
 	// (ALL UNINTELLIGIBLE URLS WILL MAP TO THE "LETTERBOXD - NOT FOUND" PAGE SO I CAN ASSURE THIS IS SOUND):
 	c.OnHTML("title", func(e *colly.HTMLElement) {

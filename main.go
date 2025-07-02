@@ -25,9 +25,10 @@ var ratingMap = map[string]float32{
 
 var userUrls []string // <-- store the user urls here (slice of strings).
 
+// two global flags:
 var currentUrl string // <-- keeps track of current URL. (Probably isn't great practice tbh, but this is just a learning exercise for now).
 
-var urlWShortest string
+//var urlWShortest string
 
 var ValidUrls bool = true // <-- global flag that keeps track of if URLs passed by CLI (eventually HTML form) are valid (true by default).
 
@@ -37,8 +38,11 @@ type FilmDetails struct {
 }
 
 type UserData struct {
-	FilmNames []string
-	FilmMap   map[string]FilmDetails
+	Username     string
+	AvatarLink   string
+	FilmNames    []string
+	FilmNamesLen int
+	FilmMap      map[string]FilmDetails
 }
 
 var allUsersData map[string]UserData // username will be mapped to a UserData struct var (contains all the assoc films + details).
@@ -88,8 +92,38 @@ func main() {
 	})
 
 	// Extracting the username of the profile whose films section you're crawling over (not URL ID):
+	// NOTE:+DEBUG: ^ This OnHTML method might be rendered obsolete shortly...
 	c.OnHTML("h1.title-3", func(h *colly.HTMLElement) {
 		fmt.Printf("The Letterboxd profile you're crawling over is: %s\n", h.Text)
+	})
+
+	// Extracting the [username] and [film avatar link] of the profile whose films section you're crawling over:
+	// NOTE: Probably will make the OnHTML("h1.title-3") method obsolete, so remove that afterwards.
+	c.OnHTML("div.profile-mini-person", func(e *colly.HTMLElement) {
+		divElem := e.DOM
+		// Extracting username:
+		h1Elem := divElem.Find("h1.title-3").First()
+		profileUser := h1Elem.Text() // This will be the username of the Letterboxd profile you're crawling over.
+
+		// Extracting avatar link:
+		imgElem := divElem.Find("a.avatar img").First()
+		avatarLink, avLinkExists := imgElem.Attr("src")
+
+		if avLinkExists {
+			fmt.Printf("debug: The value of profileUser: (%s) and avatarLink: (%s)\n", profileUser, avatarLink)
+			/* DEBUG: Going to have the Profile URL saved in my global var "currentUrl".
+			- So I can use that to access allUsersData, see if I can pull out an existing value it maps to.
+			- If there IS an existing value, I think I just skip this part of the code. (NOTE: Actually, maybe have this guard at the start of this method).
+			- If not, I slip in the username and avatar link values into the proper items...
+			*/
+			existingData, exists := allUsersData[currentUrl]
+			if !exists {
+				existingData = UserData{FilmNames: []string{}, FilmMap: make(map[string]FilmDetails)}
+			}
+			existingData.Username = profileUser
+			existingData.AvatarLink = avatarLink
+			allUsersData[currentUrl] = existingData
+		}
 	})
 
 	// Here's where I can start working to extract a list of the films + ratings:
@@ -139,8 +173,24 @@ func main() {
 				}
 			}
 		})
+		filmTitlesLen := len(filmTitles)
 
-		allUsersData[currentUrl] = UserData{FilmNames: filmTitles, FilmMap: userFilms}
+		// allUsersData[currentUrl] = UserData{FilmNames: filmTitles, FilmNamesLen: filmTitlesLen, FilmMap: userFilms}
+		/* DEBUG: ^ This is bad logic on my end. It will overwrite all the data I scraped from previous page scrapings, so I
+		need to adjust my code such that I'm appending the data I assign here. */
+		existingData, exists := allUsersData[currentUrl]
+		if !exists {
+			existingData = UserData{FilmNames: []string{}, FilmMap: make(map[string]FilmDetails)}
+		}
+		// Merge film titles:
+		existingData.FilmNames = append(existingData.FilmNames, filmTitles...)
+		// Merge film map:
+		for k, v := range userFilms {
+			existingData.FilmMap[k] = v
+		}
+		existingData.FilmNamesLen = filmTitlesLen
+		// finalize:
+		allUsersData[currentUrl] = existingData
 	})
 	// DEBUG: This OnHTML method above is where a lot of the work happens -- BE SURE TO RETURN HERE AND DEBUG IT EXTRA HARD!!!
 
@@ -183,8 +233,10 @@ func main() {
 		userDataVar := allUsersData[userUrls[i]] // Retrieve the userData val.
 		listOfFilms := userDataVar.FilmNames
 		theFilmMap := userDataVar.FilmMap
+		theUsername := userDataVar.Username
+		theAvatar := userDataVar.AvatarLink
 
-		fmt.Printf("Printing out the list of Films+ for user (URL: %s)\n", userUrls[i])
+		fmt.Printf("Printing out the list of Films+ for user (URL: %s, Username: %s, Avatar: %s)\n", userUrls[i], theUsername, theAvatar)
 		fmt.Printf("**************************************************\n")
 		for index, value := range listOfFilms {
 			fmt.Printf("For Film \"%s\" (index %d):\n ", value, index)
