@@ -3,6 +3,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"os"
 	"regexp"
 	"time"
@@ -27,9 +28,8 @@ var userUrls []string // <-- store the user urls here (slice of strings).
 
 // two global flags:
 var currentUrl string // <-- keeps track of current URL. (Probably isn't great practice tbh, but this is just a learning exercise for now).
-
-//var urlWShortest string
-
+var shortestLen int
+var urlWShortest string
 var ValidUrls bool = true // <-- global flag that keeps track of if URLs passed by CLI (eventually HTML form) are valid (true by default).
 
 type FilmDetails struct {
@@ -45,7 +45,15 @@ type UserData struct {
 	FilmMap      map[string]FilmDetails
 }
 
+type MutualData struct {
+	Title   string
+	FilmUrl string
+	Ratings map[string]float32
+}
+
 var allUsersData map[string]UserData // username will be mapped to a UserData struct var (contains all the assoc films + details).
+
+var mutualFilms []MutualData
 
 var profilePageRegex = regexp.MustCompile(`^https://letterboxd\.com/[^/]+/?$`)
 
@@ -64,6 +72,7 @@ func main() {
 	}
 
 	allUsersData = make(map[string]UserData) // Initializing this global map that I have.
+	shortestLen = math.MaxInt64              // inf
 
 	// Declare the collector with supported domains:
 	c := colly.NewCollector(colly.AllowedDomains("www.letterboxd.com", "letterboxd.com", "https://letterboxd.com"), colly.Async(false)) // disabling async to reduce load (ethics!)
@@ -118,7 +127,7 @@ func main() {
 			*/
 			existingData, exists := allUsersData[currentUrl]
 			if !exists {
-				existingData = UserData{FilmNames: []string{}, FilmMap: make(map[string]FilmDetails)}
+				existingData = UserData{FilmNames: []string{}, FilmNamesLen: 0, FilmMap: make(map[string]FilmDetails)}
 			}
 			existingData.Username = profileUser
 			existingData.AvatarLink = avatarLink
@@ -180,7 +189,7 @@ func main() {
 		need to adjust my code such that I'm appending the data I assign here. */
 		existingData, exists := allUsersData[currentUrl]
 		if !exists {
-			existingData = UserData{FilmNames: []string{}, FilmMap: make(map[string]FilmDetails)}
+			existingData = UserData{FilmNames: []string{}, FilmNamesLen: 0, FilmMap: make(map[string]FilmDetails)}
 		}
 		// Merge film titles:
 		existingData.FilmNames = append(existingData.FilmNames, filmTitles...)
@@ -188,7 +197,7 @@ func main() {
 		for k, v := range userFilms {
 			existingData.FilmMap[k] = v
 		}
-		existingData.FilmNamesLen = filmTitlesLen
+		existingData.FilmNamesLen += filmTitlesLen
 		// finalize:
 		allUsersData[currentUrl] = existingData
 	})
@@ -226,6 +235,12 @@ func main() {
 
 		fmt.Printf("The value of urlToScrape => %s\n", urlToScrape)
 		c.Visit(urlToScrape)
+
+		userDataVar := allUsersData[userUrls[i]]
+		if shortestLen > userDataVar.FilmNamesLen {
+			shortestLen = userDataVar.FilmNamesLen
+			urlWShortest = userUrls[i]
+		}
 	}
 
 	// Now I can iterate through the allUsersData map using userUrls:
@@ -244,5 +259,46 @@ func main() {
 			fmt.Printf("- The FilmUrl: (%s) and the FilmRating: (%.1f)\n", theFilmDetails.FilmUrl, theFilmDetails.FilmRating)
 		}
 	}
+	fmt.Printf("[[THE URL WITH THE SHORTEST FILM COUNT => (%s) AND THAT LENGTH IS => (%d)]]\n", urlWShortest, allUsersData[urlWShortest].FilmNamesLen)
 
+	// DEBUG: Now I can do the intersection logic, which shoulnd't be hard:
+	sListOfFilms := allUsersData[urlWShortest].FilmNames
+	// for-loop that does the intersection:
+	for _, film := range sListOfFilms {
+		ratedCounter := 0
+		mutualDataVar := MutualData{Ratings: make(map[string]float32)}
+		// For each "film", I need to check if the other users have it too:
+		for _, user := range userUrls {
+			userDataVar := allUsersData[user]
+			if user != urlWShortest {
+				hasRating, exists := userDataVar.FilmMap[film]
+				if exists {
+					mutualDataVar.Title = film
+					mutualDataVar.FilmUrl = hasRating.FilmUrl
+					mutualDataVar.Ratings[user] = hasRating.FilmRating
+					ratedCounter += 1
+				}
+			} else {
+				// otherwise, urlWShortest value's profile ratings etc won't show.
+				mutualDataVar.Title = film
+				mutualDataVar.FilmUrl = userDataVar.FilmMap[film].FilmUrl
+				mutualDataVar.Ratings[user] = userDataVar.FilmMap[film].FilmRating
+			}
+		}
+		if ratedCounter == (len(userUrls) - 1) {
+			mutualFilms = append(mutualFilms, mutualDataVar)
+		}
+	}
+
+	// debug: for-loop that will iterate through the mutualFilms array and print everything out:
+	for index, mFilm := range mutualFilms {
+		fmt.Printf("The film is: [%s] (index %d)\n", mFilm.Title, index)
+		for _, user := range userUrls {
+			fmt.Printf("- User:(%s) rated it: [%.1f/4] ", user, mFilm.Ratings[user])
+		}
+		fmt.Printf("\n")
+	}
+
+	// Now I should be able to iterate through mutualFilms to check if everything went well:
+	fmt.Printf("The value of len(mutualFilms) => %d\n", len(mutualFilms))
 }
