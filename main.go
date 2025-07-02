@@ -27,6 +27,8 @@ var userUrls []string // <-- store the user urls here (slice of strings).
 
 var currentUrl string // <-- keeps track of current URL. (Probably isn't great practice tbh, but this is just a learning exercise for now).
 
+var urlWShortest string
+
 var ValidUrls bool = true // <-- global flag that keeps track of if URLs passed by CLI (eventually HTML form) are valid (true by default).
 
 type FilmDetails struct {
@@ -137,6 +139,7 @@ func main() {
 				}
 			}
 		})
+
 		allUsersData[currentUrl] = UserData{FilmNames: filmTitles, FilmMap: userFilms}
 	})
 	// DEBUG: This OnHTML method above is where a lot of the work happens -- BE SURE TO RETURN HERE AND DEBUG IT EXTRA HARD!!!
