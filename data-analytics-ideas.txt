@@ -1,0 +1,16 @@
+Ways to sort data:
+1. Average rating (sort by ascending/descending average across all users)
+2. Rating discrepancy/variance
+3. User-specific sorting (ascending/descending)
+4. Sort by highest # of users who all gave it the highest possible rating.
+5. Sort by film title (alphabetically)
+
+Ways to filter data:
+1. Show only films all users rated >= specific threshold
+2. Show only films all users rated <= specific threshold
+3. Show films where a specific user rated them >= or <= specific threshold
+4. Minimum/maximum average rating (where all profiles rated them >= or <= specific threshold).
+
+Some analytics ideas:
+1. Taste Alignment Score (compute pairwise correlation or cosine similarity between users)
+2. Ratings Heatmap (Table View: Rows = Films, Columns = Users, Cells = colour-coded ratings)

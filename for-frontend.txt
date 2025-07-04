@@ -1,0 +1,12 @@
+UI ideas for once I get to writing the frontend:
+- Multi-select input for Profile URLs:
+-- Can have like just two but then there's a "+" button you can click to add another text-input box (for URL input) up to a max of 6.
+- Table View of mutualFilms (or I was thinking maybe like a list or something you can scroll through)
+-- You should be able to search via film with some text bar...
+- Filter/sort panel on the side:
+-- Sliders for min/max rating
+- Toggles like: "Only 4.0+ avg" (but you can scale that too and also do like "2.0- avg")
+- Ability to toggle display between:
+-- Raw table
+-- Ratings heatmap
+-- Discrepancy graph (e.g., bar of rating spread)
