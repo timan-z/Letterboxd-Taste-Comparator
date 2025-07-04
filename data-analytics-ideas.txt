@@ -14,3 +14,8 @@ Ways to filter data:
 Some analytics ideas:
 1. Taste Alignment Score (compute pairwise correlation or cosine similarity between users)
 2. Ratings Heatmap (Table View: Rows = Films, Columns = Users, Cells = colour-coded ratings)
+
+NOTE: Going to put off analytics for now. Since this was meant to be a small-scale side project to learn Golang
+in the first place, just going to have a frontend page get started first where I can apply the sorting and filtering
+functions. After that, I can start thinking about analytics and how I can render a Ratings Heatmap etc with maybe an
+external framework or something.

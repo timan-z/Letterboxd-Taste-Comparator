@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/gocolly/colly/v2"
+	models "github.com/timan-z/letterboxd-mutual-ratings-scraper/models"
 )
 
 var ratingMap = map[string]float32{
@@ -32,7 +33,7 @@ var shortestLen int
 var urlWShortest string
 var ValidUrls bool = true // <-- global flag that keeps track of if URLs passed by CLI (eventually HTML form) are valid (true by default).
 
-type FilmDetails struct {
+/*type FilmDetails struct {
 	FilmUrl    string
 	FilmRating float32
 }
@@ -49,11 +50,20 @@ type MutualData struct {
 	Title   string
 	FilmUrl string
 	Ratings map[string]float32
-}
 
-var allUsersData map[string]UserData // username will be mapped to a UserData struct var (contains all the assoc films + details).
+	// DEBUG: These two members will be for the sorting/filtering options I implement later:
+	AvgRating float32
+	Variance  float32
+}*/
+// DEBUG: For calculating AvgRating and Variance -- TO-DO: Don't forget to throw this in the appropriate OnHTML function for-loop later.
+/*func (m * MutualData) ComputeMDStats() {
+	m.AvgRating = utils.GetAverage(m.Ratings)
+	m.Variance = utils.GetVariance(m.Ratings)
+}*/
 
-var mutualFilms []MutualData
+var allUsersData map[string]models.UserData // username will be mapped to a UserData struct var (contains all the assoc films + details).
+
+var mutualFilms []models.MutualData
 
 var profilePageRegex = regexp.MustCompile(`^https://letterboxd\.com/[^/]+/?$`)
 
@@ -71,8 +81,8 @@ func main() {
 		userUrls = append(userUrls, os.Args[i])
 	}
 
-	allUsersData = make(map[string]UserData) // Initializing this global map that I have.
-	shortestLen = math.MaxInt64              // inf
+	allUsersData = make(map[string]models.UserData) // Initializing this global map that I have.
+	shortestLen = math.MaxInt64                     // inf
 
 	// Declare the collector with supported domains:
 	c := colly.NewCollector(colly.AllowedDomains("www.letterboxd.com", "letterboxd.com", "https://letterboxd.com"), colly.Async(false)) // disabling async to reduce load (ethics!)
@@ -127,7 +137,7 @@ func main() {
 			*/
 			existingData, exists := allUsersData[currentUrl]
 			if !exists {
-				existingData = UserData{FilmNames: []string{}, FilmNamesLen: 0, FilmMap: make(map[string]FilmDetails)}
+				existingData = models.UserData{FilmNames: []string{}, FilmNamesLen: 0, FilmMap: make(map[string]models.FilmDetails)}
 			}
 			existingData.Username = profileUser
 			existingData.AvatarLink = avatarLink
@@ -144,7 +154,7 @@ func main() {
 			return
 		}
 
-		var userFilms = make(map[string]FilmDetails)
+		var userFilms = make(map[string]models.FilmDetails)
 		var filmTitles []string
 
 		h.ForEach("li.poster-container", func(_ int, e *colly.HTMLElement) {
@@ -178,7 +188,7 @@ func main() {
 					fmt.Printf("DEBUG: The value of filmName is (%s), filmUrlPath is (%s), and rating is (%.1f)\n", filmName, filmUrlPath, rating)
 
 					filmTitles = append(filmTitles, filmName) // ADDING FILM TITLE TO MY FILMTITLES SLICE.
-					userFilms[filmName] = FilmDetails{FilmUrl: filmUrlPath, FilmRating: rating}
+					userFilms[filmName] = models.FilmDetails{FilmUrl: filmUrlPath, FilmRating: rating}
 				}
 			}
 		})
@@ -189,7 +199,7 @@ func main() {
 		need to adjust my code such that I'm appending the data I assign here. */
 		existingData, exists := allUsersData[currentUrl]
 		if !exists {
-			existingData = UserData{FilmNames: []string{}, FilmNamesLen: 0, FilmMap: make(map[string]FilmDetails)}
+			existingData = models.UserData{FilmNames: []string{}, FilmNamesLen: 0, FilmMap: make(map[string]models.FilmDetails)}
 		}
 		// Merge film titles:
 		existingData.FilmNames = append(existingData.FilmNames, filmTitles...)
@@ -266,7 +276,7 @@ func main() {
 	// for-loop that does the intersection:
 	for _, film := range sListOfFilms {
 		ratedCounter := 0
-		mutualDataVar := MutualData{Ratings: make(map[string]float32)}
+		mutualDataVar := models.MutualData{Ratings: make(map[string]float32)}
 		// For each "film", I need to check if the other users have it too:
 		for _, user := range userUrls {
 			userDataVar := allUsersData[user]

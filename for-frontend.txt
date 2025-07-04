@@ -10,3 +10,8 @@ UI ideas for once I get to writing the frontend:
 -- Raw table
 -- Ratings heatmap
 -- Discrepancy graph (e.g., bar of rating spread)
+
+[FOR LATER]:
+For my README, when I host this on GitHub. I will have put valuable work into this project. So, if the Letterboxd site HTML structure
+drastically changes and bricks my scraping code, something that I should do is have .CSV upload option -- where I can throw in data and 
+skip the scraping part altogether, and jump straight to the sorting/filtering/analytics that you see above.
