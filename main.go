@@ -8,12 +8,8 @@ import (
 	"regexp"
 	"time"
 
-	"strconv"
-	"strings"
-
 	"github.com/gocolly/colly/v2"
 	models "github.com/timan-z/letterboxd-mutual-ratings-scraper/models"
-	utils "github.com/timan-z/letterboxd-mutual-ratings-scraper/utility"
 )
 
 var ratingMap = map[string]float32{
@@ -290,7 +286,7 @@ func main() {
 
 	// ***********************************************************************************************
 	// DEBUG: [TESTING] Creating a primitive while-loop (or ig adjusted for-loop in Go) terminal menu system:
-	for {
+	/*for {
 		fmt.Println("\n--- Main Menu ---")
 		fmt.Println("[utils.go]")
 		fmt.Println("1. GetAverage")
@@ -494,7 +490,7 @@ func main() {
 		default:
 			fmt.Println("Invalid choice.")
 		}
-	}
+	}*/
 	// ***********************************************************************************************
 
 }
