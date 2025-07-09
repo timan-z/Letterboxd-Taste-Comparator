@@ -2,7 +2,7 @@ import React from "react";
 
 function AboutPage() {
     return(
-        <div>Ahhh</div>
+        <div>Pretty standard stuff. Just have information here. Nothing too fancy.</div>
     )
 }
 
