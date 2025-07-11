@@ -117,6 +117,34 @@ func main() {
 		}
 	})
 
+	// DEBUG:
+	// Let's add a c.OnHTML function here that will go to the specific film-page and try and get the poster and year data!
+	c.OnHTML("div.productioninfo ", func(e *colly.HTMLElement) {
+
+		/*if profilePageRegex.MatchString(h.Request.URL.String()) {
+			fmt.Printf("DEBUG: c.OnHTML(\"ul.poster-list\") prevented from running...\n")
+			return
+		}*/
+		// var profilePageRegex = regexp.MustCompile(`^https://letterboxd\.com/[^/]+/?$`)
+		var filmPageRegex = regexp.MustCompile(`^https://letterboxd\.com/film/[^/]+/?$`)
+
+		fmt.Printf("DEBUG: The value of {h.Request.URL.String()} is => %s\n", e.Request.URL.String())
+		if filmPageRegex.MatchString(e.Request.URL.String()) {
+			fmt.Printf("Debug: Yeah so the filmPageRegex var I wrote works...")
+		}
+
+		divElem := e.DOM
+		// Let's get the film release-year first:
+		yearSpan := divElem.Find("span.releasedate").First()
+		releaseYear := yearSpan.Text()
+		fmt.Printf("GetYearDir-Debug: The value of releaseYear => %s\n", releaseYear)
+
+		// Let's get the director after:
+		dirSpan := divElem.Find("span.prettify").First()
+		director := dirSpan.Text()
+		fmt.Printf("GetYearDir-Debug: The value of director => %s\n", director)
+	})
+
 	// Here's where I can start working to extract a list of the films + ratings:
 	// DEBUG: This OnHTML method below is where a lot of the work happens -- BE SURE TO RETURN HERE AND DEBUG IT EXTRA HARD!!!
 	c.OnHTML("ul.poster-list", func(h *colly.HTMLElement) {
@@ -161,6 +189,10 @@ func main() {
 
 					filmTitles = append(filmTitles, filmName) // ADDING FILM TITLE TO MY FILMTITLES SLICE.
 					userFilms[filmName] = models.FilmDetails{FilmUrl: filmUrlPath, FilmRating: rating}
+
+					e.Request.Visit("https://letterboxd.com/film/" + filmUrlPath) // SEE WHAT FUCKING HAPPENS!!!
+					// SO YEAHHHH what we're seeing is it does seem to work recursively (wonderful!)
+
 				}
 			}
 		})
@@ -283,214 +315,5 @@ func main() {
 
 	// Now I should be able to iterate through mutualFilms to check if everything went well:
 	fmt.Printf("The value of len(mutualFilms) => %d\n", len(mutualFilms))
-
-	// ***********************************************************************************************
-	// DEBUG: [TESTING] Creating a primitive while-loop (or ig adjusted for-loop in Go) terminal menu system:
-	/*for {
-		fmt.Println("\n--- Main Menu ---")
-		fmt.Println("[utils.go]")
-		fmt.Println("1. GetAverage")
-		fmt.Println("2. GetVariance")
-		fmt.Println("3. AllAboveThreshold")
-		fmt.Println("4. AllBelowThreshold")
-		fmt.Println("5. UserAboveThreshold")
-		fmt.Println("6. UserBelowThreshold")
-		fmt.Println("[sorting.go]")
-		fmt.Println("7. SortByAverageRating")
-		fmt.Println("8. SortByVariance")
-		fmt.Println("9. SortByUserRating")
-		fmt.Println("10. SortByTitle")
-		fmt.Println("[filters.go]")
-		fmt.Println("11. FilterAllAboveThreshold")
-		fmt.Println("12. FilterAllBelowThreshold")
-		fmt.Println("13. FilterByUserThreshold")
-		// Getting user input:
-		fmt.Print("Enter your choice: ")
-		var input string
-		_, err := fmt.Scanln(&input)
-		if err != nil {
-			fmt.Println("Error reading input:", err)
-			continue // Skip to next iteration loop.
-		}
-		choice, err := strconv.Atoi(strings.TrimSpace(input)) // Convert input to integer
-		if err != nil {
-			fmt.Println("Invalid input. Please enter a number.")
-			continue // Skip to next iteration loop.
-		}
-
-		firstFilm := mutualFilms[0]
-		switch choice {
-		case 1:
-			// GetAverage(ratings map[string]float32) float32 {
-			// -- To test this one, just pull a film out of [var mutualFilms []MutualData] and run the average calculation on its ratings:
-			firstFilm := mutualFilms[0]
-			fmt.Println("[GetAverage] The title of firstFilm is: ", firstFilm.Title)
-			theAvg := utils.GetAverage(firstFilm.Ratings)
-			fmt.Println("[GetAverage] THE VALUE OF THE AVERAGE => ", theAvg)
-		case 2:
-			// GetVariance(ratings map[string]float32) float32 {
-			fmt.Println("[GetAverage] The title of firstFilm is: ", firstFilm.Title)
-			theVariance := utils.GetVariance((firstFilm.Ratings))
-			fmt.Println("[GetAverage] THE VALUE OF THE VARIANCE => ", theVariance)
-		case 3:
-			// AllAboveThreshold(ratings map[string]float32, threshold float32) bool {
-			fmt.Println("[AllAboveThreshold] The title of firstFilm is: ", firstFilm.Title)
-			for index, user := range userUrls {
-				fmt.Printf("The value of its rating (index:%d) is %.1f", index, firstFilm.Ratings[user])
-			}
-			allAboveThresh := utils.AllAboveThreshold(firstFilm.Ratings, 3.0) // test value will be 3.0
-			fmt.Println("TEST VALUE GOING TO BE 3.0")
-			fmt.Println("[AllAboveThreshold] THE FUNCTION RETURNED => ", allAboveThresh)
-		case 4:
-			// AllBelowThreshold(ratings map[string]float32, threshold float32) bool {
-			fmt.Println("[AllBelowThreshold] The title of firstFilm is: ", firstFilm.Title)
-			for index, user := range userUrls {
-				fmt.Printf("The value of its rating (index:%d) is %.1f", index, firstFilm.Ratings[user])
-			}
-			allBelowThresh := utils.AllBelowThreshold(firstFilm.Ratings, 2.0) // test value will be 2.0
-			fmt.Println("TEST VALUE GOING TO BE 2.0")
-			fmt.Println("[AllAboveThreshold] THE FUNCTION RETURNED => ", allBelowThresh)
-		case 5:
-			// UserAboveThreshold(ratings map[string]float32, threshold float32, userUrl string) bool {
-			fmt.Println("[UserAboveThreshold] The title of firstFilm is: ", firstFilm.Title)
-			for index, user := range userUrls {
-				fmt.Printf("The value of its rating (index:%d) is %.1f", index, firstFilm.Ratings[user])
-			}
-			userAboveThresh := utils.UserAboveThreshold(firstFilm.Ratings, 3.0, userUrls[0]) // test value will be 3.0
-			fmt.Println("TEST VALUE GOING TO BE 3.0")
-			fmt.Println("TEST USER I'M USING WILL BE: ", userUrls[0])
-			fmt.Println("[UserAboveThreshold] THE FUNCTION RETURNED => ", userAboveThresh)
-		case 6:
-			// UserBelowThreshold(ratings map[string]float32, threshold float32, userUrl string) bool {
-			fmt.Println("[UserBelowThreshold] The title of firstFilm is: ", firstFilm.Title)
-			for index, user := range userUrls {
-				fmt.Printf("The value of its rating (index:%d) is %.1f", index, firstFilm.Ratings[user])
-			}
-			userBelowThresh := utils.UserBelowThreshold(firstFilm.Ratings, 3.0, userUrls[0])
-			fmt.Println("TEST VALUE GOING TO BE 3.0")
-			fmt.Println("TEST USER I'M USING WILL BE: ", userUrls[0])
-			fmt.Println("[UserBelowThreshold] THE FUNCTION RETURNED => ", userBelowThresh)
-		case 7:
-			// SortByAverageRating(mutualFilms []models.MutualData, descending bool) {
-			fmt.Println("[SortByAverageRating]-[1] TESTING descending TRUE: ")
-			utils.SortByAverageRating(mutualFilms, true)
-			for index, mFilm := range mutualFilms {
-				fmt.Printf("The film is: [%s] (index %d)\n", mFilm.Title, index)
-				for _, user := range userUrls {
-					fmt.Printf("- User:(%s) rated it: [%.1f/4] ", user, mFilm.Ratings[user])
-				}
-				fmt.Printf("\n")
-			}
-			fmt.Println("[SortByAverageRating]-[2] TESTING descending FALSE: ")
-			utils.SortByAverageRating(mutualFilms, false)
-			for index, mFilm := range mutualFilms {
-				fmt.Printf("The film is: [%s] (index %d)\n", mFilm.Title, index)
-				for _, user := range userUrls {
-					fmt.Printf("- User:(%s) rated it: [%.1f/4] ", user, mFilm.Ratings[user])
-				}
-				fmt.Printf("\n")
-			}
-		case 8:
-			// SortByVariance(mutualFilms []models.MutualData, descending bool) {
-			fmt.Println("[SortByVariance]-[1] TESTING descending TRUE: ")
-			utils.SortByVariance(mutualFilms, true)
-			for index, mFilm := range mutualFilms {
-				fmt.Printf("The film is: [%s] (index %d)\n", mFilm.Title, index)
-				for _, user := range userUrls {
-					fmt.Printf("- User:(%s) rated it: [%.1f/4] ", user, mFilm.Ratings[user])
-				}
-				fmt.Printf("\n")
-			}
-			fmt.Println("[SortByVariance]-[2] TESTING descending FALSE: ")
-			utils.SortByVariance(mutualFilms, false)
-			for index, mFilm := range mutualFilms {
-				fmt.Printf("The film is: [%s] (index %d)\n", mFilm.Title, index)
-				for _, user := range userUrls {
-					fmt.Printf("- User:(%s) rated it: [%.1f/4] ", user, mFilm.Ratings[user])
-				}
-				fmt.Printf("\n")
-			}
-		case 9:
-			// SortByUserRating(mutualFilms []models.MutualData, descending bool, userUrl string) {
-			fmt.Println("[SortByVariance] WE'RE GOING TO BE USING THE FIRST USER IN USERURL (userUrls[0]): ", userUrls[0])
-			fmt.Println("[SortByVariance]-[1] TESTING descending TRUE: ")
-			utils.SortByUserRating(mutualFilms, true, userUrls[0])
-			for index, mFilm := range mutualFilms {
-				fmt.Printf("The film is: [%s] (index %d)\n", mFilm.Title, index)
-				for _, user := range userUrls {
-					fmt.Printf("- User:(%s) rated it: [%.1f/4] ", user, mFilm.Ratings[user])
-				}
-				fmt.Printf("\n")
-			}
-			fmt.Println("[SortByVariance]-[2] TESTING descending FALSE: ")
-			utils.SortByUserRating(mutualFilms, false, userUrls[0])
-			for index, mFilm := range mutualFilms {
-				fmt.Printf("The film is: [%s] (index %d)\n", mFilm.Title, index)
-				for _, user := range userUrls {
-					fmt.Printf("- User:(%s) rated it: [%.1f/4] ", user, mFilm.Ratings[user])
-				}
-				fmt.Printf("\n")
-			}
-		case 10:
-			// SortByTitle(mutualFilms []models.MutualData) {
-			fmt.Println("[SortByTitle] TESTING FUNCTION: ")
-			utils.SortByTitle(mutualFilms)
-			for index, mFilm := range mutualFilms {
-				fmt.Printf("The film is: [%s] (index %d)\n", mFilm.Title, index)
-				for _, user := range userUrls {
-					fmt.Printf("- User:(%s) rated it: [%.1f/4] ", user, mFilm.Ratings[user])
-				}
-				fmt.Printf("\n")
-			}
-		// CASES 11-13 SHOULD BE TESTED LAST -- THEY WILL TRUNCATE THE FUNCTION!!! (wait no it'll just make a new one lmao).
-		case 11:
-			// FilterAllAboveThreshold(mutualFilms []models.MutualData, threshold float32) []models.MutualData {
-			fmt.Println("[FilterAllAboveThreshold] TESTING FUNCTION:")
-			truncMutualData := utils.FilterAllAboveThreshold(mutualFilms, 3.0)
-			for index, mFilm := range truncMutualData {
-				fmt.Printf("The film is: [%s] (index %d)\n", mFilm.Title, index)
-				for _, user := range userUrls {
-					fmt.Printf("- User:(%s) rated it: [%.1f/4] ", user, mFilm.Ratings[user])
-				}
-				fmt.Printf("\n")
-			}
-		case 12:
-			// FilterAllBelowThreshold(mutualFilms []models.MutualData, threshold float32) []models.MutualData {
-			fmt.Println("[FilterAllBelowThreshold] TESTING FUNCTION:")
-			truncMutualData := utils.FilterAllBelowThreshold(mutualFilms, 3.0)
-			for index, mFilm := range truncMutualData {
-				fmt.Printf("The film is: [%s] (index %d)\n", mFilm.Title, index)
-				for _, user := range userUrls {
-					fmt.Printf("- User:(%s) rated it: [%.1f/4] ", user, mFilm.Ratings[user])
-				}
-				fmt.Printf("\n")
-			}
-		case 13:
-			// FilterByUserThreshold(mutualFilms []models.MutualData, threshold float32, userUrl string, above bool) []models.MutualData {
-			fmt.Println("[FilterByUserThreshold] We're going to use userUrls[0] as our userUrl: ", userUrls[0])
-			fmt.Println("[FilterByUserThreshold] We're going to use 3.0 as our threshold")
-			fmt.Println("[FilterByUserThreshold]-[1] TESTING above TRUE: ")
-			truncMutualData := utils.FilterByUserThreshold(mutualFilms, 3.0, userUrls[0], true)
-			for index, mFilm := range truncMutualData {
-				fmt.Printf("The film is: [%s] (index %d)\n", mFilm.Title, index)
-				for _, user := range userUrls {
-					fmt.Printf("- User:(%s) rated it: [%.1f/4] ", user, mFilm.Ratings[user])
-				}
-				fmt.Printf("\n")
-			}
-			fmt.Println("[FilterByUserThreshold]-[1] TESTING above FALSE: ")
-			truncMutualData = utils.FilterByUserThreshold(mutualFilms, 3.0, userUrls[0], false)
-			for index, mFilm := range truncMutualData {
-				fmt.Printf("The film is: [%s] (index %d)\n", mFilm.Title, index)
-				for _, user := range userUrls {
-					fmt.Printf("- User:(%s) rated it: [%.1f/4] ", user, mFilm.Ratings[user])
-				}
-				fmt.Printf("\n")
-			}
-		default:
-			fmt.Println("Invalid choice.")
-		}
-	}*/
-	// ***********************************************************************************************
 
 }
