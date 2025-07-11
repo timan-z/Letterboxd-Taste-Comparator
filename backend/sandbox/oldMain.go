@@ -2,10 +2,14 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"io"
+	"log"
 	"math"
 	"os"
 	"regexp"
+	"strings"
 	"time"
 
 	"github.com/gocolly/colly/v2"
@@ -117,10 +121,44 @@ func main() {
 		}
 	})
 
-	// DEBUG:
-	// Let's add a c.OnHTML function here that will go to the specific film-page and try and get the poster and year data!
-	c.OnHTML("div.productioninfo ", func(e *colly.HTMLElement) {
+	// DEBUG: BELOW...
+	// Let's add a c.OnHTML function here that will look at the specific film-age and try to get the poster data (in diff area from other stuff):
+	c.OnHTML("script[type='application/ld+json']", func(e *colly.HTMLElement) {
+		var filmPageRegex = regexp.MustCompile(`^https://letterboxd\.com/film/[^/]+/?$`)
+		if !(filmPageRegex.MatchString(e.Request.URL.String())) {
+			fmt.Printf("DIS URL DOES NOT MATCH [filmPageRegex]!!!")
+			return
+		} else {
+			fmt.Printf("IT DO!!!! [GETTING POSTER]\n")
+		}
+		// So the link to the poster will be within the text of the HTML element I grab, but I'll need to do some parsing:
+		rawJSON := e.Text
+		rawJSON = strings.TrimSpace(rawJSON)
+		fmt.Printf("rawJSON-DEBUG: [PRE-TRIM] the raw JSON for the thing looks like this => %s\n", rawJSON)
 
+		// Remember - my scraping is brittle so if there's any alterations to the DOM, I want to dip out just for safety:
+		if !(strings.HasPrefix(rawJSON, `/* <![CDATA[ */`) && !(strings.HasSuffix(rawJSON, `/* ]]> */\s`))) {
+			fmt.Println("raaaahhhhh: THE RETURN PREFIX DID NOT WORK. THERE PROBLEM WITH ME LOGIC.")
+			return
+		}
+		rawJSON = strings.TrimPrefix(rawJSON, "/* <![CDATA[ */")
+		rawJSON = strings.TrimSuffix(rawJSON, "/* ]]> */")
+		fmt.Printf("rawJSON-DEBUG: [POST-TRIM] the raw JSON for the thing looks like this => %s\n", rawJSON)
+
+		// Decode using streaming JSON decoder:
+		var data struct {
+			Image string `json:"image"`
+		}
+		decoder := json.NewDecoder(strings.NewReader(rawJSON))
+		if err := decoder.Decode(&data); err != nil && err != io.EOF {
+			log.Fatal(err)
+		}
+		fmt.Println("Image URL: ", data.Image)
+
+	})
+
+	// Let's add a c.OnHTML function here that will go to the specific film-page and try and get the director and year data!
+	c.OnHTML("div.productioninfo ", func(e *colly.HTMLElement) {
 		/*if profilePageRegex.MatchString(h.Request.URL.String()) {
 			fmt.Printf("DEBUG: c.OnHTML(\"ul.poster-list\") prevented from running...\n")
 			return
@@ -128,9 +166,16 @@ func main() {
 		// var profilePageRegex = regexp.MustCompile(`^https://letterboxd\.com/[^/]+/?$`)
 		var filmPageRegex = regexp.MustCompile(`^https://letterboxd\.com/film/[^/]+/?$`)
 
+		if !(filmPageRegex.MatchString(e.Request.URL.String())) {
+			fmt.Printf("DIS URL DOES NOT MATCH [filmPageRegex]!!!")
+			return
+		} else {
+			fmt.Printf("IT DO!!!! [GETTING DIRECTOR AND YEAR]\n")
+		}
+
 		fmt.Printf("DEBUG: The value of {h.Request.URL.String()} is => %s\n", e.Request.URL.String())
 		if filmPageRegex.MatchString(e.Request.URL.String()) {
-			fmt.Printf("Debug: Yeah so the filmPageRegex var I wrote works...")
+			fmt.Printf("Debug: Yeah so the filmPageRegex var I wrote works...\n")
 		}
 
 		divElem := e.DOM
@@ -144,6 +189,7 @@ func main() {
 		director := dirSpan.Text()
 		fmt.Printf("GetYearDir-Debug: The value of director => %s\n", director)
 	})
+	// DEBUG: ABOVE!!!
 
 	// Here's where I can start working to extract a list of the films + ratings:
 	// DEBUG: This OnHTML method below is where a lot of the work happens -- BE SURE TO RETURN HERE AND DEBUG IT EXTRA HARD!!!
@@ -190,7 +236,7 @@ func main() {
 					filmTitles = append(filmTitles, filmName) // ADDING FILM TITLE TO MY FILMTITLES SLICE.
 					userFilms[filmName] = models.FilmDetails{FilmUrl: filmUrlPath, FilmRating: rating}
 
-					e.Request.Visit("https://letterboxd.com/film/" + filmUrlPath) // SEE WHAT FUCKING HAPPENS!!!
+					e.Request.Visit("https://letterboxd.com/film/" + filmUrlPath)
 					// SO YEAHHHH what we're seeing is it does seem to work recursively (wonderful!)
 
 				}

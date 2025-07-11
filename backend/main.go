@@ -9,8 +9,11 @@ import (
 	// old imports
 	"errors"
 	"fmt"
+	"io"
+	"log"
 	"math"
 	"regexp"
+	"strings"
 	"time"
 
 	"github.com/gocolly/colly/v2"
@@ -65,14 +68,23 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 		"★★★★★": 5,
 	} // because Letterboxd stores their film ratings as these symbols even in the raw HTML code. (Only need float32).
 	var currentUrl string
+	//var currentFilm string
 	var urlWShortest string
+
+	var filmYearBuffer string
+	var filmDirBuffer string
+	var filmPosterBuffer string
+
 	//var userUrls []string // Slice of strings to store the Profile URLs
 	var mutualFilms []models.MutualData
 	var profilePageRegex = regexp.MustCompile(`^https://letterboxd\.com/[^/]+/?$`)
+	var filmPageRegex = regexp.MustCompile(`^https://letterboxd\.com/film/[^/]+/?$`)
 
 	ValidUrls := true                                // keeps track of if the URLs passed in are all valid.
 	allUsersData := make(map[string]models.UserData) // username will be mapped to a UserData struct var (contains all the assoc films + details).
 	shortestLen := math.MaxInt64                     // inf
+
+	//var userFilms = make(map[string]models.FilmDetails) // <-- UPDATE: Moving this here.
 
 	// Declare the collector with supported domains:
 	c := colly.NewCollector(colly.AllowedDomains("www.letterboxd.com", "letterboxd.com", "https://letterboxd.com"), colly.Async(false)) // disabling async to reduce load (ethics!)
@@ -129,10 +141,82 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 			if !exists {
 				existingData = models.UserData{FilmNames: []string{}, FilmNamesLen: 0, FilmMap: make(map[string]models.FilmDetails)}
 			}
-			existingData.Username = profileUser
+			existingData.Username = currentUrl
+			existingData.Displayname = profileUser
 			existingData.AvatarLink = avatarLink
 			allUsersData[currentUrl] = existingData
 		}
+	})
+
+	// onHTML methods for extracting the [1] - Film Release Year (e.g., 1954), [2] - Director Name (e.g., Akira Kurosawa), [3] -Poster Link:
+	// [1] - Film Release Year and [2] - Director Name:
+	c.OnHTML("div.productioninfo ", func(e *colly.HTMLElement) {
+		if !(filmPageRegex.MatchString(e.Request.URL.String())) {
+			// This OnHTML method should only be triggered for a specific film-page (e.g., "https://letterboxd.com/film/seven-samurai/"), nothing else.
+			return
+		}
+		divElem := e.DOM
+		// Film Release Year:
+		yearSpan := divElem.Find("span.releasedate").First()
+		releaseYear := yearSpan.Text()
+		fmt.Printf("GetYearDir-Debug: The value of releaseYear => %s\n", releaseYear)
+
+		// Director:
+		dirSpan := divElem.Find("span.prettify").First()
+		director := dirSpan.Text()
+		fmt.Printf("GetYearDir-Debug: The value of director => %s\n", director)
+
+		// NEW DEBUG:
+		filmYearBuffer = releaseYear
+		filmDirBuffer = director
+		// Save this data:
+		/*existingData, exists := userFilms[currentFilm]
+		if !exists {
+			existingData = models.FilmDetails{}
+		}
+		existingData.FilmYear = releaseYear
+		existingData.FilmDir = director
+		userFilms[currentFilm] = existingData*/
+	})
+
+	// [3] - Poster Link:
+	c.OnHTML("script[type='application/ld+json']", func(e *colly.HTMLElement) {
+		if !(filmPageRegex.MatchString(e.Request.URL.String())) {
+			// This OnHTML method should only be triggered for a specific film-page (e.g., "https://letterboxd.com/film/seven-samurai/"), nothing else.
+			return
+		}
+
+		/* Extracting the poster link will be a little awkward, it's lodged within a <span> element at the bottom of the Page Source HTML within
+		a JSON string surrounded by prefix and suffix comments (which I'll need to remove): */
+		rawJSON := e.Text
+		rawJSON = strings.TrimSpace(rawJSON)
+		if !(strings.HasPrefix(rawJSON, `/* <![CDATA[ */`) && !(strings.HasSuffix(rawJSON, `/* ]]> */\s`))) {
+			// TO-DO: Insert some kind of proper error handling for this situation...
+			fmt.Println("ERROR: LOOKS LIKE THE LETTERBOXD SOURCE DOM HAS BEEN CHANGED!!!!!")
+			return
+		}
+		rawJSON = strings.TrimPrefix(rawJSON, "/* <![CDATA[ */")
+		rawJSON = strings.TrimSuffix(rawJSON, "/* ]]> */")
+		// Get the poster URL:
+		var GiveMePoster struct {
+			Image string `json:"image"`
+		}
+		decoder := json.NewDecoder(strings.NewReader(rawJSON))
+		if err := decoder.Decode(&GiveMePoster); err != nil && err != io.EOF {
+			log.Fatal(err)
+		}
+		fmt.Println("Image URL: ", GiveMePoster.Image)
+
+		// NEW DEBUG:
+		filmPosterBuffer = GiveMePoster.Image
+
+		// Save this data:
+		/*existingData, exists := userFilms[currentFilm]
+		if !exists {
+			existingData = models.FilmDetails{}
+		}
+		existingData.FilmPoster = GiveMePoster.Image
+		userFilms[currentFilm] = existingData*/
 	})
 
 	// Here's where I can start working to extract a list of the films + ratings:
@@ -178,7 +262,13 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 					fmt.Printf("DEBUG: The value of filmName is (%s), filmUrlPath is (%s), and rating is (%.1f)\n", filmName, filmUrlPath, rating)
 
 					filmTitles = append(filmTitles, filmName) // ADDING FILM TITLE TO MY FILMTITLES SLICE.
-					userFilms[filmName] = models.FilmDetails{FilmUrl: filmUrlPath, FilmRating: rating}
+					//userFilms[filmName] = models.FilmDetails{FilmUrl: filmUrlPath, FilmRating: rating}
+					//currentFilm = filmName
+
+					e.Request.Visit("https://letterboxd.com/film/" + filmUrlPath) // NOTE: This will work recursively (we'll return after!)
+					// ^ DEBUG: Visiting this link is important for grabbing the release-year of the film, the poster link, and also director name!
+
+					userFilms[filmName] = models.FilmDetails{FilmUrl: filmUrlPath, FilmRating: rating, FilmYear: filmYearBuffer, FilmDir: filmDirBuffer, FilmPoster: filmPosterBuffer}
 				}
 			}
 		})
@@ -250,10 +340,11 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 		userDataVar := allUsersData[profiles[i]] // Retrieve the userData val.
 		listOfFilms := userDataVar.FilmNames
 		theFilmMap := userDataVar.FilmMap
+		theDisplayname := userDataVar.Displayname
 		theUsername := userDataVar.Username
 		theAvatar := userDataVar.AvatarLink
 
-		fmt.Printf("Printing out the list of Films+ for user (URL: %s, Username: %s, Avatar: %s)\n", profiles[i], theUsername, theAvatar)
+		fmt.Printf("Printing out the list of Films+ for user (URL: %s, Displayname: %s, Avatar: %s)\n", theUsername, theDisplayname, theAvatar)
 		fmt.Printf("**************************************************\n")
 		for index, value := range listOfFilms {
 			fmt.Printf("For Film \"%s\" (index %d):\n ", value, index)
@@ -278,6 +369,9 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 					mutualDataVar.Title = film
 					mutualDataVar.FilmUrl = hasRating.FilmUrl
 					mutualDataVar.Ratings[user] = hasRating.FilmRating
+					mutualDataVar.FilmDir = hasRating.FilmDir
+					mutualDataVar.FilmYear = hasRating.FilmYear
+					mutualDataVar.FilmPoster = hasRating.FilmPoster
 					ratedCounter += 1
 				}
 			} else {
@@ -285,6 +379,9 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 				mutualDataVar.Title = film
 				mutualDataVar.FilmUrl = userDataVar.FilmMap[film].FilmUrl
 				mutualDataVar.Ratings[user] = userDataVar.FilmMap[film].FilmRating
+				mutualDataVar.FilmDir = userDataVar.FilmMap[film].FilmDir
+				mutualDataVar.FilmYear = userDataVar.FilmMap[film].FilmYear
+				mutualDataVar.FilmPoster = userDataVar.FilmMap[film].FilmPoster
 			}
 		}
 		if ratedCounter == (len(profiles) - 1) {
@@ -311,11 +408,22 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 		variance := utils.GetVariance(film.Ratings)
 
 		response.MutualFilms = append(response.MutualFilms, models.MutualResponseFilm{
-			Title:     film.Title,
-			FilmUrl:   film.FilmUrl,
-			Ratings:   film.Ratings,
-			AvgRating: avg,
-			Variance:  variance,
+			Title:      film.Title,
+			FilmUrl:    film.FilmUrl,
+			FilmYear:   film.FilmYear,
+			FilmDir:    film.FilmDir,
+			FilmPoster: film.FilmPoster,
+			Ratings:    film.Ratings,
+			AvgRating:  avg,
+			Variance:   variance,
+		})
+	}
+	// EDIT: Extended MutualResponse so I'll also be passing on the information of the users too (to the frontend):
+	for _, user := range profiles {
+		response.Users = append(response.Users, models.UserSummary{
+			Username:    allUsersData[user].Username,
+			Displayname: allUsersData[user].Displayname,
+			AvatarLink:  allUsersData[user].AvatarLink,
 		})
 	}
 	return response, nil

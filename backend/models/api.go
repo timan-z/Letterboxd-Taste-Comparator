@@ -12,15 +12,24 @@ type FilmRatings map[string]float32 // {"url1": 4.0, "url2": 3.5}
 
 // The response that will be posted back per film:
 type MutualResponseFilm struct {
-	Title     string      `json:"title"`
-	FilmUrl   string      `json:"filmUrl"`
-	PosterUrl string      `json:"posterUrl,omitempty"`
-	Ratings   FilmRatings `json:"ratings"`
-	AvgRating float32     `json:"avgRating"`
-	Variance  float32     `json:"variance"`
+	Title      string      `json:"title"`
+	FilmUrl    string      `json:"filmUrl"`
+	FilmYear   string      `json:"filmYear"`
+	FilmDir    string      `json:"filmDir"`
+	FilmPoster string      `json:"filmPoster,omitempty"`
+	Ratings    FilmRatings `json:"ratings"`
+	AvgRating  float32     `json:"avgRating"`
+	Variance   float32     `json:"variance"`
+}
+
+type UserSummary struct {
+	Username    string `json:"username"`
+	Displayname string `json:"displayname"`
+	AvatarLink  string `json:"avatarLink"`
 }
 
 // Entire response sent back:
 type MutualResponse struct {
 	MutualFilms []MutualResponseFilm `json:"mutualFilms"`
+	Users       []UserSummary        `json:"users"`
 }
