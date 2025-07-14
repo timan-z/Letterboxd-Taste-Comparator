@@ -30,6 +30,14 @@ func main() {
 
 // Function for handling POST /api/mutual requests (when list of profile URLs are sent over):
 func handleMutualRatings(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodOptions {
+		fmt.Println("AHHHHHHHHHH THIS THING WAS ENTERED!!!")
+
+		// DEBUG: CORS preflight — return OK with headers already set by middleware
+		w.WriteHeader(http.StatusOK)
+		return
+	}
+
 	if r.Method != http.MethodPost {
 		http.Error(w, "ERROR: Only POST calls are allowed", http.StatusMethodNotAllowed)
 		return
@@ -432,7 +440,11 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 // Middleware function to allow CORS (needed for frontend requests from Vite, since they're hosted on different servers):
 func corsMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173") // DEFAULT PORT FOR VITE FRONTEND.
+		//w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173") // DEFAULT PORT FOR VITE FRONTEND.
+		origin := r.Header.Get("Origin")
+		if origin == "http://localhost:5173" {
+			w.Header().Set("Access-Control-Allow-Origin", origin)
+		}
 		w.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS")
 		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 
