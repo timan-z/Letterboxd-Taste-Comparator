@@ -5,12 +5,13 @@ import testData from "../assets/testData.json";
 
 import MainTable from "../components/MainTable.tsx";
 import {type ColumnDef} from "@tanstack/react-table";
+import {type User, type MutualFilm} from "../utility/types.ts";
 
 /* As a reference, following the HTML page structure of: https://letterboxd-besties.cheersderek.com/ */
 
 function MainPage() {
 
-    type User = {
+    /*type User = {
         username: string;
         displayname: string;
         avatarLink: string;
@@ -24,7 +25,7 @@ function MainPage() {
         ratings: Record<string, number>;
         avgRating: number;
         variance: number;
-    }
+    }*/
 
     const [profileUrls, setProfileUrls] = useState(["", ""]);
     const [loading, setLoading] = useState(false);  // state var for when (TO-DO: pair with loading animation? -- that temp freezes webpage?)
@@ -42,8 +43,8 @@ function MainPage() {
 
 
     // To be passed down to MainTable.tsx:
-    const [showPosters, setShowPosters] = useState(true);
-    const [minAvgRating, setMinAvgRating] = useState(0);
+    //const [showPosters, setShowPosters] = useState(true);
+    //const [minAvgRating, setMinAvgRating] = useState(0);
 
 
 

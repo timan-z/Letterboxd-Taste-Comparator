@@ -8,15 +8,21 @@ import {
     getFilteredRowModel,
     type SortingState
 } from '@tanstack/react-table'
+import {type User, type MutualFilm} from "../utility/types.ts";
 
 /* This interface below is a generic TypeScript interface.
 Using <T> (generic type) is good, it'll adapt to whatever type I pass in whether User or MutualFilm (reusable for both): */
-interface MainTableProps<T> {
-    data: T[];
-    columns: ColumnDef<T,any>[];
+// EDIT: Just going to be specific and use MutualFilm now -- the Table pretty much centers around it anyways!
+//interface MainTableProps<T> {
+interface MainTableProps {
+    //data: T[];
+    data: MutualFilm[]
+    //columns: ColumnDef<T,any>[];
+    columns: ColumnDef<MutualFilm,any>[];
 }
 
-const MainTable = <T,>({data, columns}: MainTableProps<T>) => {
+//const MainTable = <T,>({data, columns}: MainTableProps<T>) => {
+const MainTable: React.FC<MainTableProps> = ({data, columns}) => {
     const [sorting, setSorting] = useState<SortingState>([]);
     const [globalFilter, setGlobalFilter] = useState("");
 
@@ -24,16 +30,16 @@ const MainTable = <T,>({data, columns}: MainTableProps<T>) => {
     const [showPosters, setShowPosters] = useState(true);
     const [minAvgRating, setMinAvgRating] = useState(0);
 
-    /*const filteredData = data.filter(
+    const filteredData = data.filter(
         (film) => film.avgRating >= minAvgRating    
-    )*/
+    )
     /*const filteredData = (data as any[]).filter((film) => {
         return typeof film.avgRating === "number" && film.avgRating >= minAvgRating;
     });*/
 
     const table = useReactTable({
-        data,
-        //data: filteredData,
+        //data,
+        data: filteredData,
         columns,
         state: {
             sorting,
