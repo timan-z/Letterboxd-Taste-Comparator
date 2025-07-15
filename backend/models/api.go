@@ -29,6 +29,11 @@ type MutualResponse struct {
 	Users       []UserSummary        `json:"users"`
 }
 
+type HeatMapResponse struct {
+	Data       []map[string]interface{} `json:"data"`
+	FilmTitles []string                 `json:"filmTitles"`
+}
+
 // Requests and stuff...
 type MutualRequest struct {
 	Profiles []string `json:"profiles"` // e.g., ["url1", "url2", etc]. DEBUG: Maybe I should tweak this so plain usernames work too?

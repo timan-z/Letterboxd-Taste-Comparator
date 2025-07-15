@@ -14,3 +14,8 @@ export type MutualFilm = {
         avgRating: number;
         variance: number;
 }
+
+export type HeatMapRow = {
+        id: string;
+        [filmTitle: string]: number | string | null;
+}

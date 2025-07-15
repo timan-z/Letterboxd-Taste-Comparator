@@ -3,29 +3,16 @@ import ProfileInputList from "../components/ProfileInputList";
 import {getMutualData, getHeatMapData} from "../utility/api.ts";  // fetch call
 import testData from "../assets/testData.json";
 import MainTable from "../components/MainTable.tsx";
-import { ResponsiveHeatMap } from "@nivo/heatmap";
+//import { ResponsiveHeatMap } from "@nivo/heatmap";
+import { ResponsiveHeatMapCanvas } from "@nivo/heatmap";
 import {type ColumnDef} from "@tanstack/react-table";
-import {type User, type MutualFilm} from "../utility/types.ts";
+import {type User, type MutualFilm, type HeatMapRow} from "../utility/types.ts";
+
+//import { interpolateYlOrRd } from "d3-scale-chromatic"; // RANDOM COLOUR SCHEME FOR THE HEATMAP!!!
 
 /* As a reference, following the HTML page structure of: https://letterboxd-besties.cheersderek.com/ */
 
 function MainPage() {
-    /*type User = {
-        username: string;
-        displayname: string;
-        avatarLink: string;
-    }
-    type MutualFilm = {
-        title: string;
-        filmUrl: string;
-        filmYear: string;
-        filmDir: string;
-        filmPoster: string;
-        ratings: Record<string, number>;
-        avgRating: number;
-        variance: number;
-    }*/
-
     const [profileUrls, setProfileUrls] = useState(["", ""]);
     const [loading, setLoading] = useState(false);  // state var for when (TO-DO: pair with loading animation? -- that temp freezes webpage?)
     
@@ -35,9 +22,11 @@ function MainPage() {
     const [usersData, setUsersData] = useState <User[]>([]);
     //const [mutualFilms, setMutualFilms] = useState <MutualFilm[] | null>(null);
     const [mutualFilms, setMutualFilms] = useState <MutualFilm[]>([]);
-
     // Generate Table flag:
     const [genTable, setGenTable] = useState(false);
+    // Generate HeatMap stuff:
+    const [heatMapData, setHeatMapData] = useState<HeatMapRow[]>([]); // data for populating nivo heatmap.
+    const [heatMapKeys, setHeatMapKeys] = useState<string[]>([]); // just film titles (and that'll be the keys for the nivo heatmap).
 
     // DEBUG: Catches when changes are made to {loading} and displays it - [That's all for now]:
     useEffect(() => {
@@ -151,6 +140,9 @@ function MainPage() {
             //const res = await getHeatMapData()
             const res = await getHeatMapData(mutualFilms, usersData);
             console.log("ALRIGHTY - THE RESULTS OF CALLING \"getHeatMapData\" ARE AS FOLLOWS: ", res);
+
+            setHeatMapData(res.data)
+            setHeatMapKeys(res.filmTitles)
         } catch(err) {
             console.error("ERROR: The \"goGetMutualData\" API call FAILED because => ", err);
             alert("THE API CALL FAILED!!! RAHHH"); // <--DEBUG:+TO-DO: I should have a HTML pop-up here for this.
@@ -196,7 +188,32 @@ function MainPage() {
 
                 <div>
                     [THIS IS WHERE THE HEATMAP WILL BE GENERATED!!!]<br/>
-                    <button onClick={()=>goGetHeatMapData()}>Generate Heatmap</button>
+                    <button onClick={()=>goGetHeatMapData()}>Generate Heatmap</button><br/>
+                    {/* HeatMap will be generated below... */}
+                    {heatMapData.length > 0 && heatMapKeys.length > 0 && (
+                        <div style={{height: "500px"}}>
+                            {/*<ResponsiveHeatMap*/}
+                            <ResponsiveHeatMapCanvas
+                                data={heatMapData as any}
+                                keys={heatMapKeys}
+                                indexBy="id"
+                                margin={{ top: 60, right: 90, bottom: 60, left: 90 }}
+                                axisTop={{
+                                    tickSize: 5,
+                                    tickPadding: 5,
+                                }}
+                                axisLeft={{
+                                    tickSize: 5,
+                                    tickPadding: 5,
+                                }}
+                                colors={{ type: "sequential", scheme: "turbo" }}
+                                emptyColor="#eeeeee"
+                                labelTextColor={{ from: "color", modifiers: [["darker", 1.6]] }}
+                                animate={true}
+                                motionConfig="gentle"
+                            />
+                        </div>
+                    )}
                 </div>
 
             </main>            
