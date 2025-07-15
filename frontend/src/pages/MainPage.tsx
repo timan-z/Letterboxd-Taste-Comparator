@@ -111,6 +111,7 @@ function MainPage() {
             accessorKey: "variance",
             header: "Variance",
         },
+        
     ];
 
 

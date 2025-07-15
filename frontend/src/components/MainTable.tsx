@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useMemo} from 'react';
 import {
     useReactTable,              // This is THE hook that'll create the TanStack Table Instance. 
     type ColumnDef,                  // ColumnDef is just that, defining what each column will show.
@@ -25,14 +25,19 @@ interface MainTableProps {
 const MainTable: React.FC<MainTableProps> = ({data, columns}) => {
     const [sorting, setSorting] = useState<SortingState>([]);
     const [globalFilter, setGlobalFilter] = useState("");
-
     // toggles:
     const [showPosters, setShowPosters] = useState(true);
     const [minAvgRating, setMinAvgRating] = useState(0);
 
-    const filteredData = data.filter(
+    console.log("DEBUG: The value of minAvgRating => ", minAvgRating);
+
+    const filteredData = useMemo(() => {
+        return data.filter((film) => film.avgRating >= minAvgRating)
+    }, [data, minAvgRating])
+    
+    /*data.filter(
         (film) => film.avgRating >= minAvgRating    
-    )
+    )*/
     /*const filteredData = (data as any[]).filter((film) => {
         return typeof film.avgRating === "number" && film.avgRating >= minAvgRating;
     });*/
