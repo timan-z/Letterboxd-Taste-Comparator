@@ -3,6 +3,9 @@ import ProfileInputList from "../components/ProfileInputList";
 import {getMutualData} from "../utility/api.ts";  // fetch call
 import testData from "../assets/testData.json";
 
+import MainTable from "../components/MainTable.tsx";
+import {type ColumnDef} from "@tanstack/react-table";
+
 /* As a reference, following the HTML page structure of: https://letterboxd-besties.cheersderek.com/ */
 
 function MainPage() {
@@ -28,8 +31,21 @@ function MainPage() {
     
     // These state variables below are for containing the data extracted from the fetch call.
     const [results, setResults] = useState(null);
-    const [usersData, setUsersData] = useState <User[] | null>(null);
-    const [mutualFilms, setMutualFilms] = useState <MutualFilm[] | null>(null);
+    //const [usersData, setUsersData] = useState <User[] | null>(null);
+    const [usersData, setUsersData] = useState <User[]>([]);
+    //const [mutualFilms, setMutualFilms] = useState <MutualFilm[] | null>(null);
+    const [mutualFilms, setMutualFilms] = useState <MutualFilm[]>([]);
+
+    // Generate Table flag:
+    const [genTable, setGenTable] = useState(false);
+
+
+
+    // To be passed down to MainTable.tsx:
+    const [showPosters, setShowPosters] = useState(true);
+    const [minAvgRating, setMinAvgRating] = useState(0);
+
+
 
     // DEBUG: Catches when changes are made to {loading} and displays it - [That's all for now]:
     useEffect(() => {
@@ -74,8 +90,28 @@ function MainPage() {
             /* NOTE: ^ Will this cause race conditions with the other UseEffect hooks? Should I instead turn this current UseEffect hook
             into a function that can optionally be invoked by either of the UseEffect hooks above when they're entered (and checking to see
             if both of the conditions are met)? */
+            setGenTable(true);
         }
     }, [mutualFilms, usersData]);
+
+
+    // DEBUG: Just testing out a basic structure for the TanStack table:
+    const columns: ColumnDef<MutualFilm>[] = [
+        {
+            accessorKey: "title",
+            header: "Film Title",
+            cell: (info) => <a href={info.row.original.filmUrl}>{info.row.original.title}</a>,
+        },
+        {
+            accessorKey: "avgRating",
+            header: "Average Rating",
+        },
+        {
+            accessorKey: "variance",
+            header: "Variance",
+        },
+    ];
+
 
     // Function to trigger the fetch('/api/mutual') call on button click and retrieve intersected film data:
     const getMutualFilmData = async() => {
@@ -129,7 +165,12 @@ function MainPage() {
                 <div>TEST - USE .JSON VALUES FOR GENERATING TANSTACK TABLE:<br/>
                     <button onClick={()=>getTestData()}>[Use testData.json values!!!]</button>
                 </div>
-                
+
+                {/* [2] - This second <div> where the Table goes... */}
+                {genTable && (<div>
+                    <MainTable data={mutualFilms} columns={columns}/>;
+                </div>)}
+
             </main>            
         </div>
     )
