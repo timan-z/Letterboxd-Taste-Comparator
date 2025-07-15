@@ -2,11 +2,6 @@
 // This file defines Request + Response Data Structures.
 package models
 
-// What'll be sent over from the frontend:
-type MutualRequest struct {
-	Profiles []string `json:"profiles"` // e.g., ["url1", "url2", etc]. DEBUG: Maybe I should tweak this so plain usernames work too?
-}
-
 // Each user's rating of a particular film:
 type FilmRatings map[string]float32 // {"url1": 4.0, "url2": 3.5}
 
@@ -32,4 +27,14 @@ type UserSummary struct {
 type MutualResponse struct {
 	MutualFilms []MutualResponseFilm `json:"mutualFilms"`
 	Users       []UserSummary        `json:"users"`
+}
+
+// Requests and stuff...
+type MutualRequest struct {
+	Profiles []string `json:"profiles"` // e.g., ["url1", "url2", etc]. DEBUG: Maybe I should tweak this so plain usernames work too?
+}
+
+type HeatMapRequest struct {
+	Films []MutualResponseFilm
+	Users []UserSummary
 }

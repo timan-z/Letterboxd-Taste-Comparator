@@ -31,8 +31,6 @@ const MainTable: React.FC<MainTableProps> = ({data, userData, columns}) => {
     const [showPosters, setShowPosters] = useState(true);
     const [minAvgRating, setMinAvgRating] = useState(0);
 
-
-
     /* Constructing the "final" dynamic columns (User Ratings preceded by Film Poster, which will take up room since it'll be toggleable)
     that will be appended to right of the "base" ones (Standard Film Data: Title, Director, Average Rating etc). */
     const finalColumns = useMemo(() => {

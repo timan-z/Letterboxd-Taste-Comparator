@@ -24,28 +24,52 @@ import (
 func main() {
 	// FRONTEND-DEBUG: Serve backend on port 8080:
 	http.HandleFunc("/api/mutual", handleMutualRatings)
+	http.HandleFunc("/api/heatmap", handleHeatMap)
 	// FRONTEND-DEBUG: Allow CORS:
 	http.ListenAndServe(":8080", corsMiddleware(http.DefaultServeMux))
+}
+
+// Function for handling POST /api/heatmap requests (sending back user and mutualFilm data to then send back HeatMap data):
+func handleHeatMap(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodOptions {
+		w.WriteHeader(http.StatusOK)
+	}
+	if r.Method != http.MethodPost {
+		http.Error(w, "[handleHeatMap]ERROR: Only POST calls are allowed for the /api/heatmap endpoint.", http.StatusMethodNotAllowed)
+		return
+	}
+	var req models.HeatMapRequest
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		http.Error(w, "[handleHeatMap]ERROR: Invalid request body", http.StatusBadRequest)
+		return
+	}
+
+	// should call a function now that does the heatmap calculation, returns the values here after:
+	matrix, err := genHeatMapValues(req.Films, req.Users)
+	if err != nil {
+		http.Error(w, "Heatmap stuff failed: "+err.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(matrix)
 }
 
 // Function for handling POST /api/mutual requests (when list of profile URLs are sent over):
 func handleMutualRatings(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodOptions {
-		fmt.Println("AHHHHHHHHHH THIS THING WAS ENTERED!!!")
-
 		// DEBUG: CORS preflight — return OK with headers already set by middleware
 		w.WriteHeader(http.StatusOK)
 		return
 	}
 
 	if r.Method != http.MethodPost {
-		http.Error(w, "ERROR: Only POST calls are allowed", http.StatusMethodNotAllowed)
+		http.Error(w, "[handleMutualRatings]ERROR: Only POST calls are allowed for the /api/mutual endpoint.", http.StatusMethodNotAllowed)
 		return
 	}
 
 	var req models.MutualRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		http.Error(w, "Invalid request body", http.StatusBadRequest)
+		http.Error(w, "[handleMutualRatings]ERROR: Invalid request body", http.StatusBadRequest)
 		return
 	}
 
@@ -58,6 +82,38 @@ func handleMutualRatings(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(response)
+}
+
+// Function that will calculate the values needed for generating a HeatMap based on intersected users film data:
+func genHeatMapValues(mutualFilms []models.MutualResponseFilm, users []models.UserSummary) ([][]string, error) {
+	// Make a slice of usernames extracted from users[] .Username members.
+	var usernames []string
+	for _, username := range users {
+		usernames = append(usernames, username.Username)
+	}
+	var films []string
+	for _, film := range mutualFilms {
+		films = append(films, film.Title)
+	}
+
+	/* matrix will be the return value, and will basically just be *the* heatmap.
+	(I'm going to have it expand horizontally, with films on the x-axis and users on the y-axis): */
+	matrix := [][]string{}
+	header := append([]string{"Users/Films"}, films...) // <-- NOTE:TO-DO: probably a more efficient way I can populate the header than the for-loop above...
+	matrix = append(matrix, header)
+
+	for _, username := range usernames {
+		row := []string{username}
+		for _, film := range mutualFilms {
+			if rating, ok := film.Ratings[username]; ok {
+				row = append(row, fmt.Sprintf("%.1f", rating))
+			} else {
+				row = append(row, "-") // This branch should never be entered, but just in case.
+			}
+		}
+		matrix = append(matrix, row)
+	}
+	return matrix, nil
 }
 
 // Function that contains my scraping and intersection logic (all my code that was originally in main.go when it was just a CLI thing):

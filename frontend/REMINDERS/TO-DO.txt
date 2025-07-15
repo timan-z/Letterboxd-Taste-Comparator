@@ -10,6 +10,8 @@ e.g, take a look at the following:
 
 ^ If there is a way I can do it -- go ahead and implement it (should be pretty low effort), do the same with Year too.
 
+- Change it so that you click the <img> Tag over the User columns to re-direct to their profile. I want clicking the username to sort the column by their value... (Or maybe not? Maybe I should just keep it the way it is right now and do the other way around).
+
 BUGS I DETECTED [COME FINISH THIS **AFTER**]:
 - There may be a slight flaw in my scraping logic somewhere. (I'm getting director "Wang Bin" under Sergei Eisenstein's Ivan The Terrible Part 2, and this seems to stem from that film and following Wang Bin's "The White-Haired Girl." So there's something off in my Colly logic and I should return to it later on to fix).
 - There's a problem as well with the posters being scraped! ^ I might need to make it so that the scraping process occurs linearly without any possibly for concurrency. (Kind of defeats the purpose of Colly but oh well). In addition, the Poster seems to be in sync with the Director Name, but not with the core info from the main scraping line (flow).

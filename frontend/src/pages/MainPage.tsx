@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react";
 import ProfileInputList from "../components/ProfileInputList";
-import {getMutualData} from "../utility/api.ts";  // fetch call
+import {getMutualData, getHeatMapData} from "../utility/api.ts";  // fetch call
 import testData from "../assets/testData.json";
-
 import MainTable from "../components/MainTable.tsx";
+import { ResponsiveHeatMap } from "@nivo/heatmap";
 import {type ColumnDef} from "@tanstack/react-table";
 import {type User, type MutualFilm} from "../utility/types.ts";
 
@@ -39,14 +39,10 @@ function MainPage() {
     // Generate Table flag:
     const [genTable, setGenTable] = useState(false);
 
-    // To be passed down to MainTable.tsx:
-    //const [showPosters, setShowPosters] = useState(true);
-    //const [minAvgRating, setMinAvgRating] = useState(0);
-
     // DEBUG: Catches when changes are made to {loading} and displays it - [That's all for now]:
     useEffect(() => {
         if(loading) {
-            console.log("RAAAH: This UseEffect hook best be triggered DURING the getMutualFilmData function call!!!");
+            console.log("RAAAH: This UseEffect hook best be triggered DURING the goGetMutualData function call!!!");
             console.log("[loading]: ", loading) // <-- should just be a boolean value.
         }
     }, [loading]);
@@ -54,7 +50,7 @@ function MainPage() {
     // DEBUG: Catches when changes are made to {results} and displays them - [That's all for now]:
     useEffect(() => {
         if(results) {
-            console.log("RAAAH: This UseEffect hook best be triggered AFTER the getMutualFilmData function call!!!");
+            console.log("RAAAH: This UseEffect hook best be triggered AFTER the goGetMutualData function call!!!");
             console.log("[results]: ", results);
 
             /* And I guess, since results will have numerous values, I should extract its two "sections" out into different state variables...
@@ -90,7 +86,6 @@ function MainPage() {
         }
     }, [mutualFilms, usersData]);
 
-
     // DEBUG: Just testing out a basic structure for the TanStack table:
     const columns: ColumnDef<MutualFilm>[] = [
         {
@@ -119,11 +114,9 @@ function MainPage() {
         
     ];
 
-
     // Function to trigger the fetch('/api/mutual') call on button click and retrieve intersected film data:
-    const getMutualFilmData = async() => {
-
-        console.log("DEBUG: Function getMutualFilmData was entered!!!");
+    const goGetMutualData = async() => {
+        console.log("DEBUG: Function goGetMutualData was entered!!!");
 
         const cleanInput = profileUrls.map(p => p.trim()).filter(Boolean);  // This line here will trim out any empty input boxes (for usernames).
         if(cleanInput.length < 2) {
@@ -136,7 +129,30 @@ function MainPage() {
             const res = await getMutualData(cleanInput);
             setResults(res); // <--DEBUG:+TO-DO: UseEffect hook to catch when its value changes to display for now?
         } catch(err) {
-            console.error("ERROR: The \"getMutualFilmData\" API call FAILED because => ", err);
+            console.error("ERROR: The \"goGetMutualData\" API call FAILED because => ", err);
+            alert("THE API CALL FAILED!!! RAHHH"); // <--DEBUG:+TO-DO: I should have a HTML pop-up here for this.
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    // Function to trigger the fetch('/api/heatmap') call on button click and retrieve heatmap data:
+    const goGetHeatMapData = async() => {
+        console.log("DEBUG: function getHeatMapData was entered!!!");
+
+        // DEBUG: (Below) Temporary debugging guard for now -- afterwards, button shouldn't be accessible otherwise:
+        if(!mutualFilms || !usersData) {
+            console.log("Debug: Temporary guard at the top of getHeatMapData was entered...");
+            return;
+        }
+
+        setLoading(true); // <-- DEBUG: I guess I should have it load during this too.
+        try {
+            //const res = await getHeatMapData()
+            const res = await getHeatMapData(mutualFilms, usersData);
+            console.log("ALRIGHTY - THE RESULTS OF CALLING \"getHeatMapData\" ARE AS FOLLOWS: ", res);
+        } catch(err) {
+            console.error("ERROR: The \"goGetMutualData\" API call FAILED because => ", err);
             alert("THE API CALL FAILED!!! RAHHH"); // <--DEBUG:+TO-DO: I should have a HTML pop-up here for this.
         } finally {
             setLoading(false);
@@ -164,7 +180,7 @@ function MainPage() {
                 <div>
                     <ProfileInputList profileUrls={profileUrls} setProfileUrls={setProfileUrls}/> {/* NOTE: changes to profileUrls will be "lifted" up to here. */}
                     <div>
-                        <button onClick={()=>getMutualFilmData()}>Find Mutual Ratings</button>
+                        <button onClick={()=>goGetMutualData()}>Find Mutual Ratings</button>
 
                     </div>
                 </div>
@@ -177,6 +193,11 @@ function MainPage() {
                 {genTable && (<div>
                     <MainTable data={mutualFilms} userData={usersData} columns={columns}/>;
                 </div>)}
+
+                <div>
+                    [THIS IS WHERE THE HEATMAP WILL BE GENERATED!!!]<br/>
+                    <button onClick={()=>goGetHeatMapData()}>Generate Heatmap</button>
+                </div>
 
             </main>            
         </div>
