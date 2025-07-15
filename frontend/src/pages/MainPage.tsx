@@ -10,7 +10,6 @@ import {type User, type MutualFilm} from "../utility/types.ts";
 /* As a reference, following the HTML page structure of: https://letterboxd-besties.cheersderek.com/ */
 
 function MainPage() {
-
     /*type User = {
         username: string;
         displayname: string;
@@ -40,13 +39,9 @@ function MainPage() {
     // Generate Table flag:
     const [genTable, setGenTable] = useState(false);
 
-
-
     // To be passed down to MainTable.tsx:
     //const [showPosters, setShowPosters] = useState(true);
     //const [minAvgRating, setMinAvgRating] = useState(0);
-
-
 
     // DEBUG: Catches when changes are made to {loading} and displays it - [That's all for now]:
     useEffect(() => {
@@ -101,7 +96,17 @@ function MainPage() {
         {
             accessorKey: "title",
             header: "Film Title",
-            cell: (info) => <a href={info.row.original.filmUrl}>{info.row.original.title}</a>,
+            cell: (info) => <a href={`https://letterboxd.com/film/${info.row.original.filmUrl}/`}>{info.row.original.title}</a>, //  + " (" + info.row.original.filmYear + ", " + info.row.original.filmDir + ")"
+        },
+        {
+            accessorKey: "filmYear",
+            header: "Release Year",
+            cell: (info) => <div>{info.row.original.filmYear}</div>,
+        },
+        {
+            accessorKey: "filmDir",
+            header: "Directed By",
+            cell: (info) => <div>{info.row.original.filmDir}</div>,
         },
         {
             accessorKey: "avgRating",
@@ -170,7 +175,7 @@ function MainPage() {
 
                 {/* [2] - This second <div> where the Table goes... */}
                 {genTable && (<div>
-                    <MainTable data={mutualFilms} columns={columns}/>;
+                    <MainTable data={mutualFilms} userData={usersData} columns={columns}/>;
                 </div>)}
 
             </main>            

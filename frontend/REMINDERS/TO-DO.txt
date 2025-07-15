@@ -1,0 +1,18 @@
+Things to take care of/be mindful of later on:
+
+- Keep the slider bar for adjusting Minimum Average Rating consistently placed. It looks like the values I'm sliding are jerking out of control -- the reason for this is that the # next to it (e.g., 1 or 1.5 is changing from like 1 to 1.5 so the slider is jerking to the left/right and your value is going all crazy because your cursor remains constant!)
+
+- Not sure if I should provide a link leading to the filmmaker page (since I need to be mindful of directors with multiple names even if this might be a fairly rare occurrence).
+But look into it and inspect Page Source to see if there's a good way I can distinguish this stuff:
+e.g, take a look at the following:
+- https://letterboxd.com/director/alan-smithee-1/
+- https://letterboxd.com/director/alan-smithee-9/
+
+^ If there is a way I can do it -- go ahead and implement it (should be pretty low effort), do the same with Year too.
+
+BUGS I DETECTED [COME FINISH THIS **AFTER**]:
+- There may be a slight flaw in my scraping logic somewhere. (I'm getting director "Wang Bin" under Sergei Eisenstein's Ivan The Terrible Part 2, and this seems to stem from that film and following Wang Bin's "The White-Haired Girl." So there's something off in my Colly logic and I should return to it later on to fix).
+- There's a problem as well with the posters being scraped! ^ I might need to make it so that the scraping process occurs linearly without any possibly for concurrency. (Kind of defeats the purpose of Colly but oh well). In addition, the Poster seems to be in sync with the Director Name, but not with the core info from the main scraping line (flow).
+
+ADDITIONAL THINGS:
+- Because I opted for TanStack Table to generate my table, it admittedly may have made the majority of my functions in filters.go and sorting.go redundant, becuase the table will take care of the sorting all by itself. Regardless, it's still worth keeping in the file just because why not.
