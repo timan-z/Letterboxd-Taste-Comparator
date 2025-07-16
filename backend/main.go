@@ -221,6 +221,8 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 	c.OnHTML("div.productioninfo ", func(e *colly.HTMLElement) {
 		if !(filmPageRegex.MatchString(e.Request.URL.String())) {
 			// This OnHTML method should only be triggered for a specific film-page (e.g., "https://letterboxd.com/film/seven-samurai/"), nothing else.
+			fmt.Println("THE-PROBLEM: Found it here??? Two Men in Manhattan??? HUHHHH")
+
 			return
 		}
 		divElem := e.DOM
@@ -237,14 +239,6 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 		// NEW DEBUG:
 		filmYearBuffer = releaseYear
 		filmDirBuffer = director
-		// Save this data:
-		/*existingData, exists := userFilms[currentFilm]
-		if !exists {
-			existingData = models.FilmDetails{}
-		}
-		existingData.FilmYear = releaseYear
-		existingData.FilmDir = director
-		userFilms[currentFilm] = existingData*/
 	})
 
 	// [3] - Poster Link:
@@ -277,14 +271,6 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 
 		// NEW DEBUG:
 		filmPosterBuffer = GiveMePoster.Image
-
-		// Save this data:
-		/*existingData, exists := userFilms[currentFilm]
-		if !exists {
-			existingData = models.FilmDetails{}
-		}
-		existingData.FilmPoster = GiveMePoster.Image
-		userFilms[currentFilm] = existingData*/
 	})
 
 	// Here's where I can start working to extract a list of the films + ratings:
@@ -321,9 +307,6 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 				spanElem := pElem.Find("span.rating").First()
 				rawRating := spanElem.Text()
 				rating := ratingMap[rawRating]
-				//fmt.Printf("The value of filmName => %s\n", filmName)
-				//fmt.Printf("The value of filmUrlPath => %s\n", filmUrlPath)
-				//fmt.Printf("The value of the rating => %.1f\n", rating)
 
 				if fupExists && fnExists {
 
@@ -335,6 +318,8 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 
 					e.Request.Visit("https://letterboxd.com/film/" + filmUrlPath) // NOTE: This will work recursively (we'll return after!)
 					// ^ DEBUG: Visiting this link is important for grabbing the release-year of the film, the poster link, and also director name!
+
+					fmt.Printf("debuggo: The value of filmDirBuffer is (%s) and filmPosterBuffer is (%s)\n", filmDirBuffer, filmPosterBuffer)
 
 					userFilms[filmName] = models.FilmDetails{FilmUrl: filmUrlPath, FilmRating: rating, FilmYear: filmYearBuffer, FilmDir: filmDirBuffer, FilmPoster: filmPosterBuffer}
 				}
