@@ -139,9 +139,12 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 	//var currentFilm string
 	var urlWShortest string
 
-	var filmYearBuffer string
-	var filmDirBuffer string
-	var filmPosterBuffer string
+	//var filmYearBuffer string
+	//var filmDirBuffer string
+	//var filmPosterBuffer string
+
+	visitedFilms := make(map[string]models.FilmDetails) // filmUrlPath -> FilmDetails
+	visitedPaginatedPages := map[string]bool{}          // <-- GUARD THAT MIGHT BE COMPLETLEY UNNECESSARY???
 
 	//var userUrls []string // Slice of strings to store the Profile URLs
 	var mutualFilms []models.MutualData
@@ -159,8 +162,8 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 	c.Limit(&colly.LimitRule{
 		DomainGlob:  "*letterboxd./*", // domains that will be affected here.
 		Parallelism: 1,                // "parallelism refers to the ability to process multiple web requests concurrently."
-		Delay:       5 * time.Second,  // Set a delay between requests to these domains.
-		RandomDelay: 5 * time.Second,  // Addtional random delay.
+		Delay:       10 * time.Second, // Set a delay between requests to these domains.
+		RandomDelay: 10 * time.Second, // Addtional random delay.
 	}) // <-- Definitely should add a delay effect so Letterboxd doesn't IP-ban me.
 	c.UserAgent = "JustPlayingAroundBot/0.1 (Learning Golang Colly, have delays put in effect, async disabled, and more to REDUCE TRAFFIC!!!)"
 
@@ -189,6 +192,15 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 	// Extracting the [username] and [film avatar link] of the profile whose films section you're crawling over:
 	// NOTE: Probably will make the OnHTML("h1.title-3") method obsolete, so remove that afterwards.
 	c.OnHTML("div.profile-mini-person", func(e *colly.HTMLElement) {
+
+		// if existingFilm, alreadyVisited := visitedFilms[filmUrlPath]; alreadyVisited {
+		if alreadyRetrCheck, alreadyRetr := allUsersData[currentUrl]; alreadyRetr {
+			if alreadyRetrCheck.AvatarLink != "" && alreadyRetrCheck.Username != "" {
+				fmt.Println("AVOIDED UNNECESSARY c.OnHTML(\"div.profile-mini-person\", func(e *colly.HTMLElement) INVOCATION!!!")
+				return
+			}
+		}
+
 		divElem := e.DOM
 		// Extracting username:
 		h1Elem := divElem.Find("h1.title-3").First()
@@ -221,11 +233,13 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 	c.OnHTML("div.productioninfo ", func(e *colly.HTMLElement) {
 		if !(filmPageRegex.MatchString(e.Request.URL.String())) {
 			// This OnHTML method should only be triggered for a specific film-page (e.g., "https://letterboxd.com/film/seven-samurai/"), nothing else.
-			fmt.Println("THE-PROBLEM: Found it here??? Two Men in Manhattan??? HUHHHH")
-
 			return
 		}
-		divElem := e.DOM
+		releaseYear := e.DOM.Find("span.releasedate").First().Text()
+		director := e.DOM.Find("span.prettify").First().Text()
+		e.Request.Ctx.Put("releaseYear", releaseYear)
+		e.Request.Ctx.Put("director", director)
+		/*divElem := e.DOM
 		// Film Release Year:
 		yearSpan := divElem.Find("span.releasedate").First()
 		releaseYear := yearSpan.Text()
@@ -238,7 +252,7 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 
 		// NEW DEBUG:
 		filmYearBuffer = releaseYear
-		filmDirBuffer = director
+		filmDirBuffer = director*/
 	})
 
 	// [3] - Poster Link:
@@ -265,12 +279,39 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 		}
 		decoder := json.NewDecoder(strings.NewReader(rawJSON))
 		if err := decoder.Decode(&GiveMePoster); err != nil && err != io.EOF {
-			log.Fatal(err)
+			log.Printf("ERROR: Poster JSON decode failed: %v\n", err)
 		}
 		fmt.Println("Image URL: ", GiveMePoster.Image)
 
+		ctx := e.Request.Ctx
+		filmName := ctx.Get("filmName")
+		filmUrlPath := ctx.Get("filmUrlPath")
+		profile := ctx.Get("profile")
+
+		ratingVal, _ := ctx.GetAny("rating").(float32)
+		releaseYear := ctx.Get("releaseYear")
+		director := ctx.Get("director")
+
+		// Final FilmDetails struct
+		film := models.FilmDetails{
+			FilmUrl:    filmUrlPath,
+			FilmRating: ratingVal,
+			FilmYear:   releaseYear,
+			FilmDir:    director,
+			FilmPoster: GiveMePoster.Image,
+		}
+
+		visitedFilms[filmUrlPath] = film
+
+		// Merge into user data
+		existingData := allUsersData[profile]
+		existingData.FilmNames = append(existingData.FilmNames, filmName)
+		existingData.FilmMap[filmName] = film
+		existingData.FilmNamesLen++
+		allUsersData[profile] = existingData
+
 		// NEW DEBUG:
-		filmPosterBuffer = GiveMePoster.Image
+		//filmPosterBuffer = GiveMePoster.Image
 	})
 
 	// Here's where I can start working to extract a list of the films + ratings:
@@ -282,8 +323,8 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 			return
 		}
 
-		var userFilms = make(map[string]models.FilmDetails)
-		var filmTitles []string
+		//var userFilms = make(map[string]models.FilmDetails)
+		//var filmTitles []string
 
 		h.ForEach("li.poster-container", func(_ int, e *colly.HTMLElement) {
 			liElem := e.DOM
@@ -310,27 +351,57 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 
 				if fupExists && fnExists {
 
-					fmt.Printf("DEBUG: The value of filmName is (%s), filmUrlPath is (%s), and rating is (%.1f)\n", filmName, filmUrlPath, rating)
-
-					filmTitles = append(filmTitles, filmName) // ADDING FILM TITLE TO MY FILMTITLES SLICE.
+					//fmt.Printf("DEBUG: The value of filmName is (%s), filmUrlPath is (%s), and rating is (%.1f)\n", filmName, filmUrlPath, rating)
+					//filmTitles = append(filmTitles, filmName) // ADDING FILM TITLE TO MY FILMTITLES SLICE.
 					//userFilms[filmName] = models.FilmDetails{FilmUrl: filmUrlPath, FilmRating: rating}
 					//currentFilm = filmName
 
-					e.Request.Visit("https://letterboxd.com/film/" + filmUrlPath) // NOTE: This will work recursively (we'll return after!)
+					ctx := colly.NewContext()
+					ctx.Put("filmName", filmName)
+					ctx.Put("filmUrlPath", filmUrlPath)
+					ctx.Put("rating", rating)
+					ctx.Put("profile", currentUrl)
+					// If we've already visited this film's page, reuse the stored data
+					if existingFilm, alreadyVisited := visitedFilms[filmUrlPath]; alreadyVisited {
+						existingData := allUsersData[currentUrl]
+						existingData.FilmNames = append(existingData.FilmNames, filmName)
+
+						/* EDIT: So it'd be best if I can avoid re-visiting the link for ethical traffic reasons, so reusing existingData
+						is ideal for sure. Only, I need this current specific user's rating to be transferred in (from var "rating"): */
+						existingDataTweak := models.FilmDetails{
+							FilmRating: rating, // <-- that's the tweak I need.
+							FilmUrl:    existingFilm.FilmUrl,
+							FilmDir:    existingFilm.FilmDir,
+							FilmYear:   existingFilm.FilmYear,
+							FilmPoster: existingFilm.FilmPoster,
+						}
+
+						existingData.FilmMap[filmName] = existingDataTweak // <-- need to tweak this so it's just the existing film but the rating is changed.
+						existingData.FilmNamesLen++
+						allUsersData[currentUrl] = existingData
+					} else {
+						// Not visited yet — continue to request it
+						err := c.Request("GET", "https://letterboxd.com/film/"+filmUrlPath, nil, ctx, nil)
+						if err != nil {
+							log.Printf("Visit error for %s: %v\n:", filmName, err)
+						}
+					}
+
+					//e.Request.Visit("https://letterboxd.com/film/" + filmUrlPath) // NOTE: This will work recursively (we'll return after!)
 					// ^ DEBUG: Visiting this link is important for grabbing the release-year of the film, the poster link, and also director name!
 
-					fmt.Printf("debuggo: The value of filmDirBuffer is (%s) and filmPosterBuffer is (%s)\n", filmDirBuffer, filmPosterBuffer)
+					//fmt.Printf("debuggo: The value of filmDirBuffer is (%s) and filmPosterBuffer is (%s)\n", filmDirBuffer, filmPosterBuffer)
 
-					userFilms[filmName] = models.FilmDetails{FilmUrl: filmUrlPath, FilmRating: rating, FilmYear: filmYearBuffer, FilmDir: filmDirBuffer, FilmPoster: filmPosterBuffer}
+					//userFilms[filmName] = models.FilmDetails{FilmUrl: filmUrlPath, FilmRating: rating, FilmYear: filmYearBuffer, FilmDir: filmDirBuffer, FilmPoster: filmPosterBuffer}
 				}
 			}
 		})
-		filmTitlesLen := len(filmTitles)
+		//filmTitlesLen := len(filmTitles)
 
 		// allUsersData[currentUrl] = UserData{FilmNames: filmTitles, FilmNamesLen: filmTitlesLen, FilmMap: userFilms}
 		/* DEBUG: ^ This is bad logic on my end. It will overwrite all the data I scraped from previous page scrapings, so I
 		need to adjust my code such that I'm appending the data I assign here. */
-		existingData, exists := allUsersData[currentUrl]
+		/*existingData, exists := allUsersData[currentUrl]
 		if !exists {
 			existingData = models.UserData{FilmNames: []string{}, FilmNamesLen: 0, FilmMap: make(map[string]models.FilmDetails)}
 		}
@@ -342,7 +413,7 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 		}
 		existingData.FilmNamesLen += filmTitlesLen
 		// finalize:
-		allUsersData[currentUrl] = existingData
+		allUsersData[currentUrl] = existingData*/
 	})
 	// DEBUG: This OnHTML method above is where a lot of the work happens -- BE SURE TO RETURN HERE AND DEBUG IT EXTRA HARD!!!
 
@@ -353,6 +424,15 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 		}
 		// Getting the next button:
 		nextPage := e.Request.AbsoluteURL(e.Attr("href"))
+
+		/* DEBUG: [BELOW] Honestly this guard below is just a suggestion GPT made for me to count for buggy pagination
+		Trying to implement every possible step I can to be a good netizen since Letterboxd has no real policy about web scraping, crawling, etc. */
+		if visitedPaginatedPages[nextPage] {
+			return
+		}
+		visitedPaginatedPages[nextPage] = true
+		// DEBUG: ABOVE
+
 		fmt.Println("Visiting the next page: ", nextPage)
 		e.Request.Visit(nextPage)
 	})

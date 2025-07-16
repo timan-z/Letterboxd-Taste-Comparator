@@ -114,12 +114,7 @@ const MainTable: React.FC<MainTableProps> = ({data, userData, columns}) => {
             </div>
 
             <table>
-
                 <thead>
-
-                    
-
-
                     {table.getHeaderGroups().map((headerGroup) => (
                         <tr key={headerGroup.id}>
                             {headerGroup.headers.map((header) => (
