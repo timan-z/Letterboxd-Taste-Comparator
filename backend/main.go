@@ -59,36 +59,6 @@ func handleMutualRatings(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-// Function that will calculate the values needed for generating a HeatMap based on intersected users film data:
-func genHeatMapValues(mutualFilms []models.MutualResponseFilm, users []models.UserSummary) ([]map[string]interface{}, []string, error) {
-	// Make a slice of usernames extracted from users[] .Username members.
-	var usernames []string
-	for _, username := range users {
-		usernames = append(usernames, username.Username)
-	}
-	var filmTitles []string
-	for _, film := range mutualFilms {
-		filmTitles = append(filmTitles, film.Title)
-	}
-
-	var data []map[string]interface{} // NOTE: In Go, interface is basically the "any" type.
-	// I'm going to have my Heatmap expand horizontally, with films on the x-azis and users on the y-axis.
-	for _, username := range usernames {
-		row := map[string]interface{}{
-			"id": username,
-		}
-		for _, film := range mutualFilms {
-			if rating, ok := film.Ratings[username]; ok {
-				row[film.Title] = rating
-			} else {
-				row[film.Title] = nil
-			}
-		}
-		data = append(data, row)
-	}
-	return data, filmTitles, nil
-}
-
 // Function for handling POST /api/heatmap requests (sending back user and mutualFilm data to then send back HeatMap data):
 func handleHeatMap(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodOptions {
@@ -105,17 +75,49 @@ func handleHeatMap(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// should call a function now that does the heatmap calculation, returns the values here after:
-	hydrHeatMap, filmTitles, err := genHeatMapValues(req.Films, req.Users)
+	//hydrHeatMap, filmTitles, err := genHeatMapValues(req.Films, req.Users)
+	hydrHeatMap, err := genHeatMapValues(req.Films, req.Users)
 	if err != nil {
 		http.Error(w, "Heatmap stuff failed: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
 	w.Header().Set("Content-Type", "application/json")
-	responseVal := models.HeatMapResponse{
+	/*responseVal := models.HeatMapResponse{
 		Data:       hydrHeatMap,
 		FilmTitles: filmTitles,
+	}*/
+	// json.NewEncoder(w).Encode(responseVal)
+	json.NewEncoder(w).Encode(hydrHeatMap)
+}
+
+// Function that will calculate the values needed for generating a HeatMap based on intersected users film data:
+func genHeatMapValues(mutualFilms []models.MutualResponseFilm, users []models.UserSummary) ([]map[string]interface{}, error) {
+	var heatMapData []map[string]interface{}
+
+	for _, user := range users {
+		row := map[string]interface{}{
+			"id":   user.Username,
+			"data": []map[string]interface{}{},
+		}
+		dataSlice := row["data"].([]map[string]interface{})
+
+		for _, film := range mutualFilms {
+			var rating interface{}
+			if ratingVal, ok := film.Ratings[user.Username]; ok {
+				rating = ratingVal
+			} else {
+				rating = nil
+			}
+			cell := map[string]interface{}{
+				"x": film.Title,
+				"y": rating,
+			}
+			dataSlice = append(dataSlice, cell)
+		}
+		row["data"] = dataSlice
+		heatMapData = append(heatMapData, row)
 	}
-	json.NewEncoder(w).Encode(responseVal)
+	return heatMapData, nil
 }
 
 // Function that contains my scraping and intersection logic (all my code that was originally in main.go when it was just a CLI thing):

@@ -3,8 +3,8 @@ import ProfileInputList from "../components/ProfileInputList";
 import {getMutualData, getHeatMapData} from "../utility/api.ts";  // fetch call
 import testData from "../assets/testData.json";
 import MainTable from "../components/MainTable.tsx";
-//import { ResponsiveHeatMap } from "@nivo/heatmap";
-import { ResponsiveHeatMapCanvas } from "@nivo/heatmap";
+import { ResponsiveHeatMap } from "@nivo/heatmap";
+//import { ResponsiveHeatMapCanvas } from "@nivo/heatmap";
 import {type ColumnDef} from "@tanstack/react-table";
 import {type User, type MutualFilm, type HeatMapRow} from "../utility/types.ts";
 
@@ -26,7 +26,7 @@ function MainPage() {
     const [genTable, setGenTable] = useState(false);
     // Generate HeatMap stuff:
     const [heatMapData, setHeatMapData] = useState<HeatMapRow[]>([]); // data for populating nivo heatmap.
-    const [heatMapKeys, setHeatMapKeys] = useState<string[]>([]); // just film titles (and that'll be the keys for the nivo heatmap).
+    //const [heatMapKeys, setHeatMapKeys] = useState<string[]>([]); // just film titles (and that'll be the keys for the nivo heatmap).
 
     // DEBUG: Catches when changes are made to {loading} and displays it - [That's all for now]:
     useEffect(() => {
@@ -74,6 +74,14 @@ function MainPage() {
             setGenTable(true);
         }
     }, [mutualFilms, usersData]);
+
+    useEffect(() => {
+        if(heatMapData.length > 0) {
+            console.log("Yeah dude");
+            console.log("Okay so the values of heatMapData are => ", heatMapData);
+        }
+    }, [heatMapData]);
+
 
     // DEBUG: Just testing out a basic structure for the TanStack table:
     const columns: ColumnDef<MutualFilm>[] = [
@@ -141,8 +149,7 @@ function MainPage() {
             const res = await getHeatMapData(mutualFilms, usersData);
             console.log("ALRIGHTY - THE RESULTS OF CALLING \"getHeatMapData\" ARE AS FOLLOWS: ", res);
 
-            setHeatMapData(res.data)
-            setHeatMapKeys(res.filmTitles)
+            setHeatMapData(res) // DEBUG: Remember that state var "heatMapData" won't update until the next re-render so maybe catch it with a UseEffect?
         } catch(err) {
             console.error("ERROR: The \"goGetMutualData\" API call FAILED because => ", err);
             alert("THE API CALL FAILED!!! RAHHH"); // <--DEBUG:+TO-DO: I should have a HTML pop-up here for this.
@@ -190,25 +197,34 @@ function MainPage() {
                     [THIS IS WHERE THE HEATMAP WILL BE GENERATED!!!]<br/>
                     <button onClick={()=>goGetHeatMapData()}>Generate Heatmap</button><br/>
                     {/* HeatMap will be generated below... */}
-                    {heatMapData.length > 0 && heatMapKeys.length > 0 && (
+                    {heatMapData.length > 0 && (
                         <div style={{height: "500px"}}>
-                            {/*<ResponsiveHeatMap*/}
-                            <ResponsiveHeatMapCanvas
-                                data={heatMapData as any}
-                                keys={heatMapKeys}
-                                indexBy="id"
-                                margin={{ top: 60, right: 90, bottom: 60, left: 90 }}
+                            
+                            <ResponsiveHeatMap
+                                data={heatMapData}
+                                margin={{ top: 100, right: 30, bottom: 60, left: 100 }}
+                                valueFormat=".1f"
                                 axisTop={{
                                     tickSize: 5,
                                     tickPadding: 5,
+                                    tickRotation: -90, // rotates film titles
+                                    legend: 'Films',
+                                    legendOffset: 60,
                                 }}
                                 axisLeft={{
                                     tickSize: 5,
                                     tickPadding: 5,
+                                    legend: 'Users',
+                                    legendOffset: -80,
                                 }}
-                                colors={{ type: "sequential", scheme: "turbo" }}
+                                colors={{
+                                    type: 'sequential',
+                                    scheme: 'blues',
+                                    minValue: 0,
+                                    maxValue: 5,
+                                }}
                                 emptyColor="#eeeeee"
-                                labelTextColor={{ from: "color", modifiers: [["darker", 1.6]] }}
+                                labelTextColor={{ from: 'color', modifiers: [['darker', 2]] }}
                                 animate={true}
                                 motionConfig="gentle"
                             />

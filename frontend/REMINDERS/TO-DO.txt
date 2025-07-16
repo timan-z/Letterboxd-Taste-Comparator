@@ -18,3 +18,9 @@ BUGS I DETECTED [COME FINISH THIS **AFTER**]:
 
 ADDITIONAL THINGS:
 - Because I opted for TanStack Table to generate my table, it admittedly may have made the majority of my functions in filters.go and sorting.go redundant, becuase the table will take care of the sorting all by itself. Regardless, it's still worth keeping in the file just because why not.
+
+
+
+ FIX WHAT'S GOING ON WITH MY VIVO HEATMAP THING:
+ - https://nivo.rocks/heatmap/
+ ^ USE THE CODE SEEN HERE AS A REFERENCE POINT WHERE WHAT I WAS DOING WRONG!!!

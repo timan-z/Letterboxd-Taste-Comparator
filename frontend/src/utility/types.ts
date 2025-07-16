@@ -17,5 +17,8 @@ export type MutualFilm = {
 
 export type HeatMapRow = {
         id: string;
-        [filmTitle: string]: number | string | null;
+        data: {
+                x:string;
+                y:number | null;
+        }[];
 }
