@@ -49,19 +49,68 @@ const MainTable: React.FC<MainTableProps> = ({data, userData, columns}) => {
         }
         // Construct the user rating columns:
         // NOTE:+TO-DO: ^ In the header area, I also want the User avatar to appear too (quite small), keep that in mind.
-        const ratingCol: ColumnDef<MutualFilm>[] = userInfo.map(({username, displayname, avatarLink}) => ({
+        /*const ratingCol: ColumnDef<MutualFilm>[] = userInfo.map(({username, displayname, avatarLink}) => ({
             id: `rating-${username}`,
             //header: username,
-            header: () => (
+            header: ({column}) => (
                 <div>
                     <a href={`https://letterboxd.com/${username}/`}>
                         {displayname}
                     </a>
-                    <img src={avatarLink} alt={`${username}'s Avatar`}/>
+                    <img src={avatarLink} alt={`${username}'s Avatar`}
+
+                        onClick={(e) => {
+                            e.stopPropagation(); // Prevent click bubbling if needed
+                            column.getToggleSortingHandler();
+                        }}
+                    
+                    />
                 </div>
             ),
             cell: (info) => info.row.original.ratings[username]?.toFixed(1) ?? "—",
+        }));*/
+        const ratingCol: ColumnDef<MutualFilm>[] = userInfo.map(({ username, displayname, avatarLink }) => ({
+            id: `rating-${username}`,
+            accessorFn: (row) => row.ratings[username], // needed for sorting to work
+            enableSorting: true,
+            header: ({ column }) => {
+                const toggleSort = column.getToggleSortingHandler(); // this will now exist
+                return (
+                <div className="flex items-center gap-2">
+                    {/* Avatar triggers sorting */}
+                    <img
+                    src={avatarLink}
+                    alt={`${displayname}'s avatar`}
+                    className="w-6 h-6 rounded-full cursor-pointer"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        if (toggleSort) toggleSort(e);
+                    }}
+                    title="Click to sort by this user's rating"
+                    />
+
+                    {/* Display name opens profile */}
+                    <a
+                    href={`https://letterboxd.com/${username}/`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 underline"
+                    >
+                    {displayname}
+                    </a>
+
+                    {/* Should probably swap to these later. 
+                    {column.getIsSorted() === 'asc' && ' 🔼'}
+                    {column.getIsSorted() === 'desc' && ' 🔽'}*/}
+                </div>
+                );
+            },
+            cell: (info) => {
+                const rating = info.row.original.ratings[username];
+                return rating !== undefined ? rating.toFixed(1) : '—';
+            },
         }));
+
         // Merge the columns for the table:
         return [
             ...(showPosters ? [posterCol] : []),
