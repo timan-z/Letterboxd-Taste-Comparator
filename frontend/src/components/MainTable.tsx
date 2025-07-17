@@ -79,24 +79,24 @@ const MainTable: React.FC<MainTableProps> = ({data, userData, columns}) => {
                 <div className="flex items-center gap-2">
                     {/* Avatar triggers sorting */}
                     <img
-                    src={avatarLink}
-                    alt={`${displayname}'s avatar`}
-                    className="w-6 h-6 rounded-full cursor-pointer"
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        if (toggleSort) toggleSort(e);
-                    }}
-                    title="Click to sort by this user's rating"
+                        src={avatarLink}
+                        alt={`${displayname}'s avatar`}
+                        className="w-6 h-6 rounded-full cursor-pointer"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            if (toggleSort) toggleSort(e);
+                        }}
+                        title="Click to sort by this user's rating"
                     />
 
                     {/* Display name opens profile */}
                     <a
-                    href={`https://letterboxd.com/${username}/`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 underline"
-                    >
-                    {displayname}
+                        href={`https://letterboxd.com/${username}/`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 underline"
+                        >
+                        {displayname}
                     </a>
 
                     {/* Should probably swap to these later. 

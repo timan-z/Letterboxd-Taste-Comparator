@@ -1,0 +1,27 @@
+
+/* Copying a lot of the styling used in CheersDerek's https://letterboxd-besties.cheersderek.com/ site tbh. */
+
+body, div {
+  display:block;
+  margin:8px;
+}
+.wrapper {
+  display:grid;
+  place-items:center;
+  margin:0 1rem;
+  min-height:100%;
+}
+#mpTitle {
+  padding:1rem 0 0rem 0;
+}
+#mpUndertext {
+  padding-bottom:1rem;
+}
+.profileInputList {
+  display:grid;
+  place-items:center;
+}
+#profileInputBtn {
+  display:block;
+  width:100%;
+}

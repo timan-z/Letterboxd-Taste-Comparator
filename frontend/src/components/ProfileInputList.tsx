@@ -28,7 +28,7 @@ const ProfileInputList: React.FC<ProfileInputListProps> = ({profileUrls, setProf
     };
 
     return(
-        <div className="profile-input-list">
+        <div className="profileInputList">
             {profileUrls.map((url, index) => (
                 // NOTE: The way that ProfileInputList.tsx will be integrated into MainPage.tsx will ensure there's two <input> boxes on page load.
                 <div key={index} className="p-input-row"> {/* <-- DEBUG: Insert styling. */}

@@ -4,12 +4,10 @@ import {getMutualData, getHeatMapData} from "../utility/api.ts";  // fetch call
 import testData from "../assets/testData.json";
 import MainTable from "../components/MainTable.tsx";
 import { ResponsiveHeatMap } from "@nivo/heatmap";
-//import { ResponsiveHeatMapCanvas } from "@nivo/heatmap";
 import {type ColumnDef} from "@tanstack/react-table";
 import {type User, type MutualFilm, type HeatMapRow} from "../utility/types.ts";
 
 //import { interpolateYlOrRd } from "d3-scale-chromatic"; // RANDOM COLOUR SCHEME FOR THE HEATMAP!!!
-
 /* As a reference, following the HTML page structure of: https://letterboxd-besties.cheersderek.com/ */
 
 function MainPage() {
@@ -81,7 +79,6 @@ function MainPage() {
             console.log("Okay so the values of heatMapData are => ", heatMapData);
         }
     }, [heatMapData]);
-
 
     // DEBUG: Just testing out a basic structure for the TanStack table:
     const columns: ColumnDef<MutualFilm>[] = [
@@ -164,34 +161,40 @@ function MainPage() {
         setMutualFilms(testData.mutualFilms);
     }
 
+    // NOTE:+DEBUG: All style={{border:"..."}} stylings are for debugging and web design purposes...
     return(
-        <div className="wrapper">
-            <header>
-                <h1 className="mpTitle">Letterboxd Taste Comparator</h1>
-                <p>Compare your mutual film ratings with other Letterboxd profiles!</p>
+        <div className="wrapper" style={{border:"2px solid blue"}} >
+            <header id="mpTitle" style={{border:"2px solid black"}} >
+                <h1>Letterboxd Taste Comparator</h1>
+                <p id="mpUndertext">Compare your mutual film ratings with other Letterboxd profiles!</p>
             </header>
             
             <main>
-                <h1>React Version: {React.version}</h1>
-
-                {/* [1] - This first <div> will be for the form where the user types and inputs their profile URLs, is able to 
-                add more and subtract profile input boxes (contingent on the current amount, min of 2 and max of 6), etc. */}
-                <div>
+                {/* [1] - This first <div> will be for the area where the user types and inputs their profile URLs, is able to add more 
+                and subtract profile input boxes (contingent on the current amount, min of 2 and max of 6), then submit them for backend, etc. */}
+                <div id="profileInputWrapper" style={{border:"2px solid red"}}>
                     <ProfileInputList profileUrls={profileUrls} setProfileUrls={setProfileUrls}/> {/* NOTE: changes to profileUrls will be "lifted" up to here. */}
-                    <div>
-                        <button onClick={()=>goGetMutualData()}>Find Mutual Ratings</button>
-
+                    <div id="profileInputBtnWrapper">
+                        <button id="profileInputBtn" type="submit" onClick={()=>goGetMutualData()}>Find Mutual Ratings</button>
                     </div>
                 </div>
                 
-                <div>TEST - USE .JSON VALUES FOR GENERATING TANSTACK TABLE:<br/>
+                {/* [1.5] - DEBUG: This is just a debug section for testing the TanStack table and Nivo HeatMap (w/o needing to scrape each time). */}
+                <div style={{border:"2px solid blue"}} >DEBUG: TEST AREA - USE .JSON VALUES FOR GENERATING TANSTACK TABLE:<br/>
                     <button onClick={()=>getTestData()}>[Use testData.json values!!!]</button>
                 </div>
+
+
+
+
 
                 {/* [2] - This second <div> where the Table goes... */}
                 {genTable && (<div>
                     <MainTable data={mutualFilms} userData={usersData} columns={columns}/>;
                 </div>)}
+
+
+
 
                 <div>
                     [THIS IS WHERE THE HEATMAP WILL BE GENERATED!!!]<br/>
