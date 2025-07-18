@@ -86,7 +86,13 @@ function MainPage() {
         {
             accessorKey: "title",
             header: "Film Title",
-            cell: (info) => <a href={`https://letterboxd.com/film/${info.row.original.filmUrl}/`}>{info.row.original.title}</a>, //  + " (" + info.row.original.filmYear + ", " + info.row.original.filmDir + ")"
+            cell: (info) => <a 
+                href={`https://letterboxd.com/film/${info.row.original.filmUrl}/`} 
+                target="_blank"
+                title="Click to open the Letterboxd page for this film (in a new tab)."
+                style={{textDecoration:"none", color:"#40bcf4"}}>
+                    {info.row.original.title}
+            </a>,
         },
         {
             accessorKey: "filmYear",
@@ -179,16 +185,18 @@ function MainPage() {
                         <button id="profileInputBtn" type="submit" onClick={()=>goGetMutualData()}>Find Mutual Ratings</button>
                     </div>
                 </div>
-                
-                {/* [1.5] - DEBUG: This is just a debug section for testing the TanStack table and Nivo HeatMap (w/o needing to scrape each time). */}
-                <div style={{border:"2px solid blue"}} >DEBUG: TEST AREA - USE .JSON VALUES FOR GENERATING TANSTACK TABLE:<br/>
-                    <button onClick={()=>getTestData()}>[Use testData.json values!!!]</button>
-                </div>
 
                 {/* [2] - This second <div> where the Table goes... */}
                 {genTable && (<div style={{border:"2px solid red", width:"100%"}}>
                     <MainTable data={mutualFilms} userData={usersData} columns={columns}/>;
                 </div>)}
+
+
+                {/* [2.5] - DEBUG: This is just a debug section for testing the TanStack table and Nivo HeatMap (w/o needing to scrape each time). */}
+                <div style={{border:"2px solid blue"}} >DEBUG: TEST AREA - USE .JSON VALUES FOR GENERATING TANSTACK TABLE:<br/>
+                    <button onClick={()=>getTestData()}>[Use testData.json values!!!]</button>
+                </div>
+
 
                 <div>
                     [THIS IS WHERE THE HEATMAP WILL BE GENERATED!!!]<br/>

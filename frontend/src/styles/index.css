@@ -35,11 +35,10 @@ div {
 #mtWrapper {
   color:#caeff8;
   background-color:#1f262d;
-  /*display:grid;*/
   display: flex;
   flex-direction: column;
   width:100%;
-  max-width:1700px;
+  max-width:1400px;
   height:600px;
   border-radius:10px;
   border:1px solid #444;
@@ -83,10 +82,15 @@ div {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-
-/* Optional specific column widths (e.g. posters) */
-/*#mtTable th:first-child,
+/* For the cells (one directly below relates to setting fixed size for the poster col): */
+#mtTable th:first-child,
 #mtTable td:first-child {
-  width: 80px;
-}*/
+  width: 165px;
+  min-width: 165px;
+  max-width: 165px;
+}
+#mtTable th,
+#mtTable td {
+  text-align:center;
+  font-weight:bold;
+}

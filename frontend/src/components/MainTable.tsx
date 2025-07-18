@@ -1,5 +1,3 @@
-// DEBUG:+TO-DO: At the end of the day, come back here and add all the style={{}} I have to index.css
-
 import React, {useState, useMemo} from 'react';
 import {
     useReactTable,              // This is THE hook that'll create the TanStack Table Instance. 
@@ -32,8 +30,22 @@ const MainTable: React.FC<MainTableProps> = ({data, userData, columns}) => {
     const [showPosters, setShowPosters] = useState(true);
     const [minAvgRating, setMinAvgRating] = useState(0);
 
+    const ratingMap: Record<number,string> = {
+        0.5:'½',
+        1:'★',
+        1.5:'★½',
+        2:'★★',
+        2.5:'★★½',
+        3:'★★★',
+        3.5:'★★★½',
+        4:'★★★★',
+        4.5:'★★★★½',
+        5:'★★★★★',
+    };
+
     /* Constructing the "final" dynamic columns (User Ratings preceded by Film Poster, which will take up room since it'll be toggleable)
-    that will be appended to right of the "base" ones (Standard Film Data: Title, Director, Average Rating etc). */
+    that will be appended to right of the "base" ones (Standard Film Data: Title, Director, Average Rating etc). 
+    NOTE: For the styling of all these columns, I'm going to need to rely on style={{...}} because .css won't be applied immediately on load... */
     const finalColumns = useMemo(() => {
         //const usernames = userData.map(user => user.username);
         const userInfo = userData.map((user) => ({
@@ -46,7 +58,7 @@ const MainTable: React.FC<MainTableProps> = ({data, userData, columns}) => {
         const posterCol: ColumnDef<MutualFilm> = {
             accessorKey:"filmPoster",
             header:"Poster",
-            cell:(info) => <img style={{width:"165px"}}  src={info.row.original.filmPoster} alt={"Poster for " + info.row.original.title}/>
+            cell:(info) => <img style={{width:"180px"}} src={info.row.original.filmPoster} alt={"Poster for " + info.row.original.title}/>
         }
         // Construct the user rating columns:
         // NOTE:+TO-DO: ^ In the header area, I also want the User avatar to appear too (quite small), keep that in mind.
@@ -57,38 +69,40 @@ const MainTable: React.FC<MainTableProps> = ({data, userData, columns}) => {
             header: ({ column }) => {
                 const toggleSort = column.getToggleSortingHandler(); // this will now exist
                 return (
-                <div className="flex items-center gap-2">
-                    {/* Avatar triggers sorting */}
-                    <img
-                        src={avatarLink}
-                        alt={`${displayname}'s avatar`}
-                        className="w-6 h-6 rounded-full cursor-pointer"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            if (toggleSort) toggleSort(e);
-                        }}
-                        title="Click to sort by this user's rating"
-                    />
+                    <div style={{display:"flex", alignItems:"center", gap:"5px"}}>
+                        {/* Avatar triggers sorting */}
+                        <img
+                            src={avatarLink}
+                            alt={`${displayname}'s avatar`}
+                            style={{cursor:"pointer", height:"35px", borderRadius:"25px"}}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                if (toggleSort) toggleSort(e);
+                            }}
+                            title="Click to sort by this user's rating"
+                        />
 
-                    {/* Display name opens profile */}
-                    <a
-                        href={`https://letterboxd.com/${username}/`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 underline"
+                        {/* Display name opens profile */}
+                        <a
+                            href={`https://letterboxd.com/${username}/`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-600 underline"
+                            title={displayname}
+                            style={{textDecoration:"none", color:"#40bcf4"}}
+                            onClick={(e)=> e.stopPropagation()}
                         >
-                        {displayname}
-                    </a>
+                            {displayname}
+                        </a>
 
-                    {/* Should probably swap to these later. 
-                    {column.getIsSorted() === 'asc' && ' 🔼'}
-                    {column.getIsSorted() === 'desc' && ' 🔽'}*/}
-                </div>
+                        {column.getIsSorted() === 'asc' && ' ▲'}
+                        {column.getIsSorted() === 'desc' && ' ▼'}
+                    </div>
                 );
             },
             cell: (info) => {
                 const rating = info.row.original.ratings[username];
-                return rating !== undefined ? rating.toFixed(1) : '—';
+                return rating !== undefined ? rating.toFixed(1) + ` (${ratingMap[info.row.original.ratings[username]]})` : '—';
             },
         }));
 
@@ -140,7 +154,7 @@ const MainTable: React.FC<MainTableProps> = ({data, userData, columns}) => {
                     <div id="mtMinAvgSlider">
                         <label>
                             <input type="range" min={0} max={5} step={0.1} value={minAvgRating} onChange={(e)=>setMinAvgRating(Number(e.target.value))} style={{marginLeft:"10px"}} />
-                            {" "}<b>Min Avg Rating</b>: {minAvgRating}{" "}
+                            {" "}<b>Minimum Average Rating</b>: {minAvgRating}{" "}
                         </label>
                     </div>
                 </div>
@@ -155,10 +169,10 @@ const MainTable: React.FC<MainTableProps> = ({data, userData, columns}) => {
                         {table.getHeaderGroups().map((headerGroup) => (
                             <tr key={headerGroup.id}>
                                 {headerGroup.headers.map((header) => (
-                                    <th key={header.id} onClick={header.column.getToggleSortingHandler()} >
+                                    <th title="Click to sort by ascending and descending value" key={header.id} onClick={header.column.getToggleSortingHandler()} >
                                         {flexRender(header.column.columnDef.header, header.getContext())}
-                                        {header.column.getIsSorted() === "asc" && "ASC"}
-                                        {header.column.getIsSorted() === "desc"&& "DESC"}
+                                        {header.column.getIsSorted() === "asc" && " ▲"}
+                                        {header.column.getIsSorted() === "desc"&& " ▼"}
                                     </th>
                                 ))}
                             </tr>
@@ -178,9 +192,6 @@ const MainTable: React.FC<MainTableProps> = ({data, userData, columns}) => {
                     </tbody>
                 </table>
             </div>
-
-
-        
         </div>
     );
 };
