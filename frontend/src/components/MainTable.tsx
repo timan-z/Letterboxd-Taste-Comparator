@@ -1,3 +1,5 @@
+// DEBUG:+TO-DO: At the end of the day, come back here and add all the style={{}} I have to index.css
+
 import React, {useState, useMemo} from 'react';
 import {
     useReactTable,              // This is THE hook that'll create the TanStack Table Instance. 
@@ -9,7 +11,6 @@ import {
     type SortingState
 } from '@tanstack/react-table'
 import {type User, type MutualFilm} from "../utility/types.ts";
-import { useResolvedPath } from 'react-router-dom';
 
 /* This interface below is a generic TypeScript interface.
 Using <T> (generic type) is good, it'll adapt to whatever type I pass in whether User or MutualFilm (reusable for both): */
@@ -45,30 +46,10 @@ const MainTable: React.FC<MainTableProps> = ({data, userData, columns}) => {
         const posterCol: ColumnDef<MutualFilm> = {
             accessorKey:"filmPoster",
             header:"Poster",
-            cell:(info) => <img src={info.row.original.filmPoster} alt={"Poster for " + info.row.original.title}/>
+            cell:(info) => <img style={{width:"165px"}}  src={info.row.original.filmPoster} alt={"Poster for " + info.row.original.title}/>
         }
         // Construct the user rating columns:
         // NOTE:+TO-DO: ^ In the header area, I also want the User avatar to appear too (quite small), keep that in mind.
-        /*const ratingCol: ColumnDef<MutualFilm>[] = userInfo.map(({username, displayname, avatarLink}) => ({
-            id: `rating-${username}`,
-            //header: username,
-            header: ({column}) => (
-                <div>
-                    <a href={`https://letterboxd.com/${username}/`}>
-                        {displayname}
-                    </a>
-                    <img src={avatarLink} alt={`${username}'s Avatar`}
-
-                        onClick={(e) => {
-                            e.stopPropagation(); // Prevent click bubbling if needed
-                            column.getToggleSortingHandler();
-                        }}
-                    
-                    />
-                </div>
-            ),
-            cell: (info) => info.row.original.ratings[username]?.toFixed(1) ?? "—",
-        }));*/
         const ratingCol: ColumnDef<MutualFilm>[] = userInfo.map(({ username, displayname, avatarLink }) => ({
             id: `rating-${username}`,
             accessorFn: (row) => row.ratings[username], // needed for sorting to work
@@ -119,8 +100,6 @@ const MainTable: React.FC<MainTableProps> = ({data, userData, columns}) => {
         ];
     }, [columns,userData, showPosters]);
 
-    console.log("DEBUG: The value of minAvgRating => ", minAvgRating);
-
     // useMemo is crucial here so I don't fall into an infinite re-render loop.
     const filteredData = useMemo(() => {
         return data.filter((film) => film.avgRating >= minAvgRating)
@@ -141,55 +120,67 @@ const MainTable: React.FC<MainTableProps> = ({data, userData, columns}) => {
     });
 
     return(
-        <div>
+        <div id="mtWrapper">
 
-            {/* Below will be the typeable search bar for dynamically filtering the table: */}
+            {/* [1] - This <div> below is for the "Central Header Area" of the (MT) Main Table. Here is:
+            - The Dynamic Typeable Search Bar for filtering the table in real-time (w/ all-encompassing criteria: title, director, rating, etc).
+            - Toggeable button for showing or hiding Film Posters + Slider for minimum average film rating.
+            - Headers for each column under which rows will spawn for data to populate (Film Title, Release Year, Directed By, etc). */}
             <div>
-                <input type="text" value={globalFilter} onChange={(e)=>setGlobalFilter(e.target.value)} placeholder="Search..." />
-
-                {/* Controls for [1] - Toggling Posters and [2] - setting Minimum Average Rating (TO-DO: Eventually, need User Avatars too). */}
-                <div>
-                    {/* [1] - Toggling Posters. */}
+                {/* Typeable Search Bar: */}    
+                <input id="mtSearchBar" type="text" value={globalFilter} onChange={(e)=>setGlobalFilter(e.target.value)} placeholder="Search... (Title, Year, Director, etc)"/>
+                
+                {/* Toggle Poster and Minimum Average Controls: */}
+                <div id="mtConfigWrapper">
                     <label>
                         <input type="checkbox" checked={showPosters} onChange={(e) => setShowPosters(e.target.checked)}/>
-                        {" "}Show Posters
+                        {" "}<b>Show Posters</b>
                     </label>
-                    {/* [2] - Setting Minimum Average Rating. */}
-                    <label>
-                        Min Avg Rating: {minAvgRating}
-                        <input type="range" min={0} max={5} step={0.1} value={minAvgRating} onChange={(e)=>setMinAvgRating(Number(e.target.value))} />
-                    </label>
+                    
+                    <div id="mtMinAvgSlider">
+                        <label>
+                            <input type="range" min={0} max={5} step={0.1} value={minAvgRating} onChange={(e)=>setMinAvgRating(Number(e.target.value))} style={{marginLeft:"10px"}} />
+                            {" "}<b>Min Avg Rating</b>: {minAvgRating}{" "}
+                        </label>
+                    </div>
                 </div>
             </div>
 
-            <table>
-                <thead>
-                    {table.getHeaderGroups().map((headerGroup) => (
-                        <tr key={headerGroup.id}>
-                            {headerGroup.headers.map((header) => (
-                                <th key={header.id} onClick={header.column.getToggleSortingHandler()} >
-                                    {flexRender(header.column.columnDef.header, header.getContext())}
-                                    {header.column.getIsSorted() === "asc" && "ASC"}
-                                    {header.column.getIsSorted() === "desc"&& "DESC"}
-                                </th>
-                            ))}
-                        </tr>
-                    ))}
-                </thead>
-                <tbody>
-                    {table.getRowModel().rows.map((row) => (
-                        <tr key={row.id}>
-                            {row.getVisibleCells().map((cell) => (
-                                <td key={cell.id}>
-                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                </td>
-                            ))}
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        
+            {/* [2] - The actual "Main Table": */}
+            <div id="mtTableScrollContainer">
+                <table id="mtTable">
+                
+                    {/* Headers should absolutely be stylized in a way */}
+                    <thead style={{backgroundColor:"#2c3440"}}>
+                        {table.getHeaderGroups().map((headerGroup) => (
+                            <tr key={headerGroup.id}>
+                                {headerGroup.headers.map((header) => (
+                                    <th key={header.id} onClick={header.column.getToggleSortingHandler()} >
+                                        {flexRender(header.column.columnDef.header, header.getContext())}
+                                        {header.column.getIsSorted() === "asc" && "ASC"}
+                                        {header.column.getIsSorted() === "desc"&& "DESC"}
+                                    </th>
+                                ))}
+                            </tr>
+                        ))}
+                    </thead>
 
+                    <tbody>
+                        {table.getRowModel().rows.map((row) => (
+                            <tr key={row.id}>
+                                {row.getVisibleCells().map((cell) => (
+                                    <td key={cell.id}>
+                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                    </td>
+                                ))}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+
+
+        
         </div>
     );
 };

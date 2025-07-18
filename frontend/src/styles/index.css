@@ -1,15 +1,20 @@
-
 /* Copying a lot of the styling used in CheersDerek's https://letterboxd-besties.cheersderek.com/ site tbh. */
 
+/* General Stuff: */
 body, div {
   display:block;
+}
+div {
   margin:8px;
 }
+
+/* Styling for MainPage.tsx: */
 .wrapper {
   display:grid;
   place-items:center;
-  margin:0 1rem;
+  /*margin:0 1rem;*/
   min-height:100%;
+  min-width:100%;
 }
 #mpTitle {
   padding:1rem 0 0rem 0;
@@ -25,3 +30,63 @@ body, div {
   display:block;
   width:100%;
 }
+
+/* Styling for MainTable.tsx: */
+#mtWrapper {
+  color:#caeff8;
+  background-color:#1f262d;
+  /*display:grid;*/
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  max-width:1700px;
+  height:600px;
+  border-radius:10px;
+  border:1px solid #444;
+  overflow:hidden;
+}
+#mtSearchBar {
+  width:55%;
+  font-size:15px;
+}
+#mtConfigWrapper {
+  height:35px;
+  margin-top:10px;
+  display:flex;
+  align-items:center;
+  gap:7.5px;
+}
+#mtMinAvgSlider {
+  height:85%;
+  width:50%; /* <-- DEBUG: Subject to change, especially after I make the Table dimensions fixed. */
+  display:flex;
+  align-items:center;
+  box-shadow:5px 5px 10px 2px rgb(0 0 0 / 0.8);
+  background-color: #2c3440;
+  border-radius:7.5px;
+}
+#mtTableScrollContainer {
+  overflow-y:auto;
+  overflow-x:auto;
+  flex:1;
+}
+#mtTable {
+  width:100%;
+  table-layout:fixed;       /* <-- DEBUG: This line here will make sure there's no table resizing when I move the slider etc. */
+  border-collapse:collapse; /* <-- DEBUG: Will remove like the "differentiating lines"/border lines between columns more or less. (Do I want this?) */
+}
+#mtTable th, #Table td {
+  border: 1px solid #2a2a2a;
+  padding: 8px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* Optional specific column widths (e.g. posters) */
+/*#mtTable th:first-child,
+#mtTable td:first-child {
+  width: 80px;
+}*/

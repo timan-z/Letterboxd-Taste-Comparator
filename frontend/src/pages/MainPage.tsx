@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import ProfileInputList from "../components/ProfileInputList";
 import {getMutualData, getHeatMapData} from "../utility/api.ts";  // fetch call
 import testData from "../assets/testData.json";
+import testData2 from "../assets/testData2.json";
 import MainTable from "../components/MainTable.tsx";
 import { ResponsiveHeatMap } from "@nivo/heatmap";
 import {type ColumnDef} from "@tanstack/react-table";
@@ -157,8 +158,8 @@ function MainPage() {
 
     // DEBUG: Test function for loading in test data from testData.json:
     const getTestData = () => {
-        setUsersData(testData.users);
-        setMutualFilms(testData.mutualFilms);
+        setUsersData(testData2.users);
+        setMutualFilms(testData2.mutualFilms);
     }
 
     // NOTE:+DEBUG: All style={{border:"..."}} stylings are for debugging and web design purposes...
@@ -184,17 +185,10 @@ function MainPage() {
                     <button onClick={()=>getTestData()}>[Use testData.json values!!!]</button>
                 </div>
 
-
-
-
-
                 {/* [2] - This second <div> where the Table goes... */}
-                {genTable && (<div>
+                {genTable && (<div style={{border:"2px solid red", width:"100%"}}>
                     <MainTable data={mutualFilms} userData={usersData} columns={columns}/>;
                 </div>)}
-
-
-
 
                 <div>
                     [THIS IS WHERE THE HEATMAP WILL BE GENERATED!!!]<br/>
