@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 import ProfileInputList from "../components/ProfileInputList";
 import {getMutualData, getHeatMapData} from "../utility/api.ts";  // fetch call
-import testData from "../assets/testData.json";
-import testData2 from "../assets/testData2.json";
+import testData1 from "../assets/sampleData/testData1.json";
+import testData2 from "../assets/sampleData/testData2.json";
 import MainTable from "../components/MainTable.tsx";
 import { ResponsiveHeatMap } from "@nivo/heatmap";
 import {type ColumnDef} from "@tanstack/react-table";
@@ -171,11 +171,23 @@ function MainPage() {
     // NOTE:+DEBUG: All style={{border:"..."}} stylings are for debugging and web design purposes...
     return(
         <div className="wrapper" style={{border:"2px solid blue"}} >
-            <header id="mpTitle" style={{border:"2px solid black"}} >
+
+
+
+
+            <header id="mpTitle">
+                <img src="../assets/images/letterboxd-icon.png" alt="Letterboxd Icon"/>
                 <h1>Letterboxd Taste Comparator</h1>
                 <p id="mpUndertext">Compare your mutual film ratings with other Letterboxd profiles!</p>
             </header>
-            
+
+
+
+
+
+
+
+
             <main>
                 {/* [1] - This first <div> will be for the area where the user types and inputs their profile URLs, is able to add more 
                 and subtract profile input boxes (contingent on the current amount, min of 2 and max of 6), then submit them for backend, etc. */}

@@ -17,7 +17,6 @@ div {
 .wrapper {
   display:grid;
   place-items:center;
-  /*margin:0 1rem;*/
   min-height:100%;
   min-width:100%;
 }
@@ -27,6 +26,10 @@ div {
 #mpUndertext {
   padding-bottom:1rem;
 }
+
+
+
+
 
 
 
@@ -137,8 +140,6 @@ div {
   overflow-x:auto;
   flex:1;
 }
-
-
 #mtTableScrollContainer::-webkit-scrollbar {
   width:10px;
 }
@@ -154,7 +155,6 @@ div {
 #mtTableScrollContainer::-webkit-scrollbar-thumb:hover {
   background-color: #36cff5;
 }
-
 #mtTable {
   width:100%;
   table-layout:fixed;       /* <-- DEBUG: This line here will make sure there's no table resizing when I move the slider etc. */

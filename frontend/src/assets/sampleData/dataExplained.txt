@@ -1,0 +1,2 @@
+testData1 = luc_moullet & jeanluc_godard
+testData2 = luc_moullet & jeanluc_godard & ericrohmer_ & jacquesrivette_
