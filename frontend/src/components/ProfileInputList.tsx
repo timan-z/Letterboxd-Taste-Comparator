@@ -33,18 +33,19 @@ const ProfileInputList: React.FC<ProfileInputListProps> = ({profileUrls, setProf
                 // NOTE: The way that ProfileInputList.tsx will be integrated into MainPage.tsx will ensure there's two <input> boxes on page load.
                 <div key={index} className="p-input-row"> {/* <-- DEBUG: Insert styling. */}
                     <input
+                        id="typeProfileBox"
                         type="text"
-                        placeholder="Enter a Letterboxd Profile URL (non-shortened)" // <-- DEBUG: Is there a way I can un-shorten truncated links?
+                        placeholder="Enter a Letterboxd Profile URL (e.g., jeanluc_godard)" // <-- DEBUG: Is there a way I can un-shorten truncated links?
                         value={url}
                         onChange={(e)=>handleChange(index, e.target.value)}
-                        // DEBUG: Insert styling.
                     />
+                    {" "}
                     {/* When there's more than 2 input boxes for the minimum 2 profiles to provide, there's a delete button. */}
                     {profileUrls.length > MIN_PROFILES && (
                         <button
+                            id="deleteProfileBtn"
                             type="button"
                             onClick={()=>handleRemove(index)}
-                            // DEBUG: Insert styling.
                         >
                             &minus;
                         </button>
@@ -52,15 +53,13 @@ const ProfileInputList: React.FC<ProfileInputListProps> = ({profileUrls, setProf
                 </div>
             ))}
             {/* There's a maximum of 6 input boxes that can appear, and when the amount is less than that, you can add more: */}
-            {profileUrls.length < MAX_PROFILES && (
-                <button
-                    type="button"
-                    onClick={handleAdd}
-                    // DEBUG: Add styling later.
-                >
-                    + Add Another Profile
-                </button>
-            )}
+            <div id="addBtnWrapper">
+                {profileUrls.length < MAX_PROFILES && (
+                    <button id="addProfileBtn" type="button" onClick={handleAdd}>
+                        + Add Another Profile
+                    </button>
+                )}
+            </div>
         </div>
     );
 };

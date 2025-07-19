@@ -179,24 +179,22 @@ function MainPage() {
             <main>
                 {/* [1] - This first <div> will be for the area where the user types and inputs their profile URLs, is able to add more 
                 and subtract profile input boxes (contingent on the current amount, min of 2 and max of 6), then submit them for backend, etc. */}
-                <div id="profileInputWrapper" style={{border:"2px solid red"}}>
+                <div id="profileInputWrapper">
                     <ProfileInputList profileUrls={profileUrls} setProfileUrls={setProfileUrls}/> {/* NOTE: changes to profileUrls will be "lifted" up to here. */}
                     <div id="profileInputBtnWrapper">
                         <button id="profileInputBtn" type="submit" onClick={()=>goGetMutualData()}>Find Mutual Ratings</button>
                     </div>
                 </div>
 
-                {/* [2] - This second <div> where the Table goes... */}
-                {genTable && (<div style={{border:"2px solid red", width:"100%"}}>
+                {/* [2] - This second <div> where the Table goes. (It will appear as an empty template until its contents are populated w/ data). */}
+                {genTable && (<div>
                     <MainTable data={mutualFilms} userData={usersData} columns={columns}/>;
                 </div>)}
 
-
                 {/* [2.5] - DEBUG: This is just a debug section for testing the TanStack table and Nivo HeatMap (w/o needing to scrape each time). */}
-                <div style={{border:"2px solid blue"}} >DEBUG: TEST AREA - USE .JSON VALUES FOR GENERATING TANSTACK TABLE:<br/>
+                <div style={{border:"2px solid blue"}} >DEBUG: TEST AREA - USE .JSON VALUES FOR GENERATING TANSTACK TABLE: actually i think i should save the testData.json values -- and here I can have buttons that test combos of the Cahiers du Cinema accounts.<br/>
                     <button onClick={()=>getTestData()}>[Use testData.json values!!!]</button>
                 </div>
-
 
                 <div>
                     [THIS IS WHERE THE HEATMAP WILL BE GENERATED!!!]<br/>

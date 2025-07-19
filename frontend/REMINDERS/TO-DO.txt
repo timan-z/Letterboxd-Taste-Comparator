@@ -12,3 +12,6 @@ ADDITIONAL THINGS:
  FIX WHAT'S GOING ON WITH MY VIVO HEATMAP THING:
  - https://nivo.rocks/heatmap/
  ^ USE THE CODE SEEN HERE AS A REFERENCE POINT WHERE WHAT I WAS DOING WRONG!!!
+
+ LITTLE BUGS TO FIX LATER:
+- I made my TanStack table header "sticky" but when you scroll vertically downwards, there's a little horizontal gap between the top of the table and the top of the header where you can see through it and thus the posters when you scroll. I want to fix this at some point but it's not worth the time to expend at this moment...
