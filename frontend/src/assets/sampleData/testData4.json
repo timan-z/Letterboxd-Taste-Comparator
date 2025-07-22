@@ -1,0 +1,161 @@
+{
+    "mutualFilms": [
+        {
+            "title": "End of Desire",
+            "filmUrl": "end-of-desire",
+            "filmYear": "1958",
+            "filmDir": "Alexandre Astruc",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/2/4/9/9/2/124992-end-of-desire-0-230-0-345-crop.jpg?v=fdd735b395",
+            "ratings": {
+                "andre_bazin_": 3,
+                "ericrohmer_": 3,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 2.75,
+            "variance": 0.25
+        },
+        {
+            "title": "Love Is My Profession",
+            "filmUrl": "love-is-my-profession",
+            "filmYear": "1958",
+            "filmDir": "Claude Autant-Lara",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/0/2/1/8/10218-love-is-my-profession-0-230-0-345-crop.jpg?v=669c92a2c1",
+            "ratings": {
+                "andre_bazin_": 3,
+                "ericrohmer_": 0.5,
+                "jacquesrivette_": 1,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 1.375,
+            "variance": 1.2291666
+        },
+        {
+            "title": "That Night",
+            "filmUrl": "that-night-1958-1",
+            "filmYear": "1958",
+            "filmDir": "Maurice Cazeneuve",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/2/6/7/6/2/226762-cette-nuit-la--0-230-0-345-crop.jpg?v=76ad43ef17",
+            "ratings": {
+                "andre_bazin_": 1,
+                "ericrohmer_": 1,
+                "jacquesrivette_": 0.5,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 0.875,
+            "variance": 0.0625
+        },
+        {
+            "title": "Girl and the River",
+            "filmUrl": "girl-and-the-river",
+            "filmYear": "1958",
+            "filmDir": "François Villiers",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/4/2/9/4/6/142946-girl-and-the-river-0-230-0-345-crop.jpg?v=52d985c529",
+            "ratings": {
+                "andre_bazin_": 1,
+                "ericrohmer_": 2,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 2,
+            "variance": 0.6666667
+        },
+        {
+            "title": "Touch of Evil",
+            "filmUrl": "touch-of-evil",
+            "filmYear": "1958",
+            "filmDir": "Orson Welles",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/1/0/1/8/51018-touch-of-evil-0-230-0-345-crop.jpg?v=279a6824a4",
+            "ratings": {
+                "andre_bazin_": 4,
+                "ericrohmer_": 3,
+                "jacquesrivette_": 4,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 3.5,
+            "variance": 0.33333334
+        },
+        {
+            "title": "The Long, Hot Summer",
+            "filmUrl": "the-long-hot-summer",
+            "filmYear": "1958",
+            "filmDir": "Martin Ritt",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/4/7/9/8/24798-the-long-hot-summer-0-230-0-345-crop.jpg?v=d4e78060cc",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "ericrohmer_": 1,
+                "jacquesrivette_": 1,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 0.875,
+            "variance": 0.0625
+        },
+        {
+            "title": "Baby Face Nelson",
+            "filmUrl": "baby-face-nelson",
+            "filmYear": "1957",
+            "filmDir": "Don Siegel",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/8/3/2/8/28328-baby-face-nelson-0-230-0-345-crop.jpg?v=2340d76aa7",
+            "ratings": {
+                "andre_bazin_": 2,
+                "ericrohmer_": 2,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 2
+            },
+            "avgRating": 2.25,
+            "variance": 0.25
+        },
+        {
+            "title": "The Cranes Are Flying",
+            "filmUrl": "the-cranes-are-flying",
+            "filmYear": "1957",
+            "filmDir": "Mikhail Kalatozov",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/6/2/0/1/26201-the-cranes-are-flying-0-230-0-345-crop.jpg?v=336132e69d",
+            "ratings": {
+                "andre_bazin_": 4,
+                "ericrohmer_": 2,
+                "jacquesrivette_": 1,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 2,
+            "variance": 2
+        },
+        {
+            "title": "Grand Illusion",
+            "filmUrl": "grand-illusion",
+            "filmYear": "1937",
+            "filmDir": "Jean Renoir",
+            "filmPoster": "https://a.ltrbxd.com/resized/sm/upload/99/0o/ps/jk/lWg41zE0FVixkNsFgxnlRyvDYv9-0-230-0-345-crop.jpg?v=ac3af61682",
+            "ratings": {
+                "andre_bazin_": 4,
+                "ericrohmer_": 4,
+                "jacquesrivette_": 4,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 3.75,
+            "variance": 0.25
+        }
+    ],
+    "users": [
+        {
+            "username": "andre_bazin_",
+            "displayname": "André Bazin",
+            "avatarLink": "https://a.ltrbxd.com/resized/avatar/upload/1/0/4/6/9/6/2/5/shard/avtr-0-48-0-48-crop.jpg?v=feeaa4d763"
+        },
+        {
+            "username": "jacquesrivette_",
+            "displayname": "Jacques Rivette",
+            "avatarLink": "https://a.ltrbxd.com/resized/avatar/upload/1/1/5/9/6/5/9/0/shard/avtr-0-48-0-48-crop.jpg?v=a8617dd90e"
+        },
+        {
+            "username": "ericrohmer_",
+            "displayname": "Éric Rohmer",
+            "avatarLink": "https://a.ltrbxd.com/resized/avatar/upload/1/0/4/3/8/4/3/1/shard/avtr-0-48-0-48-crop.jpg?v=fa47bf8df3"
+        },
+        {
+            "username": "jeanluc_godard",
+            "displayname": "Jean-Luc Godard",
+            "avatarLink": "https://a.ltrbxd.com/resized/avatar/upload/1/0/4/2/7/0/7/8/shard/avtr-0-48-0-48-crop.jpg?v=236a1c5a69"
+        }
+    ]
+}
