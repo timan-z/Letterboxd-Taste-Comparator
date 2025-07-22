@@ -1,15 +1,1127 @@
 {
-    "mutualFilms": null,
-    "users": [
+    "mutualFilms": [
         {
-            "username": "franco_truffaut",
-            "displayname": "François Truffaut",
-            "avatarLink": "https://a.ltrbxd.com/resized/avatar/upload/1/0/4/6/1/3/0/1/shard/avtr-0-48-0-48-crop.jpg?v=71464ee38a"
+            "title": "Famous Love Affairs",
+            "filmUrl": "famous-love-affairs",
+            "filmYear": "1961",
+            "filmDir": "Michel Boisrond",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/2/8/3/1/52831-famous-love-affairs-0-230-0-345-crop.jpg?v=11d70fef59",
+            "ratings": {
+                "ericrohmer_": 0.5,
+                "jacquesrivette_": 1,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 0.6666667,
+            "variance": 0.08333333
         },
+        {
+            "title": "All the Gold in the World",
+            "filmUrl": "all-the-gold-in-the-world",
+            "filmYear": "1961",
+            "filmDir": "René Clair",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/4/6/8/1/64681-all-the-gold-in-the-world-0-230-0-345-crop.jpg?v=77c6c9db7e",
+            "ratings": {
+                "ericrohmer_": 1,
+                "jacquesrivette_": 0.5,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 0.6666667,
+            "variance": 0.08333333
+        },
+        {
+            "title": "La pendule à Salomon",
+            "filmUrl": "la-pendule-a-salomon",
+            "filmYear": "1961",
+            "filmDir": "Raoul Vergez",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/9/0/9/0/0/490900-la-pendule-a-salomon-0-230-0-345-crop.jpg?v=6411381666",
+            "ratings": {
+                "ericrohmer_": 1,
+                "jacquesrivette_": 0.5,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 0.8333333,
+            "variance": 0.08333333
+        },
+        {
+            "title": "The Girl with the Golden Eyes",
+            "filmUrl": "the-girl-with-the-golden-eyes",
+            "filmYear": "1961",
+            "filmDir": "Jean-Gabriel Albicocco",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/4/3/6/2436-the-girl-with-the-golden-eyes-0-230-0-345-crop.jpg?v=0bed3fb2db",
+            "ratings": {
+                "ericrohmer_": 0.5,
+                "jacquesrivette_": 0.5,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "The Black Monocle",
+            "filmUrl": "the-black-monocle",
+            "filmYear": "1961",
+            "filmDir": "Georges Lautner",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/6/1/7/9/1/261791-the-black-monocle-0-230-0-345-crop.jpg?v=2be651ed40",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 2
+            },
+            "avgRating": 2,
+            "variance": 0
+        },
+        {
+            "title": "The Season for Love",
+            "filmUrl": "the-season-for-love",
+            "filmYear": "1961",
+            "filmDir": "Pierre Kast",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/7/1/2/2/7/371227-the-season-for-love-0-230-0-345-crop.jpg?v=19ff4ac18b",
+            "ratings": {
+                "ericrohmer_": 3,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "Two Rode Together",
+            "filmUrl": "two-rode-together",
+            "filmYear": "1961",
+            "filmDir": "John Ford",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/0/2/8/4/30284-two-rode-together-0-230-0-345-crop.jpg?v=3d1b60efe7",
+            "ratings": {
+                "ericrohmer_": 4,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 4
+            },
+            "avgRating": 3.6666667,
+            "variance": 0.3333333
+        },
+        {
+            "title": "Chronicle of a Summer",
+            "filmUrl": "chronicle-of-a-summer",
+            "filmYear": "1961",
+            "filmDir": "Jean Rouch",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/7/1/4/5/9/71459-chronicle-of-a-summer-0-230-0-345-crop.jpg?v=a2cfbbcbbc",
+            "ratings": {
+                "ericrohmer_": 3,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 2
+            },
+            "avgRating": 2.3333333,
+            "variance": 0.3333333
+        },
+        {
+            "title": "Journey Beneath the Desert",
+            "filmUrl": "journey-beneath-the-desert",
+            "filmYear": "1961",
+            "filmDir": "Edgar G. Ulmer",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/9/7/2/9/49729-journey-beneath-the-desert-0-230-0-345-crop.jpg?v=2591822b1c",
+            "ratings": {
+                "ericrohmer_": 1,
+                "jacquesrivette_": 0.5,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 0.6666667,
+            "variance": 0.08333333
+        },
+        {
+            "title": "Two Men in Manhattan",
+            "filmUrl": "two-men-in-manhattan",
+            "filmYear": "1959",
+            "filmDir": "Jean-Pierre Melville",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/4/8/3/2/34832-two-men-in-manhattan-0-230-0-345-crop.jpg?v=4502687408",
+            "ratings": {
+                "ericrohmer_": 3,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 2.6666667,
+            "variance": 0.3333333
+        },
+        {
+            "title": "Anatomy of a Murder",
+            "filmUrl": "anatomy-of-a-murder",
+            "filmYear": "1959",
+            "filmDir": "Otto Preminger",
+            "filmPoster": "https://a.ltrbxd.com/resized/sm/upload/v9/63/dv/fd/kDFnM2zlHZirR2ItTo56lyrxuAS-0-230-0-345-crop.jpg?v=42df92615a",
+            "ratings": {
+                "ericrohmer_": 3,
+                "jacquesrivette_": 4,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 2.6666667,
+            "variance": 2.3333335
+        },
+        {
+            "title": "Middle of the Night",
+            "filmUrl": "middle-of-the-night",
+            "filmYear": "1959",
+            "filmDir": "Delbert Mann",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/9/5/1/4/7/95147-middle-of-the-night-0-230-0-345-crop.jpg?v=44238867c7",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 2.6666667,
+            "variance": 0.3333333
+        },
+        {
+            "title": "Hiroshima Mon Amour",
+            "filmUrl": "hiroshima-mon-amour",
+            "filmYear": "1959",
+            "filmDir": "Alain Resnais",
+            "filmPoster": "https://a.ltrbxd.com/resized/sm/upload/d4/0z/wv/pr/xmW3o49z7iExUsren4R4QyN890H-0-230-0-345-crop.jpg?v=03127fc33b",
+            "ratings": {
+                "ericrohmer_": 3,
+                "jacquesrivette_": 4,
+                "jeanluc_godard": 4
+            },
+            "avgRating": 3.6666667,
+            "variance": 0.3333333
+        },
+        {
+            "title": "Witness in the City",
+            "filmUrl": "witness-in-the-city",
+            "filmYear": "1959",
+            "filmDir": "Édouard Molinaro",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/4/4/3/1/64431-witness-in-the-city-0-230-0-345-crop.jpg?v=bd3bdda81a",
+            "ratings": {
+                "ericrohmer_": 1,
+                "jacquesrivette_": 0.5,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 0.6666667,
+            "variance": 0.08333333
+        },
+        {
+            "title": "Checkerboard",
+            "filmUrl": "checkerboard",
+            "filmYear": "1959",
+            "filmDir": "Claude Bernard-Aubert",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/7/0/9/8/2/70982-checkerboard-0-230-0-345-crop.jpg?v=32ed36459e",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 2
+            },
+            "avgRating": 2,
+            "variance": 0
+        },
+        {
+            "title": "The 400 Blows",
+            "filmUrl": "the-400-blows",
+            "filmYear": "1959",
+            "filmDir": "François Truffaut",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/1/9/0/4/51904-the-400-blows-0-230-0-345-crop.jpg?v=25ae7ceb86",
+            "ratings": {
+                "ericrohmer_": 3,
+                "jacquesrivette_": 4,
+                "jeanluc_godard": 4
+            },
+            "avgRating": 3.6666667,
+            "variance": 0.3333333
+        },
+        {
+            "title": "The Chasers",
+            "filmUrl": "the-chasers-1959",
+            "filmYear": "1959",
+            "filmDir": "Jean-Pierre Mocky",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/7/0/3/703-the-chasers-0-230-0-345-crop.jpg?v=8926216e21",
+            "ratings": {
+                "ericrohmer_": 1,
+                "jacquesrivette_": 1,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 1,
+            "variance": 0
+        },
+        {
+            "title": "A Simple Story",
+            "filmUrl": "a-simple-story-1959",
+            "filmYear": "1959",
+            "filmDir": "Marcel Hanoun",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/4/5/5/1/3/145513-a-simple-story-0-230-0-345-crop.jpg?v=9bbeae7f2d",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 1.6666666,
+            "variance": 0.3333333
+        },
+        {
+            "title": "Head Against the Wall",
+            "filmUrl": "head-against-the-wall",
+            "filmYear": "1959",
+            "filmDir": "Georges Franju",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/3/8/2/1/63821-head-against-the-wall-0-230-0-345-crop.jpg?v=9cba4f6b71",
+            "ratings": {
+                "ericrohmer_": 1,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 2.3333333,
+            "variance": 1.3333333
+        },
+        {
+            "title": "Some Like It Hot",
+            "filmUrl": "some-like-it-hot",
+            "filmYear": "1959",
+            "filmDir": "Billy Wilder",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/1/8/1/7/51817-some-like-it-hot-0-230-0-345-crop.jpg?v=fc0b1b87eb",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 1.8333334,
+            "variance": 1.5833334
+        },
+        {
+            "title": "Rio Bravo",
+            "filmUrl": "rio-bravo",
+            "filmYear": "1959",
+            "filmDir": "Howard Hawks",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/1/7/5/8/51758-rio-bravo-0-230-0-345-crop.jpg?v=ee2a54d80b",
+            "ratings": {
+                "ericrohmer_": 4,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 4
+            },
+            "avgRating": 3.6666667,
+            "variance": 0.3333333
+        },
+        {
+            "title": "I, a Negro",
+            "filmUrl": "i-a-negro",
+            "filmYear": "1959",
+            "filmDir": "Jean Rouch",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/3/1/631-moi-un-noir-0-230-0-345-crop.jpg?v=1cb8c02fa7",
+            "ratings": {
+                "ericrohmer_": 3,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "The Cousins",
+            "filmUrl": "the-cousins-1959",
+            "filmYear": "1959",
+            "filmDir": "Claude Chabrol",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/0/3/0/5/50305-les-cousins-0-230-0-345-crop.jpg?v=9050fea467",
+            "ratings": {
+                "ericrohmer_": 3,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "Women Are Weak",
+            "filmUrl": "women-are-weak",
+            "filmYear": "1959",
+            "filmDir": "Michel Boisrond",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/8/8/3/9/9/188399-women-are-weak-0-230-0-345-crop.jpg?v=4b2806114b",
+            "ratings": {
+                "ericrohmer_": 1,
+                "jacquesrivette_": 0.5,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 0.6666667,
+            "variance": 0.08333333
+        },
+        {
+            "title": "The Devil's Blast",
+            "filmUrl": "the-devils-blast",
+            "filmYear": "1959",
+            "filmDir": "Haroun Tazieff",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/3/8/3/3/7/138337-the-devil-s-blast-0-230-0-345-crop.jpg?v=b0aae4dab9",
+            "ratings": {
+                "ericrohmer_": 3,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "The Wreckers",
+            "filmUrl": "the-wreckers-1959",
+            "filmYear": "1959",
+            "filmDir": "Charles Brabant",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/5/7/4/5/5/357455-the-wreckers-0-230-0-345-crop.jpg?v=1fc52a7c93",
+            "ratings": {
+                "ericrohmer_": 0.5,
+                "jacquesrivette_": 0.5,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "The Magician",
+            "filmUrl": "the-magician-1958",
+            "filmYear": "1958",
+            "filmDir": "Ingmar Bergman",
+            "filmPoster": "https://a.ltrbxd.com/resized/sm/upload/fm/uq/wi/sj/rmdPJfwTUUjNW5FhuTxYkSKMfaO-0-230-0-345-crop.jpg?v=71171a9798",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 1,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 1.1666666,
+            "variance": 0.5833334
+        },
+        {
+            "title": "I Want to Live!",
+            "filmUrl": "i-want-to-live",
+            "filmYear": "1958",
+            "filmDir": "Robert Wise",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/3/5/4/9/33549-i-want-to-live--0-230-0-345-crop.jpg?v=efb2731bc1",
+            "ratings": {
+                "ericrohmer_": 1,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 1.3333334,
+            "variance": 0.3333333
+        },
+        {
+            "title": "In Love and War",
+            "filmUrl": "in-love-and-war-1958",
+            "filmYear": "1958",
+            "filmDir": "Philip Dunne",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/0/8/3/6/2/108362-in-love-and-war-0-230-0-345-crop.jpg?v=7b2bdddeb5",
+            "ratings": {
+                "ericrohmer_": 0.5,
+                "jacquesrivette_": 0.5,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "The Last Hurrah",
+            "filmUrl": "the-last-hurrah",
+            "filmYear": "1958",
+            "filmDir": "John Ford",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/9/9/2/0/9920-the-last-hurrah-0-230-0-345-crop.jpg?v=b018e46181",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 2
+            },
+            "avgRating": 2,
+            "variance": 0
+        },
+        {
+            "title": "The Cheaters",
+            "filmUrl": "the-cheaters",
+            "filmYear": "1958",
+            "filmDir": "Marcel Carné",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/4/3/5/2435-the-cheaters-0-230-0-345-crop.jpg?v=54989d87ab",
+            "ratings": {
+                "ericrohmer_": 1,
+                "jacquesrivette_": 1,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 1,
+            "variance": 0
+        },
+        {
+            "title": "The Old Man and the Sea",
+            "filmUrl": "the-old-man-and-the-sea",
+            "filmYear": "1958",
+            "filmDir": "John Sturges",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/5/4/0/3/45403-the-old-man-and-the-sea-0-230-0-345-crop.jpg?v=3ce566d34f",
+            "ratings": {
+                "ericrohmer_": 0.5,
+                "jacquesrivette_": 0.5,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "Life Together",
+            "filmUrl": "life-together",
+            "filmYear": "1958",
+            "filmDir": "Clément Duhour",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/4/9/5/5/64955-life-together-0-230-0-345-crop.jpg?v=d9a50c21a2",
+            "ratings": {
+                "ericrohmer_": 3,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 2
+            },
+            "avgRating": 2.3333333,
+            "variance": 0.3333333
+        },
+        {
+            "title": "End of Desire",
+            "filmUrl": "end-of-desire",
+            "filmYear": "1958",
+            "filmDir": "Alexandre Astruc",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/2/4/9/9/2/124992-end-of-desire-0-230-0-345-crop.jpg?v=fdd735b395",
+            "ratings": {
+                "ericrohmer_": 3,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 2.6666667,
+            "variance": 0.3333333
+        },
+        {
+            "title": "God's Little Acre",
+            "filmUrl": "gods-little-acre",
+            "filmYear": "1958",
+            "filmDir": "Anthony Mann",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/7/3/3/7/27337-god-s-little-acre-0-230-0-345-crop.jpg?v=23552f9202",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 1,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 1.1666666,
+            "variance": 0.5833334
+        },
+        {
+            "title": "Love Is My Profession",
+            "filmUrl": "love-is-my-profession",
+            "filmYear": "1958",
+            "filmDir": "Claude Autant-Lara",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/0/2/1/8/10218-love-is-my-profession-0-230-0-345-crop.jpg?v=669c92a2c1",
+            "ratings": {
+                "ericrohmer_": 0.5,
+                "jacquesrivette_": 1,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 0.8333333,
+            "variance": 0.08333333
+        },
+        {
+            "title": "Wind Across the Everglades",
+            "filmUrl": "wind-across-the-everglades",
+            "filmYear": "1958",
+            "filmDir": "Nicholas Ray",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/7/0/1/3/67013-wind-across-the-everglades-0-230-0-345-crop.jpg?v=2ae7dc7e0b",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 2
+            },
+            "avgRating": 2.3333333,
+            "variance": 0.3333333
+        },
+        {
+            "title": "That Night",
+            "filmUrl": "that-night-1958-1",
+            "filmYear": "1958",
+            "filmDir": "Maurice Cazeneuve",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/2/6/7/6/2/226762-cette-nuit-la--0-230-0-345-crop.jpg?v=76ad43ef17",
+            "ratings": {
+                "ericrohmer_": 1,
+                "jacquesrivette_": 0.5,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 0.8333333,
+            "variance": 0.08333333
+        },
+        {
+            "title": "Cat on a Hot Tin Roof",
+            "filmUrl": "cat-on-a-hot-tin-roof",
+            "filmYear": "1958",
+            "filmDir": "Richard Brooks",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/1/7/9/5/51795-cat-on-a-hot-tin-roof-0-230-0-345-crop.jpg?v=4a206ceb1f",
+            "ratings": {
+                "ericrohmer_": 0.5,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 1,
+            "variance": 0.75
+        },
+        {
+            "title": "The Naked and the Dead",
+            "filmUrl": "the-naked-and-the-dead",
+            "filmYear": "1958",
+            "filmDir": "Raoul Walsh",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/1/9/8/4/21984-the-naked-and-the-dead-0-230-0-345-crop.jpg?v=2076eb14f3",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 2
+            },
+            "avgRating": 2,
+            "variance": 0
+        },
+        {
+            "title": "Rock-a-Bye Baby",
+            "filmUrl": "rock-a-bye-baby",
+            "filmYear": "1958",
+            "filmDir": "Frank Tashlin",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/2/5/0/4/22504-rock-a-bye-baby-0-230-0-345-crop.jpg?v=d3d95fdab6",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 2
+            },
+            "avgRating": 2,
+            "variance": 0
+        },
+        {
+            "title": "A Time to Love and a Time to Die",
+            "filmUrl": "a-time-to-love-and-a-time-to-die",
+            "filmYear": "1958",
+            "filmDir": "Douglas Sirk",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/7/0/5/1/9/70519-a-time-to-love-and-a-time-to-die-0-230-0-345-crop.jpg?v=187f8512c0",
+            "ratings": {
+                "ericrohmer_": 3,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "Man of the West",
+            "filmUrl": "man-of-the-west",
+            "filmYear": "1958",
+            "filmDir": "Anthony Mann",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/2/9/0/0/42900-man-of-the-west-0-230-0-345-crop.jpg?v=c20e0cc9aa",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 4,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 3,
+            "variance": 1
+        },
+        {
+            "title": "The Vikings",
+            "filmUrl": "the-vikings",
+            "filmYear": "1958",
+            "filmDir": "Richard Fleischer",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/2/4/2/7/22427-the-vikings-0-230-0-345-crop.jpg?v=25592e9dad",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 1.6666666,
+            "variance": 0.3333333
+        },
+        {
+            "title": "Every Day Has Its Secret",
+            "filmUrl": "every-day-has-its-secret",
+            "filmYear": "1958",
+            "filmDir": "Claude Boissol",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/6/6/5/6/4/466564-chaque-jour-a-son-secret-0-230-0-345-crop.jpg?v=18a58893e2",
+            "ratings": {
+                "ericrohmer_": 0.5,
+                "jacquesrivette_": 0.5,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "Girl and the River",
+            "filmUrl": "girl-and-the-river",
+            "filmYear": "1958",
+            "filmDir": "François Villiers",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/4/2/9/4/6/142946-girl-and-the-river-0-230-0-345-crop.jpg?v=52d985c529",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 2.3333333,
+            "variance": 0.3333333
+        },
+        {
+            "title": "Handsome Serge",
+            "filmUrl": "handsome-serge",
+            "filmYear": "1958",
+            "filmDir": "Claude Chabrol",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/8/7/9/0/48790-le-beau-serge-0-230-0-345-crop.jpg?v=47a3c8aefb",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 2
+            },
+            "avgRating": 2.3333333,
+            "variance": 0.3333333
+        },
+        {
+            "title": "The Key",
+            "filmUrl": "the-key-1958",
+            "filmYear": "1958",
+            "filmDir": "Carol Reed",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/8/3/0/2/3/83023-the-key-0-230-0-345-crop.jpg?v=300b4c011e",
+            "ratings": {
+                "ericrohmer_": 0.5,
+                "jacquesrivette_": 1,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 0.8333333,
+            "variance": 0.08333333
+        },
+        {
+            "title": "Gigi",
+            "filmUrl": "gigi",
+            "filmYear": "1958",
+            "filmDir": "Vincente Minnelli",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/1/0/8/8/41088-gigi-0-230-0-345-crop.jpg?v=6648be6f00",
+            "ratings": {
+                "ericrohmer_": 1,
+                "jacquesrivette_": 0.5,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 0.6666667,
+            "variance": 0.08333333
+        },
+        {
+            "title": "Vertigo",
+            "filmUrl": "vertigo",
+            "filmYear": "1958",
+            "filmDir": "Alfred Hitchcock",
+            "filmPoster": "https://a.ltrbxd.com/resized/sm/upload/q9/3o/ng/om/obhM86qyv8RsE69XSMTtT9FdE0b-0-230-0-345-crop.jpg?v=1403a5e003",
+            "ratings": {
+                "ericrohmer_": 4,
+                "jacquesrivette_": 4,
+                "jeanluc_godard": 4
+            },
+            "avgRating": 4,
+            "variance": 0
+        },
+        {
+            "title": "Goha",
+            "filmUrl": "goha",
+            "filmYear": "1958",
+            "filmDir": "Jacques Baratier",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/4/2/9/4/8/142948-goha-0-230-0-345-crop.jpg?v=bb122d9fce",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 2.6666667,
+            "variance": 0.3333333
+        },
+        {
+            "title": "From Hell to Texas",
+            "filmUrl": "from-hell-to-texas",
+            "filmYear": "1958",
+            "filmDir": "Henry Hathaway",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/8/5/2/3/8523-from-hell-to-texas-0-230-0-345-crop.jpg?v=3dd2a8557f",
+            "ratings": {
+                "ericrohmer_": 1,
+                "jacquesrivette_": 1,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 1,
+            "variance": 0
+        },
+        {
+            "title": "The Rickshaw Man",
+            "filmUrl": "the-rickshaw-man",
+            "filmYear": "1958",
+            "filmDir": "Hiroshi Inagaki",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/2/0/0/2/22002-the-rickshaw-man-0-230-0-345-crop.jpg?v=5aa39c5c34",
+            "ratings": {
+                "ericrohmer_": 0.5,
+                "jacquesrivette_": 0.5,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "Brink of Life",
+            "filmUrl": "brink-of-life",
+            "filmYear": "1958",
+            "filmDir": "Ingmar Bergman",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/7/4/9/5749-brink-of-life-0-230-0-345-crop.jpg?v=9eee0a72a3",
+            "ratings": {
+                "ericrohmer_": 3,
+                "jacquesrivette_": 4,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 3.3333333,
+            "variance": 0.3333333
+        },
+        {
+            "title": "Touch of Evil",
+            "filmUrl": "touch-of-evil",
+            "filmYear": "1958",
+            "filmDir": "Orson Welles",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/1/0/1/8/51018-touch-of-evil-0-230-0-345-crop.jpg?v=279a6824a4",
+            "ratings": {
+                "ericrohmer_": 3,
+                "jacquesrivette_": 4,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 3.3333333,
+            "variance": 0.3333333
+        },
+        {
+            "title": "South Pacific",
+            "filmUrl": "south-pacific",
+            "filmYear": "1958",
+            "filmDir": "Joshua Logan",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/1/0/5/2/41052-south-pacific-0-230-0-345-crop.jpg?v=e6771e67c9",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 1.5,
+            "variance": 0.75
+        },
+        {
+            "title": "The Long, Hot Summer",
+            "filmUrl": "the-long-hot-summer",
+            "filmYear": "1958",
+            "filmDir": "Martin Ritt",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/4/7/9/8/24798-the-long-hot-summer-0-230-0-345-crop.jpg?v=d4e78060cc",
+            "ratings": {
+                "ericrohmer_": 1,
+                "jacquesrivette_": 1,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 1,
+            "variance": 0
+        },
+        {
+            "title": "The Quiet American",
+            "filmUrl": "the-quiet-american-1958",
+            "filmYear": "1958",
+            "filmDir": "Joseph L. Mankiewicz",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/7/2/1/8/6/72186-the-quiet-american-0-230-0-345-crop.jpg?v=e8259e2923",
+            "ratings": {
+                "ericrohmer_": 4,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 4
+            },
+            "avgRating": 3.6666667,
+            "variance": 0.3333333
+        },
+        {
+            "title": "The Philosopher's Stone",
+            "filmUrl": "the-philosophers-stone",
+            "filmYear": "1958",
+            "filmDir": "Satyajit Ray",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/2/4/9/9/1/124991-the-philosopher-s-stone-0-230-0-345-crop.jpg?v=7897bf3726",
+            "ratings": {
+                "ericrohmer_": 0.5,
+                "jacquesrivette_": 0.5,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "Legend of the Lost",
+            "filmUrl": "legend-of-the-lost",
+            "filmYear": "1957",
+            "filmDir": "Henry Hathaway",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/5/7/4/9/35749-legend-of-the-lost-0-230-0-345-crop.jpg?v=fc597421bf",
+            "ratings": {
+                "ericrohmer_": 1,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 1.3333334,
+            "variance": 0.3333333
+        },
+        {
+            "title": "Baby Face Nelson",
+            "filmUrl": "baby-face-nelson",
+            "filmYear": "1957",
+            "filmDir": "Don Siegel",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/8/3/2/8/28328-baby-face-nelson-0-230-0-345-crop.jpg?v=2340d76aa7",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 2
+            },
+            "avgRating": 2.3333333,
+            "variance": 0.3333333
+        },
+        {
+            "title": "The Cranes Are Flying",
+            "filmUrl": "the-cranes-are-flying",
+            "filmYear": "1957",
+            "filmDir": "Mikhail Kalatozov",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/6/2/0/1/26201-the-cranes-are-flying-0-230-0-345-crop.jpg?v=336132e69d",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 1,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 1.3333334,
+            "variance": 0.3333333
+        },
+        {
+            "title": "Jet Pilot",
+            "filmUrl": "jet-pilot",
+            "filmYear": "1957",
+            "filmDir": "Josef von Sternberg",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/2/0/9/9/12099-jet-pilot-0-230-0-345-crop.jpg?v=2ed6f913b4",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 1,
+                "jeanluc_godard": 2
+            },
+            "avgRating": 1.6666666,
+            "variance": 0.3333333
+        },
+        {
+            "title": "Run of the Arrow",
+            "filmUrl": "run-of-the-arrow",
+            "filmYear": "1957",
+            "filmDir": "Samuel Fuller",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/8/8/2/5/28825-run-of-the-arrow-0-230-0-345-crop.jpg?v=fe560362ca",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 2.6666667,
+            "variance": 0.3333333
+        },
+        {
+            "title": "Wild Strawberries",
+            "filmUrl": "wild-strawberries",
+            "filmYear": "1957",
+            "filmDir": "Ingmar Bergman",
+            "filmPoster": "https://a.ltrbxd.com/resized/sm/upload/7y/dg/6m/fs/je9lvVfSihc4L4yMNmw0rg6oks0-0-230-0-345-crop.jpg?v=670240b18f",
+            "ratings": {
+                "ericrohmer_": 4,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 4
+            },
+            "avgRating": 3.6666667,
+            "variance": 0.3333333
+        },
+        {
+            "title": "Lost Children",
+            "filmUrl": "lost-children-1957",
+            "filmYear": "1957",
+            "filmDir": "Miloš Makovec",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/4/2/9/2/6/142926-lost-children-0-230-0-345-crop.jpg?v=e58d5358f0",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 2
+            },
+            "avgRating": 2,
+            "variance": 0
+        },
+        {
+            "title": "The True Story of Jesse James",
+            "filmUrl": "the-true-story-of-jesse-james",
+            "filmYear": "1957",
+            "filmDir": "Nicholas Ray",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/9/7/9/2/69792-the-true-story-of-jesse-james-0-230-0-345-crop.jpg?v=403beddf67",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 4,
+                "jeanluc_godard": 2
+            },
+            "avgRating": 2.6666667,
+            "variance": 1.3333333
+        },
+        {
+            "title": "Tea and Sympathy",
+            "filmUrl": "tea-and-sympathy",
+            "filmYear": "1956",
+            "filmDir": "Vincente Minnelli",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/7/2/8/3728-tea-and-sympathy-0-230-0-345-crop.jpg?v=2e85f4b96f",
+            "ratings": {
+                "ericrohmer_": 1,
+                "jacquesrivette_": 1,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 0.8333333,
+            "variance": 0.08333333
+        },
+        {
+            "title": "The Proud Ones",
+            "filmUrl": "the-proud-ones",
+            "filmYear": "1956",
+            "filmDir": "Robert D. Webb",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/8/6/6/9/5/86695-the-proud-ones-0-230-0-345-crop.jpg?v=34969123bb",
+            "ratings": {
+                "ericrohmer_": 0.5,
+                "jacquesrivette_": 0.5,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "The Last Hunt",
+            "filmUrl": "the-last-hunt",
+            "filmYear": "1956",
+            "filmDir": "Richard Brooks",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/9/9/5/2/5/99525-the-last-hunt-0-230-0-345-crop.jpg?v=c65f5ee460",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 2,
+            "variance": 1
+        },
+        {
+            "title": "The Unknown Soldier",
+            "filmUrl": "the-unknown-soldier",
+            "filmYear": "1955",
+            "filmDir": "Edvin Laine",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/7/8/9/4/27894-the-unknown-soldier-0-230-0-345-crop.jpg?v=2e269715ee",
+            "ratings": {
+                "ericrohmer_": 1,
+                "jacquesrivette_": 1,
+                "jeanluc_godard": 0.5
+            },
+            "avgRating": 0.8333333,
+            "variance": 0.08333333
+        },
+        {
+            "title": "The View from Pompey's Head",
+            "filmUrl": "the-view-from-pompeys-head",
+            "filmYear": "1955",
+            "filmDir": "Philip Dunne",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/7/9/4/5/1/179451-the-view-from-pompey-s-head-0-230-0-345-crop.jpg?v=b88b48d183",
+            "ratings": {
+                "ericrohmer_": 0.5,
+                "jacquesrivette_": 0.5,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 0.6666667,
+            "variance": 0.08333333
+        },
+        {
+            "title": "Dreams",
+            "filmUrl": "dreams-1955",
+            "filmYear": "1955",
+            "filmDir": "Ingmar Bergman",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/8/0/1/2/1/80121-dreams-0-230-0-345-crop.jpg?v=0e41bbe271",
+            "ratings": {
+                "ericrohmer_": 4,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 3.3333333,
+            "variance": 0.3333333
+        },
+        {
+            "title": "The Cobweb",
+            "filmUrl": "the-cobweb",
+            "filmYear": "1955",
+            "filmDir": "Vincente Minnelli",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/7/8/1/9/1/78191-the-cobweb-0-230-0-345-crop.jpg?v=4af574483f",
+            "ratings": {
+                "ericrohmer_": 1,
+                "jacquesrivette_": 1,
+                "jeanluc_godard": 1
+            },
+            "avgRating": 1,
+            "variance": 0
+        },
+        {
+            "title": "Ugetsu",
+            "filmUrl": "ugetsu",
+            "filmYear": "1953",
+            "filmDir": "Kenji Mizoguchi",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/2/8/8/4/42884-ugetsu-0-230-0-345-crop.jpg?v=f955526e53",
+            "ratings": {
+                "ericrohmer_": 4,
+                "jacquesrivette_": 4,
+                "jeanluc_godard": 4
+            },
+            "avgRating": 4,
+            "variance": 0
+        },
+        {
+            "title": "Prison",
+            "filmUrl": "prison-1949",
+            "filmYear": "1949",
+            "filmDir": "Ingmar Bergman",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/9/0/5/6/7/90567-prison-0-230-0-345-crop.jpg?v=dc8d16bfcb",
+            "ratings": {
+                "ericrohmer_": 3,
+                "jacquesrivette_": 3,
+                "jeanluc_godard": 2
+            },
+            "avgRating": 2.6666667,
+            "variance": 0.3333333
+        },
+        {
+            "title": "Ivan the Terrible, Part II: The Boyars' Plot",
+            "filmUrl": "ivan-the-terrible-part-ii-the-boyars-plot",
+            "filmYear": "1946",
+            "filmDir": "Sergei Eisenstein",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/2/0/0/5/22005-ivan-the-terrible-part-ii-the-boyars-plot-0-230-0-345-crop.jpg?v=df0c6bb808",
+            "ratings": {
+                "ericrohmer_": 4,
+                "jacquesrivette_": 4,
+                "jeanluc_godard": 4
+            },
+            "avgRating": 4,
+            "variance": 0
+        },
+        {
+            "title": "Obsession",
+            "filmUrl": "obsession-1943",
+            "filmYear": "1943",
+            "filmDir": "Luchino Visconti",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/8/9/3/1/48931-ossessione-0-230-0-345-crop.jpg?v=6c13948617",
+            "ratings": {
+                "ericrohmer_": 2,
+                "jacquesrivette_": 2,
+                "jeanluc_godard": 2
+            },
+            "avgRating": 2,
+            "variance": 0
+        },
+        {
+            "title": "Grand Illusion",
+            "filmUrl": "grand-illusion",
+            "filmYear": "1937",
+            "filmDir": "Jean Renoir",
+            "filmPoster": "https://a.ltrbxd.com/resized/sm/upload/99/0o/ps/jk/lWg41zE0FVixkNsFgxnlRyvDYv9-0-230-0-345-crop.jpg?v=ac3af61682",
+            "ratings": {
+                "ericrohmer_": 4,
+                "jacquesrivette_": 4,
+                "jeanluc_godard": 3
+            },
+            "avgRating": 3.6666667,
+            "variance": 0.3333333
+        }
+    ],
+    "users": [
         {
             "username": "jeanluc_godard",
             "displayname": "Jean-Luc Godard",
             "avatarLink": "https://a.ltrbxd.com/resized/avatar/upload/1/0/4/2/7/0/7/8/shard/avtr-0-48-0-48-crop.jpg?v=236a1c5a69"
+        },
+        {
+            "username": "jacquesrivette_",
+            "displayname": "Jacques Rivette",
+            "avatarLink": "https://a.ltrbxd.com/resized/avatar/upload/1/1/5/9/6/5/9/0/shard/avtr-0-48-0-48-crop.jpg?v=a8617dd90e"
+        },
+        {
+            "username": "ericrohmer_",
+            "displayname": "Éric Rohmer",
+            "avatarLink": "https://a.ltrbxd.com/resized/avatar/upload/1/0/4/3/8/4/3/1/shard/avtr-0-48-0-48-crop.jpg?v=fa47bf8df3"
         }
     ]
 }

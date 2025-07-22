@@ -1,991 +1,1914 @@
 {
     "mutualFilms": [
         {
-            "title": "Rendezvous",
-            "filmUrl": "rendezvous-1960",
-            "filmYear": "1960",
-            "filmDir": "Frédéric Dard",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/9/1/0/3/4/491034-rendezvous-0-230-0-345-crop.jpg?v=0c48d34292",
+            "title": "S.O.S. Noronha",
+            "filmUrl": "sos-noronha",
+            "filmYear": "1957",
+            "filmDir": "Georges Rouquier",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/9/0/2/1/4/490214-s-o-s-noronha-0-230-0-345-crop.jpg?v=f93408dc46",
             "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "Who Was That Lady?",
-            "filmUrl": "who-was-that-lady",
-            "filmYear": "1960",
-            "filmDir": "George Sidney",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/8/5/2/7/2/85272-who-was-that-lady--0-230-0-345-crop.jpg?v=7cbd802743",
-            "ratings": {
-                "jeanluc_godard": 1,
-                "luc_moullet": 1
-            },
-            "avgRating": 1,
-            "variance": 0
-        },
-        {
-            "title": "Cash McCall",
-            "filmUrl": "cash-mccall",
-            "filmYear": "1960",
-            "filmDir": "Joseph Pevney",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/2/0/9/2/22092-cash-mccall-0-230-0-345-crop.jpg?v=0bfa692f88",
-            "ratings": {
-                "jeanluc_godard": 1,
-                "luc_moullet": 1
-            },
-            "avgRating": 1,
-            "variance": 0
-        },
-        {
-            "title": "Legions of the Nile",
-            "filmUrl": "legions-of-the-nile",
-            "filmYear": "1959",
-            "filmDir": "Vittorio Cottafavi",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/2/4/2/8/2/124282-legions-of-the-nile-0-230-0-345-crop.jpg?v=5b76e5df4a",
-            "ratings": {
-                "jeanluc_godard": 1,
-                "luc_moullet": 3
-            },
-            "avgRating": 2,
-            "variance": 2
-        },
-        {
-            "title": "Two Men in Manhattan",
-            "filmUrl": "two-men-in-manhattan",
-            "filmYear": "1959",
-            "filmDir": "Jean-Pierre Melville",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/4/8/3/2/34832-two-men-in-manhattan-0-230-0-345-crop.jpg?v=4502687408",
-            "ratings": {
-                "jeanluc_godard": 3,
-                "luc_moullet": 2
-            },
-            "avgRating": 2.5,
-            "variance": 0.5
-        },
-        {
-            "title": "SOS Pacific",
-            "filmUrl": "sos-pacific",
-            "filmYear": "1959",
-            "filmDir": "Guy Green",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/7/4/9/0/57490-sos-pacific-0-230-0-345-crop.jpg?v=432851af3e",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "The Ambitious One",
-            "filmUrl": "the-ambitious-one",
-            "filmYear": "1959",
-            "filmDir": "Yves Allégret",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/5/4/7/7/5/154775-the-ambitious-one-0-230-0-345-crop.jpg?v=e3482624af",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "European Nights",
-            "filmUrl": "european-nights",
-            "filmYear": "1959",
-            "filmDir": "Alessandro Blasetti",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/9/5/9/3/3/295933-european-nights-0-230-0-345-crop.jpg?v=a877ab30ef",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "Way of Youth",
-            "filmUrl": "way-of-youth",
-            "filmYear": "1959",
-            "filmDir": "Michel Boisrond",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/9/3/7/8/29378-way-of-youth-0-230-0-345-crop.jpg?v=37e85b5e51",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "Anatomy of a Murder",
-            "filmUrl": "anatomy-of-a-murder",
-            "filmYear": "1959",
-            "filmDir": "Otto Preminger",
-            "filmPoster": "https://a.ltrbxd.com/resized/sm/upload/v9/63/dv/fd/kDFnM2zlHZirR2ItTo56lyrxuAS-0-230-0-345-crop.jpg?v=42df92615a",
-            "ratings": {
-                "jeanluc_godard": 1,
-                "luc_moullet": 4
-            },
-            "avgRating": 2.5,
-            "variance": 4.5
-        },
-        {
-            "title": "The Horse Soldiers",
-            "filmUrl": "the-horse-soldiers",
-            "filmYear": "1959",
-            "filmDir": "John Ford",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/0/8/5/3/40853-the-horse-soldiers-0-230-0-345-crop.jpg?v=88494f37b5",
-            "ratings": {
-                "jeanluc_godard": 2,
-                "luc_moullet": 3
-            },
-            "avgRating": 2.5,
-            "variance": 0.5
-        },
-        {
-            "title": "Witness in the City",
-            "filmUrl": "witness-in-the-city",
-            "filmYear": "1959",
-            "filmDir": "Édouard Molinaro",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/4/4/3/1/64431-witness-in-the-city-0-230-0-345-crop.jpg?v=bd3bdda81a",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "Checkerboard",
-            "filmUrl": "checkerboard",
-            "filmYear": "1959",
-            "filmDir": "Claude Bernard-Aubert",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/7/0/9/8/2/70982-checkerboard-0-230-0-345-crop.jpg?v=32ed36459e",
-            "ratings": {
-                "jeanluc_godard": 2,
-                "luc_moullet": 1
-            },
-            "avgRating": 1.5,
-            "variance": 0.5
-        },
-        {
-            "title": "The Road to Shame",
-            "filmUrl": "the-road-to-shame",
-            "filmYear": "1959",
-            "filmDir": "Édouard Molinaro",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/9/4/9/9/1/194991-the-road-to-shame-0-230-0-345-crop.jpg?v=1bac5e0d8a",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "Fate of a Man",
-            "filmUrl": "fate-of-a-man",
-            "filmYear": "1959",
-            "filmDir": "Sergey Bondarchuk",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/7/4/7/2/8/74728-fate-of-a-man-0-230-0-345-crop.jpg?v=2388c07455",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 1
-            },
-            "avgRating": 0.75,
-            "variance": 0.125
-        },
-        {
-            "title": "A Simple Story",
-            "filmUrl": "a-simple-story-1959",
-            "filmYear": "1959",
-            "filmDir": "Marcel Hanoun",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/4/5/5/1/3/145513-a-simple-story-0-230-0-345-crop.jpg?v=9bbeae7f2d",
-            "ratings": {
-                "jeanluc_godard": 1,
-                "luc_moullet": 1
-            },
-            "avgRating": 1,
-            "variance": 0
-        },
-        {
-            "title": "Blonde in a White Car",
-            "filmUrl": "blonde-in-a-white-car",
-            "filmYear": "1959",
-            "filmDir": "Robert Hossein",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/7/9/1/2/8/79128-blonde-in-a-white-car-0-230-0-345-crop.jpg?v=dc8485a526",
-            "ratings": {
-                "jeanluc_godard": 1,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.75,
-            "variance": 0.125
-        },
-        {
-            "title": "Head Against the Wall",
-            "filmUrl": "head-against-the-wall",
-            "filmYear": "1959",
-            "filmDir": "Georges Franju",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/3/8/2/1/63821-head-against-the-wall-0-230-0-345-crop.jpg?v=9cba4f6b71",
-            "ratings": {
-                "jeanluc_godard": 3,
-                "luc_moullet": 2
-            },
-            "avgRating": 2.5,
-            "variance": 0.5
-        },
-        {
-            "title": "Some Like It Hot",
-            "filmUrl": "some-like-it-hot",
-            "filmYear": "1959",
-            "filmDir": "Billy Wilder",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/1/8/1/7/51817-some-like-it-hot-0-230-0-345-crop.jpg?v=fc0b1b87eb",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 3
-            },
-            "avgRating": 1.75,
-            "variance": 3.125
-        },
-        {
-            "title": "Bobosse",
-            "filmUrl": "bobosse",
-            "filmYear": "1959",
-            "filmDir": "Étienne Périer",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/9/0/6/8/7/490687-bobosse-0-230-0-345-crop.jpg?v=fcee85ae30",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "Imitation of Life",
-            "filmUrl": "imitation-of-life-1959",
-            "filmYear": "1959",
-            "filmDir": "Douglas Sirk",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/9/3/1/2/29312-imitation-of-life-0-230-0-345-crop.jpg?v=3ca7c6cf64",
-            "ratings": {
-                "jeanluc_godard": 2,
-                "luc_moullet": 3
-            },
-            "avgRating": 2.5,
-            "variance": 0.5
-        },
-        {
-            "title": "I, a Negro",
-            "filmUrl": "i-a-negro",
-            "filmYear": "1959",
-            "filmDir": "Jean Rouch",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/3/1/631-moi-un-noir-0-230-0-345-crop.jpg?v=1cb8c02fa7",
-            "ratings": {
-                "jeanluc_godard": 3,
-                "luc_moullet": 3
-            },
-            "avgRating": 3,
-            "variance": 0
-        },
-        {
-            "title": "The Cousins",
-            "filmUrl": "the-cousins-1959",
-            "filmYear": "1959",
-            "filmDir": "Claude Chabrol",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/0/3/0/5/50305-les-cousins-0-230-0-345-crop.jpg?v=9050fea467",
-            "ratings": {
-                "jeanluc_godard": 3,
-                "luc_moullet": 3
-            },
-            "avgRating": 3,
-            "variance": 0
-        },
-        {
-            "title": "Guinguette",
-            "filmUrl": "guinguette",
-            "filmYear": "1959",
-            "filmDir": "Jean Delannoy",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/5/8/8/2/7/358827-guinguette-0-230-0-345-crop.jpg?v=03ac027c2d",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 1
-            },
-            "avgRating": 0.75,
-            "variance": 0.125
-        },
-        {
-            "title": "Venetian Honeymoon",
-            "filmUrl": "venetian-honeymoon",
-            "filmYear": "1959",
-            "filmDir": "Alberto Cavalcanti",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/5/5/2/1/3/255213-venetian-honeymoon-0-230-0-345-crop.jpg?v=29e27544ed",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "Marie-Octobre",
-            "filmUrl": "marie-octobre",
-            "filmYear": "1959",
-            "filmDir": "Julien Duvivier",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/3/2/1/8/63218-marie-octobre-0-230-0-345-crop.jpg?v=61b157da97",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "Asphalt",
-            "filmUrl": "asphalt-1959",
-            "filmYear": "1959",
-            "filmDir": "Hervé Bromberger",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/9/4/0/9/2/294092-asphalte-0-230-0-345-crop.jpg?v=cf64249d34",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "The Hanging Tree",
-            "filmUrl": "the-hanging-tree",
-            "filmYear": "1959",
-            "filmDir": "Delmer Daves",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/2/1/1/4/22114-the-hanging-tree-0-230-0-345-crop.jpg?v=f3ee4ed7f6",
-            "ratings": {
-                "jeanluc_godard": 1,
-                "luc_moullet": 1
-            },
-            "avgRating": 1,
-            "variance": 0
-        },
-        {
-            "title": "Women Are Weak",
-            "filmUrl": "women-are-weak",
-            "filmYear": "1959",
-            "filmDir": "Michel Boisrond",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/8/8/3/9/9/188399-women-are-weak-0-230-0-345-crop.jpg?v=4b2806114b",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 1
-            },
-            "avgRating": 0.75,
-            "variance": 0.125
-        },
-        {
-            "title": "The Devil's Blast",
-            "filmUrl": "the-devils-blast",
-            "filmYear": "1959",
-            "filmDir": "Haroun Tazieff",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/3/8/3/3/7/138337-the-devil-s-blast-0-230-0-345-crop.jpg?v=b0aae4dab9",
-            "ratings": {
-                "jeanluc_godard": 3,
-                "luc_moullet": 2
-            },
-            "avgRating": 2.5,
-            "variance": 0.5
-        },
-        {
-            "title": "The Wreckers",
-            "filmUrl": "the-wreckers-1959",
-            "filmYear": "1959",
-            "filmDir": "Charles Brabant",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/5/7/4/5/5/357455-the-wreckers-0-230-0-345-crop.jpg?v=1fc52a7c93",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "The Law",
-            "filmUrl": "the-law",
-            "filmYear": "1959",
-            "filmDir": "Jules Dassin",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/7/1/1/8/67118-the-law-0-230-0-345-crop.jpg?v=2431407f64",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "The Magician",
-            "filmUrl": "the-magician-1958",
-            "filmYear": "1958",
-            "filmDir": "Ingmar Bergman",
-            "filmPoster": "https://a.ltrbxd.com/resized/sm/upload/fm/uq/wi/sj/rmdPJfwTUUjNW5FhuTxYkSKMfaO-0-230-0-345-crop.jpg?v=71171a9798",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 1
-            },
-            "avgRating": 0.75,
-            "variance": 0.125
-        },
-        {
-            "title": "Rally 'Round the Flag, Boys!",
-            "filmUrl": "rally-round-the-flag-boys",
-            "filmYear": "1958",
-            "filmDir": "Leo McCarey",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/8/9/3/2/4/89324-rally-round-the-flag-boys--0-230-0-345-crop.jpg?v=baee382376",
-            "ratings": {
-                "jeanluc_godard": 3,
-                "luc_moullet": 3
-            },
-            "avgRating": 3,
-            "variance": 0
-        },
-        {
-            "title": "A Woman Like Satan",
-            "filmUrl": "a-woman-like-satan",
-            "filmYear": "1958",
-            "filmDir": "Julien Duvivier",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/8/5/1/9/8519-a-woman-like-satan-0-230-0-345-crop.jpg?v=0f4287b2d5",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 1
-            },
-            "avgRating": 0.75,
-            "variance": 0.125
-        },
-        {
-            "title": "Separate Tables",
-            "filmUrl": "separate-tables",
-            "filmYear": "1958",
-            "filmDir": "Delbert Mann",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/1/9/8/9/21989-separate-tables-0-230-0-345-crop.jpg?v=d49a7d620f",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "The Inn of the Sixth Happiness",
-            "filmUrl": "the-inn-of-the-sixth-happiness",
-            "filmYear": "1958",
-            "filmDir": "Mark Robson",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/7/0/2/7/27027-the-inn-of-the-sixth-happiness-0-230-0-345-crop.jpg?v=274a007cdf",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "Tempest",
-            "filmUrl": "tempest-1958",
-            "filmYear": "1958",
-            "filmDir": "Alberto Lattuada",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/5/8/7/6/3/158763-tempest-0-230-0-345-crop.jpg?v=9cd896ea6d",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "I Want to Live!",
-            "filmUrl": "i-want-to-live",
-            "filmYear": "1958",
-            "filmDir": "Robert Wise",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/3/5/4/9/33549-i-want-to-live--0-230-0-345-crop.jpg?v=efb2731bc1",
-            "ratings": {
-                "jeanluc_godard": 1,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.75,
-            "variance": 0.125
-        },
-        {
-            "title": "Bell, Book and Candle",
-            "filmUrl": "bell-book-and-candle",
-            "filmYear": "1958",
-            "filmDir": "Richard Quine",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/0/6/0/7/50607-bell-book-and-candle-0-230-0-345-crop.jpg?v=274306b302",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 1
-            },
-            "avgRating": 0.75,
-            "variance": 0.125
-        },
-        {
-            "title": "Tarawa Beachhead",
-            "filmUrl": "tarawa-beachhead",
-            "filmYear": "1958",
-            "filmDir": "Paul Wendkos",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/2/0/5/5/1/120551-tarawa-beachhead-0-230-0-345-crop.jpg?v=89e28051df",
-            "ratings": {
-                "jeanluc_godard": 2,
-                "luc_moullet": 2
-            },
-            "avgRating": 2,
-            "variance": 0
-        },
-        {
-            "title": "In Love and War",
-            "filmUrl": "in-love-and-war-1958",
-            "filmYear": "1958",
-            "filmDir": "Philip Dunne",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/0/8/3/6/2/108362-in-love-and-war-0-230-0-345-crop.jpg?v=7b2bdddeb5",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 1
-            },
-            "avgRating": 0.75,
-            "variance": 0.125
-        },
-        {
-            "title": "The Sheriff of Fractured Jaw",
-            "filmUrl": "the-sheriff-of-fractured-jaw",
-            "filmYear": "1958",
-            "filmDir": "Raoul Walsh",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/7/2/9/6/27296-the-sheriff-of-fractured-jaw-0-230-0-345-crop.jpg?v=4771563f58",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 2
+                "andre_bazin_": 2,
+                "franco_truffaut": 0.5
             },
             "avgRating": 1.25,
             "variance": 1.125
         },
         {
-            "title": "Torpedo Run",
-            "filmUrl": "torpedo-run",
-            "filmYear": "1958",
-            "filmDir": "Joseph Pevney",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/9/4/4/2/59442-torpedo-run-0-230-0-345-crop.jpg?v=b920f237d6",
+            "title": "No Sun in Venice",
+            "filmUrl": "no-sun-in-venice",
+            "filmYear": "1957",
+            "filmDir": "Roger Vadim",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/3/2/9/3/4/132934-no-sun-in-venice-0-230-0-345-crop.jpg?v=101af0c09c",
             "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "Love in the Afternoon",
+            "filmUrl": "love-in-the-afternoon",
+            "filmYear": "1957",
+            "filmDir": "Billy Wilder",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/0/4/4/1/40441-love-in-the-afternoon-0-230-0-345-crop.jpg?v=5076cdaddc",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.75,
+            "variance": 0.125
+        },
+        {
+            "title": "The Adventures of Arsène Lupin",
+            "filmUrl": "the-adventures-of-arsene-lupin-1957",
+            "filmYear": "1957",
+            "filmDir": "Jacques Becker",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/7/6/5/3/2/76532-the-adventures-of-arsene-lupin-0-230-0-345-crop.jpg?v=d7023593ba",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Hi Doc",
+            "filmUrl": "hi-doc",
+            "filmYear": "1957",
+            "filmDir": "Louis Cuny",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/9/0/3/4/9/490349-hi-doc-0-230-0-345-crop.jpg?v=702380b926",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
             },
             "avgRating": 0.5,
             "variance": 0
         },
         {
-            "title": "The Big Country",
-            "filmUrl": "the-big-country",
-            "filmYear": "1958",
+            "title": "The Man in the Raincoat",
+            "filmUrl": "the-man-in-the-raincoat",
+            "filmYear": "1957",
+            "filmDir": "Julien Duvivier",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/7/9/0/5/8/79058-the-man-in-the-raincoat-0-230-0-345-crop.jpg?v=73cf874863",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 1
+            },
+            "avgRating": 0.75,
+            "variance": 0.125
+        },
+        {
+            "title": "Reproduction interdite",
+            "filmUrl": "reproduction-interdite",
+            "filmYear": "1957",
+            "filmDir": "Gilles Grangier",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/6/8/8/5/0/168850-reproduction-interdite-0-230-0-345-crop.jpg?v=fbdd0c088b",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "Typhoon Over Nagasaki",
+            "filmUrl": "typhoon-over-nagasaki",
+            "filmYear": "1957",
+            "filmDir": "Yves Ciampi",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/3/8/0/8/5/238085-typhoon-over-nagasaki-0-230-0-345-crop.jpg?v=02d803a6ed",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1,
+            "variance": 0
+        },
+        {
+            "title": "Men in War",
+            "filmUrl": "men-in-war",
+            "filmYear": "1957",
+            "filmDir": "Anthony Mann",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/3/4/7/5347-men-in-war-0-230-0-345-crop.jpg?v=0e9f1deb65",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 3
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
+        },
+        {
+            "title": "The Virtuous Bigamist",
+            "filmUrl": "the-virtuous-bigamist",
+            "filmYear": "1956",
+            "filmDir": "Mario Soldati",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/9/2/8/1/69281-the-virtuous-bigamist-0-230-0-345-crop.jpg?v=1f1da65386",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "I'll Get Back to Kandara",
+            "filmUrl": "ill-get-back-to-kandara",
+            "filmYear": "1956",
+            "filmDir": "Victor Vicas",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/4/8/4/5/7/448457-i-ll-get-back-to-kandara-0-230-0-345-crop.jpg?v=c5dd36e9f2",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1.5,
+            "variance": 0.5
+        },
+        {
+            "title": "The Hunchback of Notre Dame",
+            "filmUrl": "the-hunchback-of-notre-dame-1956-1",
+            "filmYear": "1956",
+            "filmDir": "Jean Delannoy",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/5/1/5/6/45156-the-hunchback-of-notre-dame-0-230-0-345-crop.jpg?v=1a6eb09eca",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "Baby Doll",
+            "filmUrl": "baby-doll",
+            "filmYear": "1956",
+            "filmDir": "Elia Kazan",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/4/4/8/5/24485-baby-doll-0-230-0-345-crop.jpg?v=c70b42076a",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "Michael Strogoff",
+            "filmUrl": "michael-strogoff",
+            "filmYear": "1956",
+            "filmDir": "Carmine Gallone",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/3/8/8/4/63884-michael-strogoff-0-230-0-345-crop.jpg?v=cd6a47f1a4",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "The Rainmaker",
+            "filmUrl": "the-rainmaker",
+            "filmYear": "1956",
+            "filmDir": "Joseph Anthony",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/1/6/0/8/21608-the-rainmaker-0-230-0-345-crop.jpg?v=11585cc26e",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "Crime and Punishment",
+            "filmUrl": "crime-and-punishment-1956",
+            "filmYear": "1956",
+            "filmDir": "Georges Lampin",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/6/8/7/5687-crime-and-punishment-0-230-0-345-crop.jpg?v=ca50e2129f",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "...And God Created Woman",
+            "filmUrl": "and-god-created-woman",
+            "filmYear": "1956",
+            "filmDir": "Roger Vadim",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/7/7/4/0/47740--and-god-created-woman-0-230-0-345-crop.jpg?v=ab07a993de",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 3
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
+        },
+        {
+            "title": "An Evening at the Music Hall",
+            "filmUrl": "an-evening-at-the-music-hall",
+            "filmYear": "1956",
+            "filmDir": "Henri Decoin",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/2/4/8/3/52483-folies-bergere-0-230-0-345-crop.jpg?v=21f679e884",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1,
+            "variance": 0
+        },
+        {
+            "title": "A Man Escaped",
+            "filmUrl": "a-man-escaped",
+            "filmYear": "1956",
+            "filmDir": "Robert Bresson",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/2/5/0/7/42507-a-man-escaped-0-230-0-345-crop.jpg?v=b622f0aca8",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "Bold Adventure",
+            "filmUrl": "bold-adventure",
+            "filmYear": "1956",
+            "filmDir": "Joris Ivens",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/8/0/9/6/8/180968-bold-adventure-0-230-0-345-crop.jpg?v=55f8611272",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.75,
+            "variance": 0.125
+        },
+        {
+            "title": "Her Bridal Night",
+            "filmUrl": "her-bridal-night",
+            "filmYear": "1956",
+            "filmDir": "Pierre Gaspard-Huit",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/5/5/7/7/4/255774-her-bridal-night-0-230-0-345-crop.jpg?v=f7b575976a",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "Friendly Persuasion",
+            "filmUrl": "friendly-persuasion",
+            "filmYear": "1956",
             "filmDir": "William Wyler",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/4/5/3/4/44534-the-big-country-0-230-0-345-crop.jpg?v=edb916c161",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/1/8/8/8/21888-friendly-persuasion-0-230-0-345-crop.jpg?v=c879a0e790",
             "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
             },
             "avgRating": 0.5,
             "variance": 0
         },
         {
-            "title": "The Little Professor",
-            "filmUrl": "the-little-professor",
-            "filmYear": "1958",
-            "filmDir": "Carlo Rim",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/6/2/0/1/3/262013-the-little-professor-0-230-0-345-crop.jpg?v=f56b4619d0",
+            "title": "Murderers and Thieves",
+            "filmUrl": "murderers-and-thieves",
+            "filmYear": "1956",
+            "filmDir": "Sacha Guitry",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/3/1/6/8/63168-murderers-and-thieves-0-230-0-345-crop.jpg?v=1b99b9a358",
             "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "Wind Across the Everglades",
-            "filmUrl": "wind-across-the-everglades",
-            "filmYear": "1958",
-            "filmDir": "Nicholas Ray",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/7/0/1/3/67013-wind-across-the-everglades-0-230-0-345-crop.jpg?v=2ae7dc7e0b",
-            "ratings": {
-                "jeanluc_godard": 2,
-                "luc_moullet": 3
-            },
-            "avgRating": 2.5,
-            "variance": 0.5
-        },
-        {
-            "title": "The Challenge",
-            "filmUrl": "the-challenge-1958",
-            "filmYear": "1958",
-            "filmDir": "Francesco Rosi",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/1/6/8/9/4/116894-the-challenge-0-230-0-345-crop.jpg?v=64f62a6b20",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 1
-            },
-            "avgRating": 0.75,
-            "variance": 0.125
-        },
-        {
-            "title": "The Black Orchid",
-            "filmUrl": "the-black-orchid",
-            "filmYear": "1958",
-            "filmDir": "Martin Ritt",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/7/1/0/8/9/71089-the-black-orchid-0-230-0-345-crop.jpg?v=b611a862a7",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "Cat on a Hot Tin Roof",
-            "filmUrl": "cat-on-a-hot-tin-roof",
-            "filmYear": "1958",
-            "filmDir": "Richard Brooks",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/1/7/9/5/51795-cat-on-a-hot-tin-roof-0-230-0-345-crop.jpg?v=4a206ceb1f",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 1
-            },
-            "avgRating": 0.75,
-            "variance": 0.125
-        },
-        {
-            "title": "The Reluctant Debutante",
-            "filmUrl": "the-reluctant-debutante",
-            "filmYear": "1958",
-            "filmDir": "Vincente Minnelli",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/5/1/551-the-reluctant-debutante-0-230-0-345-crop.jpg?v=261b0c13fe",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 3
-            },
-            "avgRating": 1.75,
-            "variance": 3.125
-        },
-        {
-            "title": "The Naked and the Dead",
-            "filmUrl": "the-naked-and-the-dead",
-            "filmYear": "1958",
-            "filmDir": "Raoul Walsh",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/1/9/8/4/21984-the-naked-and-the-dead-0-230-0-345-crop.jpg?v=2076eb14f3",
-            "ratings": {
-                "jeanluc_godard": 2,
-                "luc_moullet": 2
-            },
-            "avgRating": 2,
-            "variance": 0
-        },
-        {
-            "title": "Twilight for the Gods",
-            "filmUrl": "twilight-for-the-gods",
-            "filmYear": "1958",
-            "filmDir": "Joseph Pevney",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/7/3/4/6/6/73466-twilight-for-the-gods-0-230-0-345-crop.jpg?v=05aeeaa7c0",
-            "ratings": {
-                "jeanluc_godard": 1,
-                "luc_moullet": 2
-            },
-            "avgRating": 1.5,
-            "variance": 0.5
-        },
-        {
-            "title": "Rock-a-Bye Baby",
-            "filmUrl": "rock-a-bye-baby",
-            "filmYear": "1958",
-            "filmDir": "Frank Tashlin",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/2/5/0/4/22504-rock-a-bye-baby-0-230-0-345-crop.jpg?v=d3d95fdab6",
-            "ratings": {
-                "jeanluc_godard": 2,
-                "luc_moullet": 2
-            },
-            "avgRating": 2,
-            "variance": 0
-        },
-        {
-            "title": "A Time to Love and a Time to Die",
-            "filmUrl": "a-time-to-love-and-a-time-to-die",
-            "filmYear": "1958",
-            "filmDir": "Douglas Sirk",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/7/0/5/1/9/70519-a-time-to-love-and-a-time-to-die-0-230-0-345-crop.jpg?v=187f8512c0",
-            "ratings": {
-                "jeanluc_godard": 3,
-                "luc_moullet": 2
-            },
-            "avgRating": 2.5,
-            "variance": 0.5
-        },
-        {
-            "title": "The Proud Rebel",
-            "filmUrl": "the-proud-rebel",
-            "filmYear": "1958",
-            "filmDir": "Michael Curtiz",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/7/4/5/6/5/74565-the-proud-rebel-0-230-0-345-crop.jpg?v=55f1b12e70",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "The Defiant Ones",
-            "filmUrl": "the-defiant-ones",
-            "filmYear": "1958",
-            "filmDir": "Stanley Kramer",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/5/3/2/1/45321-the-defiant-ones-0-230-0-345-crop.jpg?v=592e8eb467",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "Rosemary",
-            "filmUrl": "rosemary",
-            "filmYear": "1958",
-            "filmDir": "Rolf Thiele",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/9/3/7/0/49370-rosemary-0-230-0-345-crop.jpg?v=5e2f2bd813",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "Handsome Serge",
-            "filmUrl": "handsome-serge",
-            "filmYear": "1958",
-            "filmDir": "Claude Chabrol",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/8/7/9/0/48790-le-beau-serge-0-230-0-345-crop.jpg?v=47a3c8aefb",
-            "ratings": {
-                "jeanluc_godard": 2,
-                "luc_moullet": 1
-            },
-            "avgRating": 1.5,
-            "variance": 0.5
-        },
-        {
-            "title": "Gigi",
-            "filmUrl": "gigi",
-            "filmYear": "1958",
-            "filmDir": "Vincente Minnelli",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/1/0/8/8/41088-gigi-0-230-0-345-crop.jpg?v=6648be6f00",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "Vertigo",
-            "filmUrl": "vertigo",
-            "filmYear": "1958",
-            "filmDir": "Alfred Hitchcock",
-            "filmPoster": "https://a.ltrbxd.com/resized/sm/upload/q9/3o/ng/om/obhM86qyv8RsE69XSMTtT9FdE0b-0-230-0-345-crop.jpg?v=1403a5e003",
-            "ratings": {
-                "jeanluc_godard": 4,
-                "luc_moullet": 4
-            },
-            "avgRating": 4,
-            "variance": 0
-        },
-        {
-            "title": "Revenge",
-            "filmUrl": "revenge-1958",
-            "filmYear": "1958",
-            "filmDir": "Juan Antonio Bardem",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/8/8/1/3/1/88131-revenge-0-230-0-345-crop.jpg?v=a13475c6c8",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "Goha",
-            "filmUrl": "goha",
-            "filmYear": "1958",
-            "filmDir": "Jacques Baratier",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/4/2/9/4/8/142948-goha-0-230-0-345-crop.jpg?v=bb122d9fce",
-            "ratings": {
-                "jeanluc_godard": 3,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 1.75,
-            "variance": 3.125
-        },
-        {
-            "title": "The Violet Seller",
-            "filmUrl": "the-violet-seller",
-            "filmYear": "1958",
-            "filmDir": "Luis César Amadori",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/9/4/5/4/0/94540-the-violet-seller-0-230-0-345-crop.jpg?v=415c287767",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "Brink of Life",
-            "filmUrl": "brink-of-life",
-            "filmYear": "1958",
-            "filmDir": "Ingmar Bergman",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/7/4/9/5749-brink-of-life-0-230-0-345-crop.jpg?v=9eee0a72a3",
-            "ratings": {
-                "jeanluc_godard": 3,
-                "luc_moullet": 3
-            },
-            "avgRating": 3,
-            "variance": 0
-        },
-        {
-            "title": "The Philosopher's Stone",
-            "filmUrl": "the-philosophers-stone",
-            "filmYear": "1958",
-            "filmDir": "Satyajit Ray",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/2/4/9/9/1/124991-the-philosopher-s-stone-0-230-0-345-crop.jpg?v=7897bf3726",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "Raintree County",
-            "filmUrl": "raintree-county",
-            "filmYear": "1957",
-            "filmDir": "Edward Dmytryk",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/3/4/5/1345-raintree-county-0-230-0-345-crop.jpg?v=414f988ad3",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "Run of the Arrow",
-            "filmUrl": "run-of-the-arrow",
-            "filmYear": "1957",
-            "filmDir": "Samuel Fuller",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/8/8/2/5/28825-run-of-the-arrow-0-230-0-345-crop.jpg?v=fe560362ca",
-            "ratings": {
-                "jeanluc_godard": 3,
-                "luc_moullet": 3
-            },
-            "avgRating": 3,
-            "variance": 0
-        },
-        {
-            "title": "Wild Strawberries",
-            "filmUrl": "wild-strawberries",
-            "filmYear": "1957",
-            "filmDir": "Ingmar Bergman",
-            "filmPoster": "https://a.ltrbxd.com/resized/sm/upload/7y/dg/6m/fs/je9lvVfSihc4L4yMNmw0rg6oks0-0-230-0-345-crop.jpg?v=670240b18f",
-            "ratings": {
-                "jeanluc_godard": 4,
-                "luc_moullet": 4
-            },
-            "avgRating": 4,
-            "variance": 0
-        },
-        {
-            "title": "Lost Children",
-            "filmUrl": "lost-children-1957",
-            "filmYear": "1957",
-            "filmDir": "Miloš Makovec",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/4/2/9/2/6/142926-lost-children-0-230-0-345-crop.jpg?v=e58d5358f0",
-            "ratings": {
-                "jeanluc_godard": 2,
-                "luc_moullet": 2
-            },
-            "avgRating": 2,
-            "variance": 0
-        },
-        {
-            "title": "Ugetsu",
-            "filmUrl": "ugetsu",
-            "filmYear": "1953",
-            "filmDir": "Kenji Mizoguchi",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/2/8/8/4/42884-ugetsu-0-230-0-345-crop.jpg?v=f955526e53",
-            "ratings": {
-                "jeanluc_godard": 4,
-                "luc_moullet": 4
-            },
-            "avgRating": 4,
-            "variance": 0
-        },
-        {
-            "title": "Prison",
-            "filmUrl": "prison-1949",
-            "filmYear": "1949",
-            "filmDir": "Ingmar Bergman",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/9/0/5/6/7/90567-prison-0-230-0-345-crop.jpg?v=dc8d16bfcb",
-            "ratings": {
-                "jeanluc_godard": 2,
-                "luc_moullet": 2
-            },
-            "avgRating": 2,
-            "variance": 0
-        },
-        {
-            "title": "The Quiet One",
-            "filmUrl": "the-quiet-one",
-            "filmYear": "1948",
-            "filmDir": "Sidney Meyers",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/8/1/1/0/5/81105-the-quiet-one-0-230-0-345-crop.jpg?v=bc621107fa",
-            "ratings": {
-                "jeanluc_godard": 0.5,
-                "luc_moullet": 0.5
-            },
-            "avgRating": 0.5,
-            "variance": 0
-        },
-        {
-            "title": "Ivan the Terrible, Part II: The Boyars' Plot",
-            "filmUrl": "ivan-the-terrible-part-ii-the-boyars-plot",
-            "filmYear": "1946",
-            "filmDir": "Sergei Eisenstein",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/2/0/0/5/22005-ivan-the-terrible-part-ii-the-boyars-plot-0-230-0-345-crop.jpg?v=df0c6bb808",
-            "ratings": {
-                "jeanluc_godard": 4,
-                "luc_moullet": 3
+                "andre_bazin_": 3,
+                "franco_truffaut": 4
             },
             "avgRating": 3.5,
             "variance": 0.5
         },
         {
-            "title": "Obsession",
-            "filmUrl": "obsession-1943",
-            "filmYear": "1943",
-            "filmDir": "Luchino Visconti",
-            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/8/9/3/1/48931-ossessione-0-230-0-345-crop.jpg?v=6c13948617",
+            "title": "The Secret of Magic Island",
+            "filmUrl": "the-secret-of-magic-island",
+            "filmYear": "1956",
+            "filmDir": "Jean Tourane",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/8/1/3/9/1/81391-the-secret-of-magic-island-0-230-0-345-crop.jpg?v=516af4c2b5",
             "ratings": {
-                "jeanluc_godard": 2,
-                "luc_moullet": 0.5
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "The Country I Come From",
+            "filmUrl": "the-country-i-come-from",
+            "filmYear": "1956",
+            "filmDir": "Marcel Carné",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/1/1/4/7/0/111470-the-country-i-come-from-0-230-0-345-crop.jpg?v=0d4eaa3373",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.75,
+            "variance": 0.125
+        },
+        {
+            "title": "Between Heaven and Hell",
+            "filmUrl": "between-heaven-and-hell",
+            "filmYear": "1956",
+            "filmDir": "Richard Fleischer",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/7/1/0/2/2/71022-between-heaven-and-hell-0-230-0-345-crop.jpg?v=2337b8e0cb",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 0.5
             },
             "avgRating": 1.25,
             "variance": 1.125
+        },
+        {
+            "title": "Giant",
+            "filmUrl": "giant",
+            "filmYear": "1956",
+            "filmDir": "George Stevens",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/0/8/3/9/50839-giant-0-230-0-345-crop.jpg?v=8893a1668b",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 1.25,
+            "variance": 1.125
+        },
+        {
+            "title": "Slightly Ahead",
+            "filmUrl": "slightly-ahead",
+            "filmYear": "1956",
+            "filmDir": "Norbert Carbonnaux",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/3/5/0/1/4/135014-slightly-ahead-0-230-0-345-crop.jpg?v=c7bc91cfaf",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "Written on the Wind",
+            "filmUrl": "written-on-the-wind",
+            "filmYear": "1956",
+            "filmDir": "Douglas Sirk",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/4/5/0/9/54509-written-on-the-wind-0-230-0-345-crop.jpg?v=2bb300bc4a",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 3
+            },
+            "avgRating": 2,
+            "variance": 2
+        },
+        {
+            "title": "The Rocket from Calabuch",
+            "filmUrl": "the-rocket-from-calabuch",
+            "filmYear": "1956",
+            "filmDir": "Luis García Berlanga",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/8/6/7/0/4/86704-the-rocket-from-calabuch-0-230-0-345-crop.jpg?v=a24b248270",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.75,
+            "variance": 0.125
+        },
+        {
+            "title": "Death in the Garden",
+            "filmUrl": "death-in-the-garden",
+            "filmYear": "1956",
+            "filmDir": "Luis Buñuel",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/8/6/8/2/28682-death-in-the-garden-0-230-0-345-crop.jpg?v=def49cf311",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 2
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Attack",
+            "filmUrl": "attack",
+            "filmYear": "1956",
+            "filmDir": "Robert Aldrich",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/0/6/5/8/30658-attack-0-230-0-345-crop.jpg?v=5d101c039b",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 3
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Elena and Her Men",
+            "filmUrl": "elena-and-her-men",
+            "filmYear": "1956",
+            "filmDir": "Jean Renoir",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/2/7/7/4/12774-elena-and-her-men-0-230-0-345-crop.jpg?v=c5cbc081c6",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "La Traversée de Paris",
+            "filmUrl": "la-traversee-de-paris",
+            "filmYear": "1956",
+            "filmDir": "Claude Autant-Lara",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/9/7/9/8/39798-the-trip-across-paris-0-230-0-345-crop.jpg?v=abe228d43d",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "Main Street",
+            "filmUrl": "main-street-1956",
+            "filmYear": "1956",
+            "filmDir": "Juan Antonio Bardem",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/8/4/7/2/4/84724-main-street-0-230-0-345-crop.jpg?v=48c963793d",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 1.75,
+            "variance": 3.125
+        },
+        {
+            "title": "Bus Stop",
+            "filmUrl": "bus-stop",
+            "filmYear": "1956",
+            "filmDir": "Joshua Logan",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/7/0/9/7/37097-bus-stop-0-230-0-345-crop.jpg?v=cf6c8c95c2",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "The Solid Gold Cadillac",
+            "filmUrl": "the-solid-gold-cadillac",
+            "filmYear": "1956",
+            "filmDir": "Richard Quine",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/4/7/2/9/64729-the-solid-gold-cadillac-0-230-0-345-crop.jpg?v=5e78b6a660",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.75,
+            "variance": 0.125
+        },
+        {
+            "title": "Bigger Than Life",
+            "filmUrl": "bigger-than-life",
+            "filmYear": "1956",
+            "filmDir": "Nicholas Ray",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/5/5/9/5/35595-bigger-than-life-0-230-0-345-crop.jpg?v=adf8b15c03",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 4
+            },
+            "avgRating": 3,
+            "variance": 2
+        },
+        {
+            "title": "Autumn Leaves",
+            "filmUrl": "autumn-leaves",
+            "filmYear": "1956",
+            "filmDir": "Robert Aldrich",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/1/8/9/0/21890-autumn-leaves-0-230-0-345-crop.jpg?v=772c81df39",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 2
+            },
+            "avgRating": 1.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Foreign Intrigue",
+            "filmUrl": "foreign-intrigue",
+            "filmYear": "1956",
+            "filmDir": "Sheldon Reynolds",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/5/4/7/1/15471-foreign-intrigue-0-230-0-345-crop.jpg?v=50a6187627",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1,
+            "variance": 0
+        },
+        {
+            "title": "The Rawhide Years",
+            "filmUrl": "the-rawhide-years",
+            "filmYear": "1956",
+            "filmDir": "Rudolph Maté",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/0/7/5/7/0/107570-the-rawhide-years-0-230-0-345-crop.jpg?v=0ba7d0e059",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "The Mountain",
+            "filmUrl": "the-mountain-1956",
+            "filmYear": "1956",
+            "filmDir": "Edward Dmytryk",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/8/2/1/2/8212-the-mountain-0-230-0-345-crop.jpg?v=e8a37edafe",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "Passionate Summer",
+            "filmUrl": "passionate-summer",
+            "filmYear": "1956",
+            "filmDir": "Charles Brabant",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/8/4/7/9/0/484790-les-possedees-0-230-0-345-crop.jpg?v=b9c9c3eb06",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1,
+            "variance": 0
+        },
+        {
+            "title": "The Whole Town Accuses",
+            "filmUrl": "the-whole-town-accuses",
+            "filmYear": "1956",
+            "filmDir": "Claude Boissol",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/9/0/2/2/4/490224-the-whole-town-accuses-0-230-0-345-crop.jpg?v=e4c6192a29",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 2
+            },
+            "avgRating": 2,
+            "variance": 0
+        },
+        {
+            "title": "23 Paces to Baker Street",
+            "filmUrl": "23-paces-to-baker-street",
+            "filmYear": "1956",
+            "filmDir": "Henry Hathaway",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/8/2/9/9/58299-23-paces-to-baker-street-0-230-0-345-crop.jpg?v=c522825591",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 2
+            },
+            "avgRating": 1.5,
+            "variance": 0.5
+        },
+        {
+            "title": "The Roof",
+            "filmUrl": "the-roof",
+            "filmYear": "1956",
+            "filmDir": "Vittorio De Sica",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/9/0/7/1/4/90714-the-roof-0-230-0-345-crop.jpg?v=ad92d6a28c",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 1.25,
+            "variance": 1.125
+        },
+        {
+            "title": "That Is the Dawn",
+            "filmUrl": "that-is-the-dawn",
+            "filmYear": "1956",
+            "filmDir": "Luis Buñuel",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/9/1/0/3/3/91033-that-is-the-dawn-0-230-0-345-crop.jpg?v=ad22edb9ca",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Don Juan",
+            "filmUrl": "don-juan-1956",
+            "filmYear": "1956",
+            "filmDir": "John Berry",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/3/7/9/4/0/137940-don-juan-0-230-0-345-crop.jpg?v=1f18416076",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1.5,
+            "variance": 0.5
+        },
+        {
+            "title": "The Red Balloon",
+            "filmUrl": "the-red-balloon",
+            "filmYear": "1956",
+            "filmDir": "Albert Lamorisse",
+            "filmPoster": "https://a.ltrbxd.com/resized/sm/upload/zs/e6/35/xp/tDlSvjTD6GVwoO0h9tFrQXRXn7w-0-230-0-345-crop.jpg?v=f96c2c3896",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 1.25,
+            "variance": 1.125
+        },
+        {
+            "title": "Walk Into Paradise",
+            "filmUrl": "walk-into-paradise",
+            "filmYear": "1956",
+            "filmDir": "Lee Robinson",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/6/2/9/0/26290-walk-into-paradise-0-230-0-345-crop.jpg?v=e6b3813f85",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "The Mystery of Picasso",
+            "filmUrl": "the-mystery-of-picasso",
+            "filmYear": "1956",
+            "filmDir": "Henri-Georges Clouzot",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/7/6/5/9/57659-the-mystery-of-picasso-0-230-0-345-crop.jpg?v=6a03c56758",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 2
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Bhowani Junction",
+            "filmUrl": "bhowani-junction",
+            "filmYear": "1956",
+            "filmDir": "George Cukor",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/8/1/6/1/68161-bhowani-junction-0-230-0-345-crop.jpg?v=a510fa0745",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1,
+            "variance": 0
+        },
+        {
+            "title": "The Man Who Knew Too Much",
+            "filmUrl": "the-man-who-knew-too-much-1956",
+            "filmYear": "1956",
+            "filmDir": "Alfred Hitchcock",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/1/5/4/6/51546-the-man-who-knew-too-much-0-230-0-345-crop.jpg?v=5c9436cade",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "Anything Goes",
+            "filmUrl": "anything-goes",
+            "filmYear": "1956",
+            "filmDir": "Robert Lewis",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/9/2/8/8/19288-anything-goes-0-230-0-345-crop.jpg?v=4a1c6ef417",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.75,
+            "variance": 0.125
+        },
+        {
+            "title": "Marie-Antoinette Queen of France",
+            "filmUrl": "marie-antoinette-queen-of-france",
+            "filmYear": "1956",
+            "filmDir": "Jean Delannoy",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/1/2/8/1/7/112817-marie-antoinette-queen-of-france-0-230-0-345-crop.jpg?v=2419ce00c4",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "The Wages of Sin",
+            "filmUrl": "the-wages-of-sin",
+            "filmYear": "1956",
+            "filmDir": "Denys de La Patellière",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/1/5/7/0/3/215703-the-wages-of-sin-0-230-0-345-crop.jpg?v=49660862bc",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "While the City Sleeps",
+            "filmUrl": "while-the-city-sleeps",
+            "filmYear": "1956",
+            "filmDir": "Fritz Lang",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/7/6/0/9/27609-while-the-city-sleeps-0-230-0-345-crop.jpg?v=e55d707a1c",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 3
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
+        },
+        {
+            "title": "The Man in the Gray Flannel Suit",
+            "filmUrl": "the-man-in-the-gray-flannel-suit",
+            "filmYear": "1956",
+            "filmDir": "Nunnally Johnson",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/5/8/5/0/55850-the-man-in-the-gray-flannel-suit-0-230-0-345-crop.jpg?v=bd543d0076",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.75,
+            "variance": 0.125
+        },
+        {
+            "title": "That Naughty Girl",
+            "filmUrl": "that-naughty-girl",
+            "filmYear": "1956",
+            "filmDir": "Michel Boisrond",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/0/2/1/5/10215-that-naughty-girl-0-230-0-345-crop.jpg?v=d59571b018",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 2
+            },
+            "avgRating": 1.5,
+            "variance": 0.5
+        },
+        {
+            "title": "The Man Who Never Was",
+            "filmUrl": "the-man-who-never-was",
+            "filmYear": "1956",
+            "filmDir": "Ronald Neame",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/1/3/6/6/21366-the-man-who-never-was-0-230-0-345-crop.jpg?v=53448127a4",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "Afternoon at the Bulls",
+            "filmUrl": "afternoon-at-the-bulls",
+            "filmYear": "1956",
+            "filmDir": "Ladislao Vajda",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/9/3/6/2/5/93625-afternoon-at-the-bulls-0-230-0-345-crop.jpg?v=a3ad4df3a5",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1.5,
+            "variance": 0.5
+        },
+        {
+            "title": "If All the Guys in the World...",
+            "filmUrl": "if-all-the-guys-in-the-world",
+            "filmYear": "1956",
+            "filmDir": "Christian-Jaque",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/8/0/7/7/9/180779-if-all-the-guys-in-the-world--0-230-0-345-crop.jpg?v=cc535d5123",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.75,
+            "variance": 0.125
+        },
+        {
+            "title": "People of No Importance",
+            "filmUrl": "people-of-no-importance",
+            "filmYear": "1956",
+            "filmDir": "Henri Verneuil",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/8/9/4/6894-people-of-no-importance-0-230-0-345-crop.jpg?v=9a4d51ebb1",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 2
+            },
+            "avgRating": 2,
+            "variance": 0
+        },
+        {
+            "title": "Merry-Go-Round",
+            "filmUrl": "merry-go-round-1956",
+            "filmYear": "1956",
+            "filmDir": "Zoltán Fábri",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/0/1/9/4/8/101948-merry-go-round-0-230-0-345-crop.jpg?v=b7ceda8c70",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 2
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
+        },
+        {
+            "title": "The Bottom of the Bottle",
+            "filmUrl": "the-bottom-of-the-bottle",
+            "filmYear": "1956",
+            "filmDir": "Henry Hathaway",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/0/0/5/3/7/100537-the-bottom-of-the-bottle-0-230-0-345-crop.jpg?v=1b75cb45bd",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1,
+            "variance": 0
+        },
+        {
+            "title": "Ransom!",
+            "filmUrl": "ransom-1956",
+            "filmYear": "1956",
+            "filmDir": "Alex Segal",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/8/8/7/5/3/88753-ransom--0-230-0-345-crop.jpg?v=5aeca638f3",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.75,
+            "variance": 0.125
+        },
+        {
+            "title": "The Lieutenant Wore Skirts",
+            "filmUrl": "the-lieutenant-wore-skirts",
+            "filmYear": "1956",
+            "filmDir": "Frank Tashlin",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/0/8/0/5/1/108051-the-lieutenant-wore-skirts-0-230-0-345-crop.jpg?v=85a13f19d4",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Les Assassins du dimanche",
+            "filmUrl": "les-assassins-du-dimanche",
+            "filmYear": "1956",
+            "filmDir": "Alex Joffé",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/2/7/4/7/0/127470-les-assassins-du-dimanche-0-230-0-345-crop.jpg?v=f52e53af9b",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 2
+            },
+            "avgRating": 2,
+            "variance": 0
+        },
+        {
+            "title": "The Light Across the Street",
+            "filmUrl": "the-light-across-the-street",
+            "filmYear": "1955",
+            "filmDir": "Georges Lacombe",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/9/2/5/6/0/92560-the-light-across-the-street-0-230-0-345-crop.jpg?v=c640fe960e",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "Smiles of a Summer Night",
+            "filmUrl": "smiles-of-a-summer-night",
+            "filmYear": "1955",
+            "filmDir": "Ingmar Bergman",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/5/0/5/4/45054-smiles-of-a-summer-night-0-230-0-345-crop.jpg?v=9b837f6c86",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 2
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Lola Montès",
+            "filmUrl": "lola-montes",
+            "filmYear": "1955",
+            "filmDir": "Max Ophüls",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/8/2/8/0/28280-lola-montes-0-230-0-345-crop.jpg?v=5418140938",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "The Court-Martial of Billy Mitchell",
+            "filmUrl": "the-court-martial-of-billy-mitchell",
+            "filmYear": "1955",
+            "filmDir": "Otto Preminger",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/9/4/0/7/6/94076-the-court-martial-of-billy-mitchell-0-230-0-345-crop.jpg?v=dc5f3ad116",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 2
+            },
+            "avgRating": 1.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Scandal in Sorrento",
+            "filmUrl": "scandal-in-sorrento",
+            "filmYear": "1955",
+            "filmDir": "Dino Risi",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/9/7/9/3/9793-scandal-in-sorrento-0-230-0-345-crop.jpg?v=87b536373a",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "The Man with the Golden Arm",
+            "filmUrl": "the-man-with-the-golden-arm",
+            "filmYear": "1955",
+            "filmDir": "Otto Preminger",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/1/5/7/6/51576-the-man-with-the-golden-arm-0-230-0-345-crop.jpg?v=67ddc40aa5",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 3
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
+        },
+        {
+            "title": "The Hussars",
+            "filmUrl": "the-hussars",
+            "filmYear": "1955",
+            "filmDir": "Alex Joffé",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/8/5/9/8/6/85986-the-hussars-0-230-0-345-crop.jpg?v=8c19da75b7",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 2
+            },
+            "avgRating": 1.5,
+            "variance": 0.5
+        },
+        {
+            "title": "The French, They Are a Funny Race",
+            "filmUrl": "the-french-they-are-a-funny-race",
+            "filmYear": "1955",
+            "filmDir": "Preston Sturges",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/2/0/7/7/6/120776-the-french-they-are-a-funny-race-0-230-0-345-crop.jpg?v=a184430d71",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "The Last Frontier",
+            "filmUrl": "the-last-frontier-1955",
+            "filmYear": "1955",
+            "filmDir": "Anthony Mann",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/9/0/5/9/49059-the-last-frontier-0-230-0-345-crop.jpg?v=574580803b",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "The Wicked Go to Hell",
+            "filmUrl": "the-wicked-go-to-hell",
+            "filmYear": "1955",
+            "filmDir": "Robert Hossein",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/2/7/4/1/6/127416-the-wicked-go-to-hell-0-230-0-345-crop.jpg?v=ba4cb58a66",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "Lady Chatterley's Lover",
+            "filmUrl": "lady-chatterleys-lover-1955",
+            "filmYear": "1955",
+            "filmDir": "Marc Allégret",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/0/2/3/8/3/102383-lady-chatterleys-lover-1955-0-230-0-345-crop.jpg?v=02b2c1fd54",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "A Missionary",
+            "filmUrl": "a-missionary",
+            "filmYear": "1955",
+            "filmDir": "Maurice Cloche",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/9/0/2/2/5/490225-a-missionary-0-230-0-345-crop.jpg?v=e770d61079",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "Picnic",
+            "filmUrl": "picnic",
+            "filmYear": "1955",
+            "filmDir": "Joshua Logan",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/4/9/3/2/24932-picnic-0-230-0-345-crop.jpg?v=521d498b1c",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "Headlines of Destruction",
+            "filmUrl": "headlines-of-destruction",
+            "filmYear": "1955",
+            "filmDir": "John Berry",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/4/9/7/9/1/149791-headlines-of-destruction-0-230-0-345-crop.jpg?v=e1a9d5c862",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 2
+            },
+            "avgRating": 2,
+            "variance": 0
+        },
+        {
+            "title": "Lourdes et ses miracles",
+            "filmUrl": "lourdes-et-ses-miracles",
+            "filmYear": "1955",
+            "filmDir": "Georges Rouquier",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/3/9/1/9/0/439190-lourdes-et-ses-miracles-0-230-0-345-crop.jpg?v=1a97f2c63e",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 1.25,
+            "variance": 1.125
+        },
+        {
+            "title": "Queen Bee",
+            "filmUrl": "queen-bee",
+            "filmYear": "1955",
+            "filmDir": "Ranald MacDougall",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/5/8/4/5/55845-queen-bee-0-230-0-345-crop.jpg?v=cdf9139aa3",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.75,
+            "variance": 0.125
+        },
+        {
+            "title": "Artists and Models",
+            "filmUrl": "artists-and-models",
+            "filmYear": "1955",
+            "filmDir": "Frank Tashlin",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/1/8/3/1/21831-artists-and-models-0-230-0-345-crop.jpg?v=61e6eb8b5a",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 2
+            },
+            "avgRating": 1.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Guys and Dolls",
+            "filmUrl": "guys-and-dolls",
+            "filmYear": "1955",
+            "filmDir": "Joseph L. Mankiewicz",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/9/1/1/9/49119-guys-and-dolls-0-230-0-345-crop.jpg?v=fd47427063",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 1.25,
+            "variance": 1.125
+        },
+        {
+            "title": "The Naked Dawn",
+            "filmUrl": "the-naked-dawn",
+            "filmYear": "1955",
+            "filmDir": "Edgar G. Ulmer",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/8/8/7/4/5/88745-the-naked-dawn-0-230-0-345-crop.jpg?v=6e6574a299",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 3
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Rebel Without a Cause",
+            "filmUrl": "rebel-without-a-cause",
+            "filmYear": "1955",
+            "filmDir": "Nicholas Ray",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/1/8/3/5/51835-rebel-without-a-cause-0-230-0-345-crop.jpg?v=a260a5a896",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "Bad Liaisons",
+            "filmUrl": "bad-liaisons",
+            "filmYear": "1955",
+            "filmDir": "Alexandre Astruc",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/3/6/5/1/53651-bad-liaisons-0-230-0-345-crop.jpg?v=88eb0a192c",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "The Little Rebels",
+            "filmUrl": "the-little-rebels",
+            "filmYear": "1955",
+            "filmDir": "Jean Delannoy",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/4/6/4/1/64641-the-little-rebels-0-230-0-345-crop.jpg?v=fc5e8b477a",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.75,
+            "variance": 0.125
+        },
+        {
+            "title": "Joe Macbeth",
+            "filmUrl": "joe-macbeth",
+            "filmYear": "1955",
+            "filmDir": "Ken Hughes",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/7/1/9/2/0/71920-joe-macbeth-0-230-0-345-crop.jpg?v=ec02da4859",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "A Man Alone",
+            "filmUrl": "a-man-alone",
+            "filmYear": "1955",
+            "filmDir": "Ray Milland",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/1/8/3/3/21833-a-man-alone-0-230-0-345-crop.jpg?v=884a9b239a",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "A Prize of Gold",
+            "filmUrl": "a-prize-of-gold",
+            "filmYear": "1955",
+            "filmDir": "Mark Robson",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/1/1/8/6/7/111867-a-prize-of-gold-0-230-0-345-crop.jpg?v=47742959f1",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "The Desperate Hours",
+            "filmUrl": "the-desperate-hours",
+            "filmYear": "1955",
+            "filmDir": "William Wyler",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/0/2/1/7/40217-the-desperate-hours-0-230-0-345-crop.jpg?v=73b6248576",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.75,
+            "variance": 0.125
+        },
+        {
+            "title": "The Trouble with Harry",
+            "filmUrl": "the-trouble-with-harry",
+            "filmYear": "1955",
+            "filmDir": "Alfred Hitchcock",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/5/4/9/0/45490-the-trouble-with-harry-0-230-0-345-crop.jpg?v=1ee0331c29",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 3
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Don Camillo's Last Round",
+            "filmUrl": "don-camillos-last-round",
+            "filmYear": "1955",
+            "filmDir": "Carmine Gallone",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/5/1/6/9/45169-don-camillos-last-round-0-230-0-345-crop.jpg?v=4b476c3289",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "Forbidden",
+            "filmUrl": "forbidden-1955",
+            "filmYear": "1955",
+            "filmDir": "Mario Monicelli",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/9/8/2/3/5/198235-forbidden-0-230-0-345-crop.jpg?v=1e53ba788e",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 2
+            },
+            "avgRating": 2,
+            "variance": 0
+        },
+        {
+            "title": "Friends for Life",
+            "filmUrl": "friends-for-life-1955",
+            "filmYear": "1955",
+            "filmDir": "Franco Rossi",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/4/6/1/5/1/146151-the-woman-in-the-painting-0-230-0-345-crop.jpg?v=6634bf2c9b",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 2
+            },
+            "avgRating": 2,
+            "variance": 0
+        },
+        {
+            "title": "The Big Knife",
+            "filmUrl": "the-big-knife",
+            "filmYear": "1955",
+            "filmDir": "Robert Aldrich",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/7/3/5/5/17355-the-big-knife-0-230-0-345-crop.jpg?v=ff487f88be",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "The Swindle",
+            "filmUrl": "the-swindle-1955",
+            "filmYear": "1955",
+            "filmDir": "Federico Fellini",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/8/1/8/8/28188-il-bidone-0-230-0-345-crop.jpg?v=d51a925597",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "Heroes and Sinners",
+            "filmUrl": "heroes-and-sinners",
+            "filmYear": "1955",
+            "filmDir": "Yves Ciampi",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/4/6/1/4/9/146149-heroes-and-sinners-0-230-0-345-crop.jpg?v=b5dc2d92a2",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1,
+            "variance": 0
+        },
+        {
+            "title": "To Catch a Thief",
+            "filmUrl": "to-catch-a-thief",
+            "filmYear": "1955",
+            "filmDir": "Alfred Hitchcock",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/1/7/0/4/51704-to-catch-a-thief-0-230-0-345-crop.jpg?v=d33cec8e58",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 3
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
+        },
+        {
+            "title": "The Grand Manoeuvre",
+            "filmUrl": "the-grand-manoeuvre",
+            "filmYear": "1955",
+            "filmDir": "René Clair",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/1/6/1/3161-the-grand-manoeuvre-0-230-0-345-crop.jpg?v=09beb0396f",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 1
+            },
+            "avgRating": 2,
+            "variance": 2
+        },
+        {
+            "title": "Pete Kelly's Blues",
+            "filmUrl": "pete-kellys-blues",
+            "filmYear": "1955",
+            "filmDir": "Jack Webb",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/1/8/2/7/21827-pete-kelly-s-blues-0-230-0-345-crop.jpg?v=91881b9ad5",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Don Giovanni",
+            "filmUrl": "don-giovanni-1955-1",
+            "filmYear": "1955",
+            "filmDir": "Walter Kolm-Veltée",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/6/1/6/2/9/9/616299-don-giovanni-0-230-0-345-crop.jpg?v=a465e0222a",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "Land of the Pharaohs",
+            "filmUrl": "land-of-the-pharaohs",
+            "filmYear": "1955",
+            "filmDir": "Howard Hawks",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/2/5/2/0/22520-land-of-the-pharaohs-0-230-0-345-crop.jpg?v=749dc371be",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 2
+            },
+            "avgRating": 1.5,
+            "variance": 0.5
+        },
+        {
+            "title": "The Kentuckian",
+            "filmUrl": "the-kentuckian",
+            "filmYear": "1955",
+            "filmDir": "Burt Lancaster",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/8/1/1/811-the-kentuckian-0-230-0-345-crop.jpg?v=c5ca58c26a",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "The Man from Laramie",
+            "filmUrl": "the-man-from-laramie",
+            "filmYear": "1955",
+            "filmDir": "Anthony Mann",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/0/4/6/5/40465-the-man-from-laramie-0-230-0-345-crop.jpg?v=0bdebe43eb",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 2
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
+        },
+        {
+            "title": "The Rats",
+            "filmUrl": "the-rats-1955",
+            "filmYear": "1955",
+            "filmDir": "Robert Siodmak",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/1/2/2/5/9/112259-the-rats-0-230-0-345-crop.jpg?v=a0bbd323e9",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 3
+            },
+            "avgRating": 2,
+            "variance": 2
+        },
+        {
+            "title": "Mr. Arkadin",
+            "filmUrl": "mr-arkadin",
+            "filmYear": "1955",
+            "filmDir": "Orson Welles",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/1/1/3/7/21137-mr-arkadin-0-230-0-345-crop.jpg?v=9dc9ad1178",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "Wild Love",
+            "filmUrl": "wild-love-1955",
+            "filmYear": "1955",
+            "filmDir": "Mauro Bolognini",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/4/2/9/2/0/142920-wild-love-1955-0-230-0-345-crop.jpg?v=6959b617da",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 1.25,
+            "variance": 1.125
+        },
+        {
+            "title": "The Seven Year Itch",
+            "filmUrl": "the-seven-year-itch",
+            "filmYear": "1955",
+            "filmDir": "Billy Wilder",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/6/0/2/1/46021-the-seven-year-itch-0-230-0-345-crop.jpg?v=d0861c1bf5",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "Summertime",
+            "filmUrl": "summertime",
+            "filmYear": "1955",
+            "filmDir": "David Lean",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/5/3/1/1/15311-summertime-0-230-0-345-crop.jpg?v=69336660f5",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.75,
+            "variance": 0.125
+        },
+        {
+            "title": "La Pointe Courte",
+            "filmUrl": "la-pointe-courte",
+            "filmYear": "1955",
+            "filmDir": "Agnès Varda",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/1/6/4/4/11644-la-pointe-courte-0-230-0-345-crop.jpg?v=b6f78245c5",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Lost Continent",
+            "filmUrl": "lost-continent-1955",
+            "filmYear": "1955",
+            "filmDir": "Enrico Gras",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/4/2/9/0/3/142903-lost-continent-0-230-0-345-crop.jpg?v=9260302959",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 1.25,
+            "variance": 1.125
+        },
+        {
+            "title": "Death of a Cyclist",
+            "filmUrl": "death-of-a-cyclist",
+            "filmYear": "1955",
+            "filmDir": "Juan Antonio Bardem",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/7/3/9/8/57398-death-of-a-cyclist-0-230-0-345-crop.jpg?v=eac93f22ca",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 1.25,
+            "variance": 1.125
+        },
+        {
+            "title": "Run for Cover",
+            "filmUrl": "run-for-cover",
+            "filmYear": "1955",
+            "filmDir": "Nicholas Ray",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/7/2/3/3/8/72338-run-for-cover-0-230-0-345-crop.jpg?v=ccc2b99a17",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 3
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
+        },
+        {
+            "title": "The Last Act",
+            "filmUrl": "the-last-act-1955",
+            "filmYear": "1955",
+            "filmDir": "G.W. Pabst",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/4/4/9/7/4/144974-the-last-act-0-230-0-345-crop.jpg?v=210e17ce07",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1,
+            "variance": 0
+        },
+        {
+            "title": "Marty",
+            "filmUrl": "marty",
+            "filmYear": "1955",
+            "filmDir": "Delbert Mann",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/1/9/8/8/41988-marty-0-230-0-345-crop.jpg?v=ef63f2d724",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 1.25,
+            "variance": 1.125
+        },
+        {
+            "title": "The Grasshopper",
+            "filmUrl": "the-grasshopper-1955",
+            "filmYear": "1955",
+            "filmDir": "Samson Samsonov",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/4/6/1/4/7/146147-the-grasshopper-0-230-0-345-crop.jpg?v=c2c757b0ac",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "Violent Saturday",
+            "filmUrl": "violent-saturday",
+            "filmYear": "1955",
+            "filmDir": "Richard Fleischer",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/5/0/3/2/25032-violent-saturday-0-230-0-345-crop.jpg?v=cbd0197b09",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Man Without a Star",
+            "filmUrl": "man-without-a-star",
+            "filmYear": "1955",
+            "filmDir": "King Vidor",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/1/8/2/9/21829-man-without-a-star-0-230-0-345-crop.jpg?v=41ca5be65a",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 3
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Blackboard Jungle",
+            "filmUrl": "blackboard-jungle",
+            "filmYear": "1955",
+            "filmDir": "Richard Brooks",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/5/2/6/1/35261-blackboard-jungle-0-230-0-345-crop.jpg?v=030e5cf145",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 3
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
+        },
+        {
+            "title": "East of Eden",
+            "filmUrl": "east-of-eden",
+            "filmYear": "1955",
+            "filmDir": "Elia Kazan",
+            "filmPoster": "https://a.ltrbxd.com/resized/sm/upload/g6/h9/we/j5/hjH1uLOySpzgBdm1UQYjTV5yLav-0-230-0-345-crop.jpg?v=72765157a6",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 2
+            },
+            "avgRating": 2,
+            "variance": 0
+        },
+        {
+            "title": "Cinerama Holiday",
+            "filmUrl": "cinerama-holiday",
+            "filmYear": "1955",
+            "filmDir": "Robert Bendick",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/3/2/5/7/4/132574-cinerama-holiday-0-230-0-345-crop.jpg?v=9977c5d22c",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.75,
+            "variance": 0.125
+        },
+        {
+            "title": "Bad Day at Black Rock",
+            "filmUrl": "bad-day-at-black-rock",
+            "filmYear": "1955",
+            "filmDir": "John Sturges",
+            "filmPoster": "https://a.ltrbxd.com/resized/sm/upload/q9/uc/ni/3t/ugKmQAQrjcFcxNq6DsxRPnIOXn8-0-230-0-345-crop.jpg?v=998fff50a0",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Ordet",
+            "filmUrl": "ordet",
+            "filmYear": "1955",
+            "filmDir": "Carl Theodor Dreyer",
+            "filmPoster": "https://a.ltrbxd.com/resized/sm/upload/xu/0o/wv/m6/e3oh96Zrqdaku8DoD10pXZHLZoU-0-230-0-345-crop.jpg?v=c412b52883",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "Woman of the River",
+            "filmUrl": "woman-of-the-river",
+            "filmYear": "1954",
+            "filmDir": "Mario Soldati",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/5/8/7/5/4/158754-woman-of-the-river-0-230-0-345-crop.jpg?v=4191b80199",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.75,
+            "variance": 0.125
+        },
+        {
+            "title": "Mad About Men",
+            "filmUrl": "mad-about-men",
+            "filmYear": "1954",
+            "filmDir": "Ralph Thomas",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/8/9/5/8/3/89583-mad-about-men-0-230-0-345-crop.jpg?v=406aefa651",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "Fear",
+            "filmUrl": "fear-1954",
+            "filmYear": "1954",
+            "filmDir": "Roberto Rossellini",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/7/9/7/0/9/79709-fear-0-230-0-345-crop.jpg?v=7216d26de3",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 3
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Roots",
+            "filmUrl": "roots-1954",
+            "filmYear": "1954",
+            "filmDir": "Benito Alazraki",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/9/6/4/7/2/96472-roots-1954-0-230-0-345-crop.jpg?v=f66842c82a",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 1.25,
+            "variance": 1.125
+        },
+        {
+            "title": "Silver Lode",
+            "filmUrl": "silver-lode",
+            "filmYear": "1954",
+            "filmDir": "Allan Dwan",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/4/5/1/8/34518-silver-lode-0-230-0-345-crop.jpg?v=c7df47f162",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 2
+            },
+            "avgRating": 2,
+            "variance": 0
+        },
+        {
+            "title": "Comedians",
+            "filmUrl": "comedians",
+            "filmYear": "1954",
+            "filmDir": "Juan Antonio Bardem",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/8/2/3/9/9/82399-comedians-0-230-0-345-crop.jpg?v=e942d5fec5",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 1.75,
+            "variance": 3.125
+        },
+        {
+            "title": "Clothing the Naked",
+            "filmUrl": "clothing-the-naked",
+            "filmYear": "1954",
+            "filmDir": "Marcello Pagliero",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/4/6/0/3/3/4/460334-clothing-the-naked-0-230-0-345-crop.jpg?v=91474997ed",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.75,
+            "variance": 0.125
+        },
+        {
+            "title": "Love in the City",
+            "filmUrl": "love-in-the-city",
+            "filmYear": "1953",
+            "filmDir": "Francesco Maselli",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/1/2/9/6/31296-love-in-the-city-0-230-0-345-crop.jpg?v=146df28ffc",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 3
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
+        },
+        {
+            "title": "The Cannery Boat",
+            "filmUrl": "the-cannery-boat",
+            "filmYear": "1953",
+            "filmDir": "Sō Yamamura",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/2/8/3/5/1/328351-the-cannery-boat-0-230-0-345-crop.jpg?v=44a589a3e3",
+            "ratings": {
+                "andre_bazin_": 1,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.75,
+            "variance": 0.125
+        },
+        {
+            "title": "The White Sheik",
+            "filmUrl": "the-white-sheik",
+            "filmYear": "1952",
+            "filmDir": "Federico Fellini",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/1/7/8/7/21787-the-white-sheik-0-230-0-345-crop.jpg?v=5dd4a91d79",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Variety Lights",
+            "filmUrl": "variety-lights",
+            "filmYear": "1950",
+            "filmDir": "Alberto Lattuada",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/1/7/5/9/21759-variety-lights-0-230-0-345-crop.jpg?v=f411eee45e",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 1
+            },
+            "avgRating": 1.5,
+            "variance": 0.5
+        },
+        {
+            "title": "L'amore",
+            "filmUrl": "lamore-1948",
+            "filmYear": "1948",
+            "filmDir": "Roberto Rossellini",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/1/7/0/5/21705-amore-0-230-0-345-crop.jpg?v=92eb464a4c",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "Dreams That Money Can Buy",
+            "filmUrl": "dreams-that-money-can-buy",
+            "filmYear": "1947",
+            "filmDir": "Hans Richter",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/3/0/4/6/4/30464-dreams-that-money-can-buy-0-230-0-345-crop.jpg?v=9f49381f76",
+            "ratings": {
+                "andre_bazin_": 0.5,
+                "franco_truffaut": 0.5
+            },
+            "avgRating": 0.5,
+            "variance": 0
+        },
+        {
+            "title": "Lifeboat",
+            "filmUrl": "lifeboat",
+            "filmYear": "1944",
+            "filmDir": "Alfred Hitchcock",
+            "filmPoster": "https://a.ltrbxd.com/resized/sm/upload/nb/w8/9p/yn/uptFcaNThH0p2nl0BIqbbdsM850-0-230-0-345-crop.jpg?v=f65efc6b91",
+            "ratings": {
+                "andre_bazin_": 2,
+                "franco_truffaut": 3
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
+        },
+        {
+            "title": "Time in the Sun",
+            "filmUrl": "time-in-the-sun",
+            "filmYear": "1940",
+            "filmDir": "Sergei Eisenstein",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/8/5/3/8/1/185381-time-in-the-sun-0-230-0-345-crop.jpg?v=98bf14fd08",
+            "ratings": {
+                "andre_bazin_": 4,
+                "franco_truffaut": 4
+            },
+            "avgRating": 4,
+            "variance": 0
+        },
+        {
+            "title": "Toni",
+            "filmUrl": "toni",
+            "filmYear": "1935",
+            "filmDir": "Jean Renoir",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/1/3/9/1/0/13910-toni-0-230-0-345-crop.jpg?v=ff8bbd4b60",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "Viva Villa!",
+            "filmUrl": "viva-villa",
+            "filmYear": "1934",
+            "filmDir": "Jack Conway",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/2/1/5/4/9/21549-viva-villa--0-230-0-345-crop.jpg?v=bc33ba2cbc",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "Hallelujah",
+            "filmUrl": "hallelujah",
+            "filmYear": "1929",
+            "filmDir": "King Vidor",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/6/6/4/0/56640-hallelujah-0-230-0-345-crop.jpg?v=752af2174c",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 3
+            },
+            "avgRating": 3,
+            "variance": 0
+        },
+        {
+            "title": "The Gold Rush",
+            "filmUrl": "the-gold-rush",
+            "filmYear": "1925",
+            "filmDir": "Charlie Chaplin",
+            "filmPoster": "https://a.ltrbxd.com/resized/film-poster/5/1/2/0/1/51201-the-gold-rush-0-230-0-345-crop.jpg?v=02492191ed",
+            "ratings": {
+                "andre_bazin_": 3,
+                "franco_truffaut": 2
+            },
+            "avgRating": 2.5,
+            "variance": 0.5
         }
     ],
     "users": [
         {
-            "username": "jeanluc_godard",
-            "displayname": "Jean-Luc Godard",
-            "avatarLink": "https://a.ltrbxd.com/resized/avatar/upload/1/0/4/2/7/0/7/8/shard/avtr-0-48-0-48-crop.jpg?v=236a1c5a69"
+            "username": "andre_bazin_",
+            "displayname": "André Bazin",
+            "avatarLink": "https://a.ltrbxd.com/resized/avatar/upload/1/0/4/6/9/6/2/5/shard/avtr-0-48-0-48-crop.jpg?v=feeaa4d763"
         },
         {
-            "username": "luc_moullet",
-            "displayname": "Luc Moullet",
-            "avatarLink": "https://a.ltrbxd.com/resized/avatar/upload/1/0/4/6/2/9/6/9/shard/avtr-0-48-0-48-crop.jpg?v=f3889d6fb7"
+            "username": "franco_truffaut",
+            "displayname": "François Truffaut",
+            "avatarLink": "https://a.ltrbxd.com/resized/avatar/upload/1/0/4/6/1/3/0/1/shard/avtr-0-48-0-48-crop.jpg?v=71464ee38a"
         }
     ]
 }

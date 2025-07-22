@@ -1,12 +1,23 @@
 import React, {useState, useEffect} from "react";
 import ProfileInputList from "../components/ProfileInputList";
 import {getMutualData, getHeatMapData} from "../utility/api.ts";  // fetch call
-import testData1 from "../assets/sampleData/testData1.json";
-import testData2 from "../assets/sampleData/testData2.json";
 import MainTable from "../components/MainTable.tsx";
 import { ResponsiveHeatMap } from "@nivo/heatmap";
 import {type ColumnDef} from "@tanstack/react-table";
 import {type User, type MutualFilm, type HeatMapRow} from "../utility/types.ts";
+
+// Test Data imports:
+import testData1 from "../assets/sampleData/testData1.json";
+import testData2 from "../assets/sampleData/testData2.json";
+import testData3 from "../assets/sampleData/testData3.json";
+import testData4 from "../assets/sampleData/testData4.json";
+import testData5 from "../assets/sampleData/testData5.json";
+import testData6 from "../assets/sampleData/testData6.json";
+import testData7 from "../assets/sampleData/testData7.json";
+import testData8 from "../assets/sampleData/testData8.json";
+import testData9 from "../assets/sampleData/testData9.json";
+import testData10 from "../assets/sampleData/testData10.json";
+
 
 //import { interpolateYlOrRd } from "d3-scale-chromatic"; // RANDOM COLOUR SCHEME FOR THE HEATMAP!!!
 /* As a reference, following the HTML page structure of: https://letterboxd-besties.cheersderek.com/ */
@@ -163,30 +174,52 @@ function MainPage() {
     }
 
     // DEBUG: Test function for loading in test data from testData.json:
-    const getTestData = () => {
-        setUsersData(testData2.users);
-        setMutualFilms(testData2.mutualFilms);
+    const getTestData = (whichOne: number) => {
+        if(whichOne == 1) {
+            setUsersData(testData1.users);
+            setMutualFilms(testData1.mutualFilms);
+        } else if (whichOne == 2) {
+            setUsersData(testData2.users);
+            setMutualFilms(testData2.mutualFilms);
+        } else if (whichOne == 3) {
+            setUsersData(testData3.users);
+            setMutualFilms(testData3.mutualFilms);
+        } else if (whichOne == 4) {
+            setUsersData(testData4.users);
+            setMutualFilms(testData4.mutualFilms);
+        } else if (whichOne == 5) {
+            setUsersData(testData5.users);
+            setMutualFilms(testData5.mutualFilms);
+        } else if (whichOne == 6) {
+            setUsersData(testData6.users);
+            /*setMutualFilms(null);*/ // DEBUG:+TO-DO: Don't forget I need to be able to handle "null" (no intersection) values properly. (Don't believe I officially do yet).
+            // DEBUG:+TO-DO: ^ Yeah, I'll need to do this for sure. For now, it only shows the first user's (full) film ratings and the rest is just "--" for the other... (I should have "No Intersection" appear or smth),
+        } else if (whichOne == 7) {
+            setUsersData(testData7.users);
+            setMutualFilms(testData7.mutualFilms);
+        } else if (whichOne == 8) {
+            setUsersData(testData8.users);
+            setMutualFilms(testData8.mutualFilms);
+        } else if (whichOne == 9) {
+            setUsersData(testData9.users);
+            setMutualFilms(testData9.mutualFilms);
+        } else {
+            setUsersData(testData10.users);
+            setMutualFilms(testData10.mutualFilms);
+        }
     }
 
     // NOTE:+DEBUG: All style={{border:"..."}} stylings are for debugging and web design purposes...
     return(
-        <div className="wrapper" style={{border:"2px solid blue"}} >
-
-
-
+        <div className="wrapper">
 
             <header id="mpTitle">
-                <img src="../assets/images/letterboxd-icon.png" alt="Letterboxd Icon"/>
-                <h1>Letterboxd Taste Comparator</h1>
+                <h1 className="headerEl">
+                    <img style={{width:"50px"}} src="../src/assets/images/letterboxd-icon.png" alt="Letterboxd Icon"/>
+                    Letterboxd Taste Comparator
+                </h1>
                 <p id="mpUndertext">Compare your mutual film ratings with other Letterboxd profiles!</p>
             </header>
-
-
-
-
-
-
-
 
             <main>
                 {/* [1] - This first <div> will be for the area where the user types and inputs their profile URLs, is able to add more 
@@ -202,11 +235,49 @@ function MainPage() {
                 {genTable && (<div>
                     <MainTable data={mutualFilms} userData={usersData} columns={columns}/>;
                 </div>)}
+                
+                {/* [3] - The third <div> where the Testing ("Bypass Scraping") Data is accessible. (This is the data that you would use in the event
+                that the Letterboxd DOM radically changes, and my web crawling is essentially rendered obselete). */}
+                <div id="testDataContainer">
+
+                    <div id="testDataHeader" style={{border:"2px solid blue"}} >
+                        <h1>TABLE TEST VALUES</h1>
+                        <h2>(SKIP THE SCRAPING)</h2>
+                    </div>
+
+                    <p>
+                        Here is some test data that you can populate the table above with (if you wish to bypass the web scraping process entirely, 
+                        which — and this is intentional, for reasons that are elaborated upon in the About Page — may <b>take very long</b> variable 
+                        on the rated-film count of the Letterboxd profiles provided. Also this data is invaluable for showcasing the interactive table features 
+                        in the event that my scraping logic is rendered obsolete with any future firewalls, drastic Letterboxd DOM overhauls, and so on).
+                        <br/><br/>
+                        This test data comprises six archival accounts — that I created — for the French film critics of 50s-60s Cahiers du Cinéma 
+                        (e.g., Jean-Luc Godard and François Truffaut, names that a cultured eye may recognize for their subsequent affluential filmmaking careers). 
+                    </p>
+
+                    <div id="testDataSelectionWrapper" style={{border:"2px solid red"}} >
+                        <h2>THE TEST DATA:</h2>
+                        <ul>
+                            <li><button onClick={()=>getTestData(1)}>[André Bazin, François Truffaut]</button></li>
+                            <li><button onClick={()=>getTestData(2)}>[Jacques Rivette, Jean-Luc Godard]</button></li>
+                            <li><button onClick={()=>getTestData(3)}>[Jacques Rivette, Éric Rohmer]</button></li>
+                            <li><button onClick={()=>getTestData(4)}>[Jacques Rivette, Luc Moullet]</button></li>
+                            <li><button onClick={()=>getTestData(5)}>[Jean-Luc Godard, Luc Moullet]</button></li>
+                            <li><button onClick={()=>getTestData(6)}>[Jean-Luc Godard François Truffaut]</button><b> (No Mutual Films)</b></li>
+                            <li><button onClick={()=>getTestData(7)}>[André Bazin, Éric Rohmer, François Truffaut]</button></li>
+                            <li><button onClick={()=>getTestData(8)}>[Jacques Rivette, Jean-Luc Godard, Éric Rohmer]</button></li>
+                            <li><button onClick={()=>getTestData(9)}>[Jacques Rivette, Jean-Luc Godard, Éric Rohmer, Luc Moullet]</button></li>
+                            <li><button onClick={()=>getTestData(10)}>[André Bazin, Jacques Rivette, Jean-Luc Godard, Éric Rohmer]</button></li>
+                        </ul>
+                    </div>
+                </div>
+
+
 
                 {/* [2.5] - DEBUG: This is just a debug section for testing the TanStack table and Nivo HeatMap (w/o needing to scrape each time). */}
-                <div style={{border:"2px solid blue"}} >DEBUG: TEST AREA - USE .JSON VALUES FOR GENERATING TANSTACK TABLE: actually i think i should save the testData.json values -- and here I can have buttons that test combos of the Cahiers du Cinema accounts.<br/>
+                {/*<div style={{border:"2px solid blue"}} >DEBUG: TEST AREA - USE .JSON VALUES FOR GENERATING TANSTACK TABLE: actually i think i should save the testData.json values -- and here I can have buttons that test combos of the Cahiers du Cinema accounts.<br/>
                     <button onClick={()=>getTestData()}>[Use testData.json values!!!]</button>
-                </div>
+                </div>*/}
 
                 <div>
                     [THIS IS WHERE THE HEATMAP WILL BE GENERATED!!!]<br/>
@@ -253,33 +324,3 @@ function MainPage() {
 }
 
 export default MainPage;
-
-{/* PLANNING STUFF TO CONSIDER LATER BELOW */}
-{/************************************************************************************************************/}
-{/* [2] - This second <div> will basically be an expandable "informative box" about dummy values that
-you can use. It'll just be a button that says "Use Dummy Info" and when you click it, it expands a box with
-the profile URL links for my six Cahiers du Cinéma archival accounts.
-
-This should be moved to the "About Me Page" after, but these dummy accounts will be a preventative feature
-for the scenario where the official Letterboxd page HTML DOM is radically transformed, and my Go-based scraping
-logic fails. My counter-measure would be using these Dummy Letterboxd accounts (**my own** accounts) and manually
-storing their rating data within the project directory somewhere, then -- and I'll need to adjust my Go code for this --
-when their specific URLs are encountered, instead of any scraping, that dummy data is used instead. 
-<div>
-    INSERT BUTTON-TO-EXPANDABLE BOX W/ INFO ABOUT DUMMY PROFILE VALUES.
-</div> */} {/* <-- Worry about this later, let's just focus on the Table and HeatMap for now. */}
-
-{/* [3] - The third <div> will be the "Output Area" table and I guess I'll need to think more about how I'll have everything work.
-
-So it'll be a table that displays a vertically scrollable list of all the mutual films rated by the input list of users.
-- Each row will be for a film (w/ film title, poster, rating from each user, official avg rating, input avg rating, and variance. Also link to LB page ofc).
-
-I obviously want it so that this table is interactable. I want a search-bar that lets you dynamically filter the table in
-real-time and view films based on string search (keep it simple, just limit this to the title displayed on LB itself).
-- Then I obv want (dropdown?) buttons (and sliders?) for the Sorting/Filtering features of the site.
-- You can sort by [1] Average Rating (input) [2] Variance [3] Title [4] User Rating (DEBUG: maybe also official rating? We'll see).
-- You can filter by [1] Threshold above [2] Threshold below [3] USer-specific filters
-*/}
-
-{/* [4] I've left out the Heatmap but below the output table, maybe have a "Generate Heatmap" button
-and I can have it generate in the <div> below. (Look for some framework out there that can make a heatmap on the fly). */}
