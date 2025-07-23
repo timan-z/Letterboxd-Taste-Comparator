@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import ProfileInputList from "../components/ProfileInputList";
 import {getMutualData, getHeatMapData} from "../utility/api.ts";  // fetch call
 import MainTable from "../components/MainTable.tsx";
@@ -18,10 +18,6 @@ import testData8 from "../assets/sampleData/testData8.json";
 import testData9 from "../assets/sampleData/testData9.json";
 import testData10 from "../assets/sampleData/testData10.json";
 
-
-//import { interpolateYlOrRd } from "d3-scale-chromatic"; // RANDOM COLOUR SCHEME FOR THE HEATMAP!!!
-/* As a reference, following the HTML page structure of: https://letterboxd-besties.cheersderek.com/ */
-
 function MainPage() {
     const [profileUrls, setProfileUrls] = useState(["", ""]);
     const [loading, setLoading] = useState(false);  // state var for when (TO-DO: pair with loading animation? -- that temp freezes webpage?)
@@ -35,7 +31,10 @@ function MainPage() {
     // Generate Table flag:
     const [genTable, setGenTable] = useState(false);
     // Generate HeatMap stuff:
+    const [heatMapBtn, setHeatMapBtn] = useState(false);
     const [heatMapData, setHeatMapData] = useState<HeatMapRow[]>([]); // data for populating nivo heatmap.
+    const [heatMapWidth, setHeatMapWidth] = useState(0);
+    const [showHeatMap, setShowHeatMap] = useState(true);
     //const [heatMapKeys, setHeatMapKeys] = useState<string[]>([]); // just film titles (and that'll be the keys for the nivo heatmap).
 
     // DEBUG: Catches when changes are made to {loading} and displays it - [That's all for now]:
@@ -76,12 +75,17 @@ function MainPage() {
     }, [mutualFilms]);
 
     useEffect(() => {
-        if(mutualFilms && usersData) {
+        if(mutualFilms.length > 0 && usersData.length > 1) {
             console.log("When both [mutualFilms] and [usersData] are retrieved, I should set some flag here to generate the Table.");
             /* NOTE: ^ Will this cause race conditions with the other UseEffect hooks? Should I instead turn this current UseEffect hook
             into a function that can optionally be invoked by either of the UseEffect hooks above when they're entered (and checking to see
             if both of the conditions are met)? */
             setGenTable(true);
+            setHeatMapBtn(true);
+        } else {
+            // When I generate an invalid table, I should make it so that this and setGenTable are set to false!:
+            setGenTable(false);
+            setHeatMapBtn(false);
         }
     }, [mutualFilms, usersData]);
 
@@ -165,6 +169,7 @@ function MainPage() {
             console.log("ALRIGHTY - THE RESULTS OF CALLING \"getHeatMapData\" ARE AS FOLLOWS: ", res);
 
             setHeatMapData(res) // DEBUG: Remember that state var "heatMapData" won't update until the next re-render so maybe catch it with a UseEffect?
+            setShowHeatMap(true)
         } catch(err) {
             console.error("ERROR: The \"goGetMutualData\" API call FAILED because => ", err);
             alert("THE API CALL FAILED!!! RAHHH"); // <--DEBUG:+TO-DO: I should have a HTML pop-up here for this.
@@ -209,6 +214,27 @@ function MainPage() {
         }
     }
 
+    const toggleHeatMapView = () => {
+        const testValue = Math.round(window.innerHeight / 100);
+
+        if(heatMapWidth > testValue) {
+            setHeatMapWidth(Math.round(window.innerHeight / 100));
+        } else {
+            const minWidth = 100 + mutualFilms.length * 75;
+            setHeatMapWidth(minWidth);
+        }
+    }
+
+    const turnOffHeatMap = () => {
+        setShowHeatMap(false);
+    }
+
+    // DEBUG: Just a Debug function below...
+    const debugFunction = () => {
+        console.log("DEBUG: The value of heatMapBtn => ", heatMapBtn);
+    }
+
+
     // NOTE:+DEBUG: All style={{border:"..."}} stylings are for debugging and web design purposes...
     return(
         <div className="wrapper">
@@ -239,13 +265,28 @@ function MainPage() {
                 {/* [3] - The third <div> where the Testing ("Bypass Scraping") Data is accessible. (This is the data that you would use in the event
                 that the Letterboxd DOM radically changes, and my web crawling is essentially rendered obselete). */}
                 <div id="testDataContainer">
-
-                    <div id="testDataHeader" style={{border:"2px solid blue"}} >
+                    <div id="testDataHeader">
                         <h1>TABLE TEST VALUES</h1>
                         <h2>(SKIP THE SCRAPING)</h2>
                     </div>
 
-                    <p>
+                    <div id="testDataSelectionWrapper">
+                        <h2>THE TEST DATA:</h2>
+                        <ul>
+                            <li><button onClick={()=>getTestData(1)}>[André Bazin, François Truffaut]</button></li>
+                            <li><button onClick={()=>getTestData(2)}>[Jacques Rivette, Jean-Luc Godard]</button></li>
+                            <li><button onClick={()=>getTestData(3)}>[Jacques Rivette, Éric Rohmer]</button></li>
+                            <li><button onClick={()=>getTestData(4)}>[Jacques Rivette, Luc Moullet]</button></li>
+                            <li><button onClick={()=>getTestData(5)}>[Jean-Luc Godard, Luc Moullet]</button></li>
+                            <li><button onClick={()=>getTestData(6)}>[Jean-Luc Godard François Truffaut] <b>(No Mutual Films)</b></button></li>
+                            <li><button onClick={()=>getTestData(7)}>[André Bazin, Éric Rohmer, François Truffaut]</button></li>
+                            <li><button onClick={()=>getTestData(8)}>[Jacques Rivette, Jean-Luc Godard, Éric Rohmer]</button></li>
+                            <li><button onClick={()=>getTestData(9)}>[Jacques Rivette, Jean-Luc Godard, Éric Rohmer, Luc Moullet]</button></li>
+                            <li><button onClick={()=>getTestData(10)}>[André Bazin, Jacques Rivette, Jean-Luc Godard, Éric Rohmer]</button></li>
+                        </ul>
+                    </div>
+
+                    <p style={{fontSize:"18px"}}>
                         Here is some test data that you can populate the table above with (if you wish to bypass the web scraping process entirely, 
                         which — and this is intentional, for reasons that are elaborated upon in the About Page — may <b>take very long</b> variable 
                         on the rated-film count of the Letterboxd profiles provided. Also this data is invaluable for showcasing the interactive table features 
@@ -254,48 +295,30 @@ function MainPage() {
                         This test data comprises six archival accounts — that I created — for the French film critics of 50s-60s Cahiers du Cinéma 
                         (e.g., Jean-Luc Godard and François Truffaut, names that a cultured eye may recognize for their subsequent affluential filmmaking careers). 
                     </p>
-
-                    <div id="testDataSelectionWrapper" style={{border:"2px solid red"}} >
-                        <h2>THE TEST DATA:</h2>
-                        <ul>
-                            <li><button onClick={()=>getTestData(1)}>[André Bazin, François Truffaut]</button></li>
-                            <li><button onClick={()=>getTestData(2)}>[Jacques Rivette, Jean-Luc Godard]</button></li>
-                            <li><button onClick={()=>getTestData(3)}>[Jacques Rivette, Éric Rohmer]</button></li>
-                            <li><button onClick={()=>getTestData(4)}>[Jacques Rivette, Luc Moullet]</button></li>
-                            <li><button onClick={()=>getTestData(5)}>[Jean-Luc Godard, Luc Moullet]</button></li>
-                            <li><button onClick={()=>getTestData(6)}>[Jean-Luc Godard François Truffaut]</button><b> (No Mutual Films)</b></li>
-                            <li><button onClick={()=>getTestData(7)}>[André Bazin, Éric Rohmer, François Truffaut]</button></li>
-                            <li><button onClick={()=>getTestData(8)}>[Jacques Rivette, Jean-Luc Godard, Éric Rohmer]</button></li>
-                            <li><button onClick={()=>getTestData(9)}>[Jacques Rivette, Jean-Luc Godard, Éric Rohmer, Luc Moullet]</button></li>
-                            <li><button onClick={()=>getTestData(10)}>[André Bazin, Jacques Rivette, Jean-Luc Godard, Éric Rohmer]</button></li>
-                        </ul>
-                    </div>
                 </div>
 
+                {/* NOTE: Going to have the "Generate HeatMap" button remain on the default-state Main Page but be disabled until
+                there's valid content in the TanStack Table (better to appear but be "grayed out" so the User can see it and acknowledge
+                its existence rather than potentially miss it if it were to appear dynamically after the table generates). */}
+                <div id="heatMapBtnWrapper">
+                    <button id="heatMapBtn" disabled={!heatMapBtn} onClick={()=>goGetHeatMapData()}>Generate Heatmap</button><br/>
+                </div>
 
+                {/* [4] - The fourth <div> where the HeatMap will be generated!: */}
+                {heatMapData.length > 0 && showHeatMap && (
 
-                {/* [2.5] - DEBUG: This is just a debug section for testing the TanStack table and Nivo HeatMap (w/o needing to scrape each time). */}
-                {/*<div style={{border:"2px solid blue"}} >DEBUG: TEST AREA - USE .JSON VALUES FOR GENERATING TANSTACK TABLE: actually i think i should save the testData.json values -- and here I can have buttons that test combos of the Cahiers du Cinema accounts.<br/>
-                    <button onClick={()=>getTestData()}>[Use testData.json values!!!]</button>
-                </div>*/}
-
-                <div>
-                    [THIS IS WHERE THE HEATMAP WILL BE GENERATED!!!]<br/>
-                    <button onClick={()=>goGetHeatMapData()}>Generate Heatmap</button><br/>
-                    {/* HeatMap will be generated below... */}
-                    {heatMapData.length > 0 && (
-                        <div style={{height: "500px"}}>
-                            
+                    <div id="heatMapScrollWrapper">
+                        <div id="heatMapContainer" style={{ minWidth: `${heatMapWidth}px`, height: "100vh" }} >
                             <ResponsiveHeatMap
                                 data={heatMapData}
-                                margin={{ top: 100, right: 30, bottom: 60, left: 100 }}
+                                margin={{ top: 140, right: 30, bottom: 60, left: 100 }}
                                 valueFormat=".1f"
                                 axisTop={{
                                     tickSize: 5,
                                     tickPadding: 5,
                                     tickRotation: -90, // rotates film titles
                                     legend: 'Films',
-                                    legendOffset: 60,
+                                    legendOffset: -120,
                                 }}
                                 axisLeft={{
                                     tickSize: 5,
@@ -313,10 +336,37 @@ function MainPage() {
                                 labelTextColor={{ from: 'color', modifiers: [['darker', 2]] }}
                                 animate={true}
                                 motionConfig="gentle"
+                                theme={{
+                                    axis: {
+                                        ticks: {
+                                            text: {
+                                                fill: '#caeff8', // light blue text.
+                                                fontSize: 12,
+                                            },
+                                        },
+                                        legend: {
+                                            text: {
+                                                fill: '#caeff8',
+                                                fontSize: 14,
+                                                fontWeight: 600,    // heavier for the axis legends.
+                                            },
+                                        },
+                                    },
+                                }}
                             />
                         </div>
-                    )}
-                </div>
+
+                        {/* When the HeatMap is generated, I'm also going to have an extra section here allowing the User to interact with it 
+                        (mainly toggling its view mode from expanded to condensed and vice-versa) but also to optionally close the HeatMap! */}
+                        <div id="hmExtraControls">
+                            <button id="hmToggleBtn" onClick={()=>toggleHeatMapView()}>[TOGGLE HEATMAP VIEW]</button>
+                            <button id="hmCloseBtn" onClick={()=>turnOffHeatMap()}>[TURN OFF HEATMAP]</button>
+                        </div>
+                    </div>
+                )}
+
+                {/* MISC: */}
+                <button onClick={()=>debugFunction()}>[DEBUG BUTTON]</button> {/* <--DEBUG: Get rid of this after... */}
 
             </main>            
         </div>
