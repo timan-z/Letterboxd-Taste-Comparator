@@ -1,7 +1,9 @@
 import {type User, type MutualFilm} from "../utility/types.ts";
 
 //const API_BASE = "http://localhost:8080" // <-- This is the port where I will be hosting my Go backend server.
-const API_BASE = import.meta.env.VITE_API_BASE;
+//const API_BASE = import.meta.env.VITE_API_BASE;
+const API_BASE = import.meta.env.VITE_API_BASE.replace(/\/+$/, ""); // <-- TRIM TRAILING SLASHES!!! Even if I **manually** do this on Netlify, doesn't change???
+
 
 // My fetch('/api/mutual') that'll be called on button click in MainPage.tsx (w/ profile URLs as args):
 export const getMutualData = async(profiles: string[]) => {
