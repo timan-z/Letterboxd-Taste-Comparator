@@ -23,15 +23,16 @@ import (
 )
 
 func main() {
+	// DEBUG: Test below.
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintln(w, "HELLO FROM GO RAILWAY!!!")
+	})
+
 	// DEBUG: Start a webserver for Railway (and eventually Fly.io when I can get the site to stop rejecting my info).
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080" // What I had originally (fallback for if Railway does not provide a PORT).
 	}
-	// DEBUG: Test below.
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "HELLO FROM GO RAILWAY!!!")
-	})
 
 	// Serve backend on port 8080:
 	http.HandleFunc("/api/mutual", handleMutualRatings)
