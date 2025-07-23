@@ -41,7 +41,7 @@ func main() {
 	//http.ListenAndServe(":8080", corsMiddleware(http.DefaultServeMux))
 
 	fmt.Printf("Starting server on port %s...\n", port)
-	log.Fatal(http.ListenAndServe(":"+port, nil))
+	log.Fatal(http.ListenAndServe(":"+port, corsMiddleware(http.DefaultServeMux)))
 }
 
 // Function for handling POST /api/mutual requests (when list of profile URLs are sent over):
