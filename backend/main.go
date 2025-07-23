@@ -38,7 +38,10 @@ func main() {
 	http.HandleFunc("/api/mutual", handleMutualRatings)
 	http.HandleFunc("/api/heatmap", handleHeatMap)
 	// Allow CORS:
-	http.ListenAndServe(":8080", corsMiddleware(http.DefaultServeMux))
+	//http.ListenAndServe(":8080", corsMiddleware(http.DefaultServeMux))
+
+	fmt.Printf("Starting server on port %s...\n", port)
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
 // Function for handling POST /api/mutual requests (when list of profile URLs are sent over):
