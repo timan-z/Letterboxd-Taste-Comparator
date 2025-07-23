@@ -52,6 +52,7 @@ func handleMutualRatings(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	fmt.Println("Received:", r.Method, "on", r.URL.Path)
 	if r.Method != http.MethodPost {
 		http.Error(w, "[handleMutualRatings]ERROR: Only POST calls are allowed for the /api/mutual endpoint.", http.StatusMethodNotAllowed)
 		return
