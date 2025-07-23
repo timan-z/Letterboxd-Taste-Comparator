@@ -18,6 +18,10 @@ import testData8 from "../assets/sampleData/testData8.json";
 import testData9 from "../assets/sampleData/testData9.json";
 import testData10 from "../assets/sampleData/testData10.json";
 
+// TEST:
+const API_BASE_URL = import.meta.env.VITE_API_BASE;
+
+
 function MainPage() {
     const [profileUrls, setProfileUrls] = useState(["", ""]);
     const [loading, setLoading] = useState(false);  // state var for when (TO-DO: pair with loading animation? -- that temp freezes webpage?)
@@ -231,7 +235,7 @@ function MainPage() {
 
     // DEBUG: Just a Debug function below...
     const debugFunction = () => {
-        console.log("DEBUG: The value of heatMapBtn => ", heatMapBtn);
+        console.log("DEBUG: The value of API_BASE_URL => ", API_BASE_URL);
     }
 
 
