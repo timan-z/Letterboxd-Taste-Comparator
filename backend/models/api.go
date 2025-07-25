@@ -36,7 +36,7 @@ type HeatMapResponse struct {
 
 // Requests and stuff...
 type MutualRequest struct {
-	Profiles []string `json:"profiles"` // e.g., ["url1", "url2", etc]. DEBUG: Maybe I should tweak this so plain usernames work too?
+	Profiles []string `json:"profiles"` // e.g., ["url1", "url2", etc].
 }
 
 type HeatMapRequest struct {

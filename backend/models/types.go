@@ -1,10 +1,11 @@
+// This file defines data structures that will be used in the scraping process defined in main.go:
 package models
 
 type FilmDetails struct {
 	FilmUrl    string
 	FilmDir    string
 	FilmPoster string
-	FilmYear   string // int or string doesn't matter really.
+	FilmYear   string // int, string doesn't matter really.
 	FilmRating float32
 }
 
@@ -16,12 +17,6 @@ type UserData struct {
 	FilmNamesLen int
 	FilmMap      map[string]FilmDetails
 }
-
-/*type UserSummary struct {
-	Username    string
-	DisplayName string
-	AvatarLink  string
-}*/
 
 type MutualData struct {
 	Title      string

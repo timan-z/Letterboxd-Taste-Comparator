@@ -1,12 +1,9 @@
-// DESIGN-CHOICE: Let's cap the number of accounts you can provide to six. (This is fair -- don't want to go overboard for ethical reasons).
 package main
 
 import (
-	// new stuff (for new phase)
 	"encoding/json"
 	"net/http"
 
-	// old imports
 	"errors"
 	"fmt"
 	"io"
@@ -23,25 +20,23 @@ import (
 )
 
 func main() {
-	// DEBUG: Test below.
+	/* DEBUG: Function below is for testing to ensure that Railway is properly hosting my GO backend.
+	When I do my switch from Railway to Fly-io, make whatever adjustments I need to here. TO-DO: This comment! */
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintln(w, "HELLO FROM GO RAILWAY!!!")
 	})
-
-	// DEBUG: Start a webserver for Railway (and eventually Fly.io when I can get the site to stop rejecting my info).
+	// DEBUG: Starting a webserver for Railyway:
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080" // What I had originally (fallback for if Railway does not provide a PORT).
+		port = "8080" // NOTE: What I had originally for local development (fallback for if Railway does not provide a PORT).
 	}
 
 	// Serve backend on port 8080:
 	http.HandleFunc("/api/mutual", handleMutualRatings)
 	http.HandleFunc("/api/heatmap", handleHeatMap)
-	// Allow CORS:
-	//http.ListenAndServe(":8080", corsMiddleware(http.DefaultServeMux))
 
 	fmt.Printf("Starting server on port %s...\n", port)
-	log.Fatal(http.ListenAndServe(":"+port, corsMiddleware(http.DefaultServeMux)))
+	log.Fatal(http.ListenAndServe(":"+port, corsMiddleware(http.DefaultServeMux))) // Allow CORS by passing corsMiddleware(...)
 }
 
 // Function for handling POST /api/mutual requests (when list of profile URLs are sent over):
@@ -90,19 +85,13 @@ func handleHeatMap(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// should call a function now that does the heatmap calculation, returns the values here after:
-	//hydrHeatMap, filmTitles, err := genHeatMapValues(req.Films, req.Users)
+	// Should call a function now that does the heatmap calculation, returns the values here after:
 	hydrHeatMap, err := genHeatMapValues(req.Films, req.Users)
 	if err != nil {
 		http.Error(w, "Heatmap stuff failed: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
 	w.Header().Set("Content-Type", "application/json")
-	/*responseVal := models.HeatMapResponse{
-		Data:       hydrHeatMap,
-		FilmTitles: filmTitles,
-	}*/
-	// json.NewEncoder(w).Encode(responseVal)
 	json.NewEncoder(w).Encode(hydrHeatMap)
 }
 
@@ -152,17 +141,11 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 		"★★★★★": 5,
 	} // because Letterboxd stores their film ratings as these symbols even in the raw HTML code. (Only need float32).
 	var currentUrl string
-	//var currentFilm string
 	var urlWShortest string
 
-	//var filmYearBuffer string
-	//var filmDirBuffer string
-	//var filmPosterBuffer string
-
 	visitedFilms := make(map[string]models.FilmDetails) // filmUrlPath -> FilmDetails
-	visitedPaginatedPages := map[string]bool{}          // <-- GUARD THAT MIGHT BE COMPLETLEY UNNECESSARY???
+	visitedPaginatedPages := map[string]bool{}
 
-	//var userUrls []string // Slice of strings to store the Profile URLs
 	var mutualFilms []models.MutualData
 	var profilePageRegex = regexp.MustCompile(`^https://letterboxd\.com/[^/]+/?$`)
 	var filmPageRegex = regexp.MustCompile(`^https://letterboxd\.com/film/[^/]+/?$`)
@@ -171,17 +154,15 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 	allUsersData := make(map[string]models.UserData) // username will be mapped to a UserData struct var (contains all the assoc films + details).
 	shortestLen := math.MaxInt64                     // inf
 
-	//var userFilms = make(map[string]models.FilmDetails) // <-- UPDATE: Moving this here.
-
-	// Declare the collector with supported domains:
+	// Declare the Colly collector with supported domains:
 	c := colly.NewCollector(colly.AllowedDomains("www.letterboxd.com", "letterboxd.com", "https://letterboxd.com"), colly.Async(false)) // disabling async to reduce load (ethics!)
 	c.Limit(&colly.LimitRule{
 		DomainGlob:  "*letterboxd./*", // domains that will be affected here.
-		Parallelism: 1,                // "parallelism refers to the ability to process multiple web requests concurrently."
-		Delay:       10 * time.Second, // Set a delay between requests to these domains.
+		Parallelism: 1,                // "parallelism refers to the ability to process multiple web requests concurrently." (1 so no concurrency).
+		Delay:       10 * time.Second, // Set a delay between requests to these domains. (10 seconds here and below to be an extra good netizen).
 		RandomDelay: 10 * time.Second, // Addtional random delay.
-	}) // <-- Definitely should add a delay effect so Letterboxd doesn't IP-ban me.
-	c.UserAgent = "JustPlayingAroundBot/0.1 (Learning Golang Colly, have delays put in effect, async disabled, and more to REDUCE TRAFFIC!!!)"
+	})
+	c.UserAgent = "LBTasteComparator/0.1 (Learning Golang Colly, have delays put in effect, async disabled, and more to REDUCE TRAFFIC!!!)" // TO-DO:+DEBUG:+NOTE: Come back here and attach business email.
 
 	// My obligatory [1] On-Request method and my [2] On-Error method:
 	c.OnRequest(func(r *colly.Request) {
@@ -200,19 +181,15 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 	})
 
 	// Extracting the username of the profile whose films section you're crawling over (not URL ID):
-	// NOTE:+DEBUG: ^ This OnHTML method might be rendered obsolete shortly...
 	c.OnHTML("h1.title-3", func(h *colly.HTMLElement) {
 		fmt.Printf("The Letterboxd profile you're crawling over is: %s\n", h.Text)
 	})
 
 	// Extracting the [username] and [film avatar link] of the profile whose films section you're crawling over:
-	// NOTE: Probably will make the OnHTML("h1.title-3") method obsolete, so remove that afterwards.
 	c.OnHTML("div.profile-mini-person", func(e *colly.HTMLElement) {
-
-		// if existingFilm, alreadyVisited := visitedFilms[filmUrlPath]; alreadyVisited {
 		if alreadyRetrCheck, alreadyRetr := allUsersData[currentUrl]; alreadyRetr {
 			if alreadyRetrCheck.AvatarLink != "" && alreadyRetrCheck.Username != "" {
-				fmt.Println("AVOIDED UNNECESSARY c.OnHTML(\"div.profile-mini-person\", func(e *colly.HTMLElement) INVOCATION!!!")
+				//fmt.Println("AVOIDED UNNECESSARY c.OnHTML(\"div.profile-mini-person\", func(e *colly.HTMLElement) INVOCATION!!!")
 				return
 			}
 		}
@@ -228,11 +205,6 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 
 		if avLinkExists {
 			fmt.Printf("debug: The value of profileUser: (%s) and avatarLink: (%s)\n", profileUser, avatarLink)
-			/* DEBUG: Going to have the Profile URL saved in my global var "currentUrl".
-			- So I can use that to access allUsersData, see if I can pull out an existing value it maps to.
-			- If there IS an existing value, I think I just skip this part of the code. (NOTE: Actually, maybe have this guard at the start of this method).
-			- If not, I slip in the username and avatar link values into the proper items...
-			*/
 			existingData, exists := allUsersData[currentUrl]
 			if !exists {
 				existingData = models.UserData{FilmNames: []string{}, FilmNamesLen: 0, FilmMap: make(map[string]models.FilmDetails)}
@@ -255,20 +227,6 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 		director := e.DOM.Find("span.prettify").First().Text()
 		e.Request.Ctx.Put("releaseYear", releaseYear)
 		e.Request.Ctx.Put("director", director)
-		/*divElem := e.DOM
-		// Film Release Year:
-		yearSpan := divElem.Find("span.releasedate").First()
-		releaseYear := yearSpan.Text()
-		fmt.Printf("GetYearDir-Debug: The value of releaseYear => %s\n", releaseYear)
-
-		// Director:
-		dirSpan := divElem.Find("span.prettify").First()
-		director := dirSpan.Text()
-		fmt.Printf("GetYearDir-Debug: The value of director => %s\n", director)
-
-		// NEW DEBUG:
-		filmYearBuffer = releaseYear
-		filmDirBuffer = director*/
 	})
 
 	// [3] - Poster Link:
@@ -283,7 +241,7 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 		rawJSON := e.Text
 		rawJSON = strings.TrimSpace(rawJSON)
 		if !(strings.HasPrefix(rawJSON, `/* <![CDATA[ */`) && !(strings.HasSuffix(rawJSON, `/* ]]> */\s`))) {
-			// TO-DO: Insert some kind of proper error handling for this situation...
+			// TO-DO: Insert some kind of proper error handling for this situation... (?)
 			fmt.Println("ERROR: LOOKS LIKE THE LETTERBOXD SOURCE DOM HAS BEEN CHANGED!!!!!")
 			return
 		}
@@ -316,7 +274,6 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 			FilmDir:    director,
 			FilmPoster: GiveMePoster.Image,
 		}
-
 		visitedFilms[filmUrlPath] = film
 
 		// Merge into user data
@@ -325,22 +282,15 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 		existingData.FilmMap[filmName] = film
 		existingData.FilmNamesLen++
 		allUsersData[profile] = existingData
-
-		// NEW DEBUG:
-		//filmPosterBuffer = GiveMePoster.Image
 	})
 
 	// Here's where I can start working to extract a list of the films + ratings:
-	// DEBUG: This OnHTML method below is where a lot of the work happens -- BE SURE TO RETURN HERE AND DEBUG IT EXTRA HARD!!!
 	c.OnHTML("ul.poster-list", func(h *colly.HTMLElement) {
 		// NOTE: I should add guards to make sure this OnHTML method only executes for the proper form page (not the base profile page):
 		if profilePageRegex.MatchString(h.Request.URL.String()) {
 			fmt.Printf("DEBUG: c.OnHTML(\"ul.poster-list\") prevented from running...\n")
 			return
 		}
-
-		//var userFilms = make(map[string]models.FilmDetails)
-		//var filmTitles []string
 
 		h.ForEach("li.poster-container", func(_ int, e *colly.HTMLElement) {
 			liElem := e.DOM
@@ -366,12 +316,6 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 				rating := ratingMap[rawRating]
 
 				if fupExists && fnExists {
-
-					//fmt.Printf("DEBUG: The value of filmName is (%s), filmUrlPath is (%s), and rating is (%.1f)\n", filmName, filmUrlPath, rating)
-					//filmTitles = append(filmTitles, filmName) // ADDING FILM TITLE TO MY FILMTITLES SLICE.
-					//userFilms[filmName] = models.FilmDetails{FilmUrl: filmUrlPath, FilmRating: rating}
-					//currentFilm = filmName
-
 					ctx := colly.NewContext()
 					ctx.Put("filmName", filmName)
 					ctx.Put("filmUrlPath", filmUrlPath)
@@ -392,7 +336,7 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 							FilmPoster: existingFilm.FilmPoster,
 						}
 
-						existingData.FilmMap[filmName] = existingDataTweak // <-- need to tweak this so it's just the existing film but the rating is changed.
+						existingData.FilmMap[filmName] = existingDataTweak
 						existingData.FilmNamesLen++
 						allUsersData[currentUrl] = existingData
 					} else {
@@ -402,36 +346,10 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 							log.Printf("Visit error for %s: %v\n:", filmName, err)
 						}
 					}
-
-					//e.Request.Visit("https://letterboxd.com/film/" + filmUrlPath) // NOTE: This will work recursively (we'll return after!)
-					// ^ DEBUG: Visiting this link is important for grabbing the release-year of the film, the poster link, and also director name!
-
-					//fmt.Printf("debuggo: The value of filmDirBuffer is (%s) and filmPosterBuffer is (%s)\n", filmDirBuffer, filmPosterBuffer)
-
-					//userFilms[filmName] = models.FilmDetails{FilmUrl: filmUrlPath, FilmRating: rating, FilmYear: filmYearBuffer, FilmDir: filmDirBuffer, FilmPoster: filmPosterBuffer}
 				}
 			}
 		})
-		//filmTitlesLen := len(filmTitles)
-
-		// allUsersData[currentUrl] = UserData{FilmNames: filmTitles, FilmNamesLen: filmTitlesLen, FilmMap: userFilms}
-		/* DEBUG: ^ This is bad logic on my end. It will overwrite all the data I scraped from previous page scrapings, so I
-		need to adjust my code such that I'm appending the data I assign here. */
-		/*existingData, exists := allUsersData[currentUrl]
-		if !exists {
-			existingData = models.UserData{FilmNames: []string{}, FilmNamesLen: 0, FilmMap: make(map[string]models.FilmDetails)}
-		}
-		// Merge film titles:
-		existingData.FilmNames = append(existingData.FilmNames, filmTitles...)
-		// Merge film map:
-		for k, v := range userFilms {
-			existingData.FilmMap[k] = v
-		}
-		existingData.FilmNamesLen += filmTitlesLen
-		// finalize:
-		allUsersData[currentUrl] = existingData*/
 	})
-	// DEBUG: This OnHTML method above is where a lot of the work happens -- BE SURE TO RETURN HERE AND DEBUG IT EXTRA HARD!!!
 
 	// This c.OnHTML method will be what performs pagination (important to have **after** the ul.poster-list method above):
 	c.OnHTML(".paginate-nextprev a.next", func(e *colly.HTMLElement) {
@@ -441,13 +359,12 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 		// Getting the next button:
 		nextPage := e.Request.AbsoluteURL(e.Attr("href"))
 
-		/* DEBUG: [BELOW] Honestly this guard below is just a suggestion GPT made for me to count for buggy pagination
-		Trying to implement every possible step I can to be a good netizen since Letterboxd has no real policy about web scraping, crawling, etc. */
+		/* [BELOW] Honestly this guard below is just a suggestion GPT made for me to count for buggy pagination
+		Getting the robot to exhaust every possible step I can to be a good netizen since Letterboxd has no real policy about web scraping, crawling, etc. */
 		if visitedPaginatedPages[nextPage] {
 			return
 		}
 		visitedPaginatedPages[nextPage] = true
-		// DEBUG: ABOVE
 
 		fmt.Println("Visiting the next page: ", nextPage)
 		e.Request.Visit(nextPage)
@@ -503,7 +420,7 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 	}
 	fmt.Printf("[[THE URL WITH THE SHORTEST FILM COUNT => (%s) AND THAT LENGTH IS => (%d)]]\n", urlWShortest, allUsersData[urlWShortest].FilmNamesLen)
 
-	// DEBUG: Now I can do the intersection logic, which shoulnd't be hard:
+	// Mutual Film Intersection Logic:
 	sListOfFilms := allUsersData[urlWShortest].FilmNames
 	// for-loop that does the intersection:
 	for _, film := range sListOfFilms {
@@ -538,16 +455,17 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 		}
 	}
 
-	// debug: for-loop that will iterate through the mutualFilms array and print everything out:
-	for index, mFilm := range mutualFilms {
+	// for-loop that will iterate through the mutualFilms array and print everything out:
+	/* NOTE: For-loop below was for debugging transparency while developing the project - may still be helpful to see in
+	the Railway terminal or whatever, so I'm going to keep it here as a comment block. (Not going to integrate it into the
+	the other "range mutualFilms" loop below it since I don't want to needlessly slow down the logic there). */
+	/*for index, mFilm := range mutualFilms {
 		fmt.Printf("The film is: [%s] (index %d)\n", mFilm.Title, index)
 		for _, user := range profiles {
 			fmt.Printf("- User:(%s) rated it: [%.1f/4] ", user, mFilm.Ratings[user])
 		}
 		fmt.Printf("\n")
-	}
-
-	// Now I should be able to iterate through mutualFilms to check if everything went well:
+	}*/
 	fmt.Printf("The value of len(mutualFilms) => %d\n", len(mutualFilms))
 
 	// This final for-loop below is for the frontend integration (populating a MutualResponse interface var to send back to the frontend):

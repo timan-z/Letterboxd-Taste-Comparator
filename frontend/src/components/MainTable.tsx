@@ -1,10 +1,10 @@
 import React, {useState, useMemo} from 'react';
 import {
-    useReactTable,              // This is THE hook that'll create the TanStack Table Instance. 
+    useReactTable,                  // This is THE hook that'll create the TanStack Table Instance. 
     type ColumnDef,                  // ColumnDef is just that, defining what each column will show.
-    getCoreRowModel,            // see: https://tanstack.com/table/v8/docs/guide/row-models
-    flexRender,                 // Renders headers and cells dynamically
-    getSortedRowModel,          // Handle the dynamic sorting, filtering, etc.
+    getCoreRowModel,                // see: https://tanstack.com/table/v8/docs/guide/row-models
+    flexRender,                     // Renders headers and cells dynamically
+    getSortedRowModel,              // Handle the dynamic sorting, filtering, etc.
     getFilteredRowModel,
     type SortingState
 } from '@tanstack/react-table'
@@ -13,7 +13,6 @@ import {type User, type MutualFilm} from "../utility/types.ts";
 /* This interface below is a generic TypeScript interface.
 Using <T> (generic type) is good, it'll adapt to whatever type I pass in whether User or MutualFilm (reusable for both): */
 // EDIT: Just going to be specific and use MutualFilm now -- the Table pretty much centers around it anyways!
-//interface MainTableProps<T> {
 interface MainTableProps {
     //data: T[];
     data: MutualFilm[]
@@ -22,7 +21,6 @@ interface MainTableProps {
     columns: ColumnDef<MutualFilm,any>[];
 }
 
-//const MainTable = <T,>({data, columns}: MainTableProps<T>) => {
 const MainTable: React.FC<MainTableProps> = ({data, userData, columns}) => {
     const [sorting, setSorting] = useState<SortingState>([]);
     const [globalFilter, setGlobalFilter] = useState("");
@@ -47,7 +45,6 @@ const MainTable: React.FC<MainTableProps> = ({data, userData, columns}) => {
     that will be appended to right of the "base" ones (Standard Film Data: Title, Director, Average Rating etc). 
     NOTE: For the styling of all these columns, I'm going to need to rely on style={{...}} because .css won't be applied immediately on load... */
     const finalColumns = useMemo(() => {
-        //const usernames = userData.map(user => user.username);
         const userInfo = userData.map((user) => ({
             username: user.username,
             displayname: user.displayname,
@@ -61,7 +58,6 @@ const MainTable: React.FC<MainTableProps> = ({data, userData, columns}) => {
             cell:(info) => <img style={{width:"180px"}} src={info.row.original.filmPoster} alt={"Poster for " + info.row.original.title}/>
         }
         // Construct the user rating columns:
-        // NOTE:+TO-DO: ^ In the header area, I also want the User avatar to appear too (quite small), keep that in mind.
         const ratingCol: ColumnDef<MutualFilm>[] = userInfo.map(({ username, displayname, avatarLink }) => ({
             id: `rating-${username}`,
             accessorFn: (row) => row.ratings[username], // needed for sorting to work
@@ -120,12 +116,11 @@ const MainTable: React.FC<MainTableProps> = ({data, userData, columns}) => {
     }, [data, minAvgRating])
 
     const table = useReactTable({
-        //data,
         data: filteredData,
         columns: finalColumns,
         state: {
             sorting,
-            globalFilter,   // <-- note that this will filter down the rows taking all headers into consideration (not just film name). Should change?
+            globalFilter,   // <-- note that this will filter down the rows taking all headers into consideration (not just film name). Guess it's desirable?
         },
         onSortingChange: setSorting,
         getCoreRowModel: getCoreRowModel(),

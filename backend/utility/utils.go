@@ -1,13 +1,8 @@
+/*
+These are broad helper utility functions (to assist in the more advanced Filtering, Sorting, and
+Analytical functions defined in the same directory. Not inherently tied to sorting or filtering).
+*/
 package utils
-
-// 0. models package/types.go-related functions:
-/*func (m * models.MutualData) ComputeMDStats() {
-	m.AvgRating = GetAverage(m.Ratings)
-	m.Variance = GetVariance(m.Ratings)
-}*/ // <-- "cannot define new methods on non-local type" Guess I can't do this? Find a workaround later.
-
-/* These are broad helper utility functions (to assist in the more advanced Filtering, Sorting, and
-Analytical functions defined in the same directory). */
 
 // GetAverage - For filling out the "AvgRating" field of the MutualData struct:
 func GetAverage(ratings map[string]float32) float32 {

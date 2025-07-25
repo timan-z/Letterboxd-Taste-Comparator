@@ -18,9 +18,7 @@ import testData8 from "../assets/sampleData/testData8.json";
 import testData9 from "../assets/sampleData/testData9.json";
 import testData10 from "../assets/sampleData/testData10.json";
 
-// TEST:
-const API_BASE_URL = import.meta.env.VITE_API_BASE;
-
+//const API_BASE_URL = import.meta.env.VITE_API_BASE;
 
 function MainPage() {
     const [profileUrls, setProfileUrls] = useState(["", ""]);
@@ -39,7 +37,6 @@ function MainPage() {
     const [heatMapData, setHeatMapData] = useState<HeatMapRow[]>([]); // data for populating nivo heatmap.
     const [heatMapWidth, setHeatMapWidth] = useState(0);
     const [showHeatMap, setShowHeatMap] = useState(true);
-    //const [heatMapKeys, setHeatMapKeys] = useState<string[]>([]); // just film titles (and that'll be the keys for the nivo heatmap).
 
     // DEBUG: Catches when changes are made to {loading} and displays it - [That's all for now]:
     useEffect(() => {
@@ -233,19 +230,16 @@ function MainPage() {
         setShowHeatMap(false);
     }
 
-    // DEBUG: Just a Debug function below...
-    const debugFunction = () => {
+    /*const debugFunction = () => {
         console.log("DEBUG: The value of API_BASE_URL => ", API_BASE_URL);
-    }
+    }*/
 
-
-    // NOTE:+DEBUG: All style={{border:"..."}} stylings are for debugging and web design purposes...
     return(
         <div className="wrapper">
 
             <header id="mpTitle">
                 <h1 className="headerEl">
-                    <img style={{width:"50px"}} src="../src/assets/images/letterboxd-icon.png" alt="Letterboxd Icon"/>
+                    <img style={{width:"50px"}} src="../src/assets/images/straub.png" alt="Picture of old-man Jean-Marie Straub" title="This was originally supposed to be the Letterboxd icon but after reviewing their TOS, might be best to avoid doing that! Instead here's a picture of grumpy old-man Jean-Marie Straub."/>
                     Letterboxd Taste Comparator
                 </h1>
                 <p id="mpUndertext">Compare your mutual film ratings with other Letterboxd profiles!</p>
@@ -369,9 +363,8 @@ function MainPage() {
                     </div>
                 )}
 
-                {/* MISC: */}
-                <button onClick={()=>debugFunction()}>[DEBUG BUTTON]</button> {/* <--DEBUG: Get rid of this after... */}
-
+                {/* MISC: 
+                <button onClick={()=>debugFunction()}>[DEBUG BUTTON]</button>*/}
             </main>            
         </div>
     )

@@ -1,11 +1,15 @@
+/*
+These are my Filtering-specific functions for filtering the scraped film data (contained inside MutualData vars).
+This file is also "package utils" so I can use functions defined in utils.go and anything else in the same package with ease.
+
+NOTE: It seems like these files may have been made redundant for the "final product" since it uses TanStack to generate the display table
+on the frontend. (TanStack provides built-in sorting and filtering options that kind of made these obsolete).
+*/
 package utils
 
 import (
 	models "github.com/timan-z/letterboxd-mutual-ratings-scraper/models"
 )
-
-/* These are my Filtering-specific functions for filtering the scraped film data (contained inside MutualData vars).
-This file is also "package utils" so I can use functions defined in utils.go and anything else in the same package with ease. */
 
 // FilterAllAboveThreshold - Keep films where all members rated it >= threshold.
 // NOTE: (Aware the naming is sorta ambiguous "filter as in remove? or keep?" but c'est la vie).

@@ -1,3 +1,4 @@
+// The JSONs sent back from the backend are going to "ported into" variables of this type:
 export type User = {
         username: string;
         displayname: string;

@@ -1,17 +1,7 @@
-Things to take care of/be mindful of later on:
-
-- Keep the slider bar for adjusting Minimum Average Rating consistently placed. It looks like the values I'm sliding are jerking out of control -- the reason for this is that the # next to it (e.g., 1 or 1.5 is changing from like 1 to 1.5 so the slider is jerking to the left/right and your value is going all crazy because your cursor remains constant!)
-^ This is something I can do when I commit to properly stylizing things...
-
-- Change it so that you click the <img> Tag over the User columns to re-direct to their profile. I want clicking the username to sort the column by their value... (Or maybe not? Maybe I should just keep it the way it is right now and do the other way around).
 
 ADDITIONAL THINGS:
 - Because I opted for TanStack Table to generate my table, it admittedly may have made the majority of my functions in filters.go and sorting.go redundant, becuase the table will take care of the sorting all by itself. Regardless, it's still worth keeping in the file just because why not.
 ^ Keep my original CLI version of the scraping logic somewhere in the backend code so you can visit and use it...
-
- FIX WHAT'S GOING ON WITH MY VIVO HEATMAP THING:
- - https://nivo.rocks/heatmap/
- ^ USE THE CODE SEEN HERE AS A REFERENCE POINT WHERE WHAT I WAS DOING WRONG!!!
 
  LITTLE BUGS TO FIX LATER:
 - I made my TanStack table header "sticky" but when you scroll vertically downwards, there's a little horizontal gap between the top of the table and the top of the header where you can see through it and thus the posters when you scroll. I want to fix this at some point but it's not worth the time to expend at this moment...

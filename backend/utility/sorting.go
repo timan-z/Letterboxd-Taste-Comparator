@@ -1,3 +1,10 @@
+/*
+These are my Sorting-specific functions for sorting the scraped film data (contained inside MutualData vars).
+This file is also "package utils" so I can use functions defined in utils.go and anything else in the same package with ease.
+
+NOTE: It seems like these files may have been made redundant for the "final product" since it uses TanStack to generate the display table
+on the frontend. (TanStack provides built-in sorting and filtering options that kind of made these obsolete).
+*/
 package utils
 
 import (
@@ -5,9 +12,6 @@ import (
 
 	models "github.com/timan-z/letterboxd-mutual-ratings-scraper/models"
 )
-
-/* These are my Sorting-specific functions for sorting the scraped film data (contained inside MutualData vars).
-This file is also "package utils" so I can use functions defined in utils.go and anything else in the same package with ease. */
 
 // SortByAverageRating - Sorts the list of films by average rating (ascending or descending will be determined by passed arguments):
 func SortByAverageRating(mutualFilms []models.MutualData, descending bool) {

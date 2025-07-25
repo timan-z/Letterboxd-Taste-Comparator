@@ -31,11 +31,11 @@ const ProfileInputList: React.FC<ProfileInputListProps> = ({profileUrls, setProf
         <div className="profileInputList">
             {profileUrls.map((url, index) => (
                 // NOTE: The way that ProfileInputList.tsx will be integrated into MainPage.tsx will ensure there's two <input> boxes on page load.
-                <div key={index} className="p-input-row"> {/* <-- DEBUG: Insert styling. */}
+                <div key={index} className="p-input-row">
                     <input
                         id="typeProfileBox"
                         type="text"
-                        placeholder="Enter a Letterboxd Profile URL (e.g., jeanluc_godard)" // <-- DEBUG: Is there a way I can un-shorten truncated links?
+                        placeholder="Enter a Letterboxd Profile URL (e.g., jeanluc_godard)"
                         value={url}
                         onChange={(e)=>handleChange(index, e.target.value)}
                     />
