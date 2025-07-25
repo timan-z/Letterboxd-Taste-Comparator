@@ -498,15 +498,13 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 
 // Middleware function to allow CORS (needed for frontend requests from Vite, since they're hosted on different servers):
 func corsMiddleware(next http.Handler) http.Handler {
+	allowedOrigin := os.Getenv("CORS_ALLOWED_ORIGIN")
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		//w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173") // DEFAULT PORT FOR VITE FRONTEND.
 		origin := r.Header.Get("Origin")
-		if origin == "http://localhost:5173" { // <-- DEBUG:TO-DO: Yeah I'll need this changed to an environment variable too later.
+
+		if origin == allowedOrigin {
 			w.Header().Set("Access-Control-Allow-Origin", origin)
-		}
-		if origin == "https://cute-torte-4c6b97.netlify.app" { // <-- DEBUG:TO-DO: Yeah I'll need this changed to an environment variable too later.
-			w.Header().Set("Access-Control-Allow-Origin", origin)
-			w.Header().Set("Vary", "Origin") // Ensure caching is handled correctly
+			w.Header().Set("Vary", "Origin")
 		}
 
 		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
