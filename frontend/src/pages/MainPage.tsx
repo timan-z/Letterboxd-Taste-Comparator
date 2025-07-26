@@ -230,19 +230,20 @@ function MainPage() {
         setShowHeatMap(false);
     }
 
-    /*const debugFunction = () => {
-        console.log("DEBUG: The value of API_BASE_URL => ", API_BASE_URL);
-    }*/
-
     return(
-        <div className="wrapper">
-
-            <header id="mpTitle">
+        <div id="mpWrapper" className="wrapper">
+            <div className="navBar">
+                <nav>
+                    {" "}<a href="/main" style={{textDecoration:"none"}}>Main Page</a> {" "}<a href="/about" style={{textDecoration:"none"}}>About Page</a>
+                </nav>
+            </div>
+            
+            <header id="pageTitle">
                 <h1 className="headerEl">
                     <img style={{width:"50px"}} src="../src/assets/images/straub.png" alt="Picture of old-man Jean-Marie Straub" title="This was originally supposed to be the Letterboxd icon but after reviewing their TOS, might be best to avoid doing that! Instead here's a picture of grumpy old-man Jean-Marie Straub."/>
                     Letterboxd Taste Comparator
                 </h1>
-                <p id="mpUndertext">Compare your mutual film ratings with other Letterboxd profiles!</p>
+                <p id="pageUndertext">Compare your mutual film ratings with other Letterboxd profiles!</p>
             </header>
 
             <main>
@@ -362,9 +363,6 @@ function MainPage() {
                         </div>
                     </div>
                 )}
-
-                {/* MISC: 
-                <button onClick={()=>debugFunction()}>[DEBUG BUTTON]</button>*/}
             </main>            
         </div>
     )

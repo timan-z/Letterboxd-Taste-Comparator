@@ -4,7 +4,9 @@ html, body {
 }
 body, div {
   display:block;
-  /*background-color:#1f262d;*/ /* DEBUG: <-- I do want this, but some things I'd need to adjust first... */
+}
+body {
+  background-color:#1f262d;
 }
 h1, h2 {
   font-family:monospace;
@@ -18,16 +20,32 @@ main {
 div {
   margin:8px;
 }
-
+div.navBar {
+  margin:0px;
+}
 /* Styling for MainPage.tsx: */
+.navBar {
+  width:100%;
+  font-family:monospace;
+  background-color:white;
+}
+
+#mpWrapper {
+  background-image: url('../assets/images/lb-colour-scheme.png');
+}
+
+#apWrapper {
+  background-color:#d1dad9;
+}
+
 .wrapper {
   display:grid;
   place-items:center;
   /*min-height:100%;
   min-width:100%;*/
   min-height: 100vh;
-  min-width: 100vw;
-  background-image: url('../assets/images/lb-colour-scheme.png');
+  /*min-width: 100vw;*/
+  /*background-image: url('../assets/images/lb-colour-scheme.png');*/
   background-position: center center;
   background-size:cover;
   background-attachment:fixed;
@@ -38,11 +56,11 @@ div {
   align-items:center;
   justify-content:center;
 }
-#mpTitle {
+#pageTitle {
   padding:1rem 0 0rem 0;
   /*background-color:#1f262d;*/
 }
-#mpUndertext {
+#pageUndertext {
   padding-bottom:1rem;
   font-family:monospace;
   font-size:1.1rem;
@@ -184,6 +202,7 @@ div {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 /* For the cells (one directly below relates to setting fixed size for the poster col): */
 #mtTable th:first-child,
 #mtTable td:first-child {
@@ -300,7 +319,7 @@ elements (so that the two inside #testDataHeader can be closer together): */
   background-color: #36cff5;
 }
 #hmExtraControls button {
-  width: 100%;
+  width: 50%;
   /*background-color: #40bcf4;*/
   font-size: 0.85rem;
   font-family: monospace;

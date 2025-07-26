@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"github.com/gocolly/colly/v2"
+	"github.com/joho/godotenv"
 	models "github.com/timan-z/letterboxd-mutual-ratings-scraper/models"
 	utils "github.com/timan-z/letterboxd-mutual-ratings-scraper/utility"
 )
@@ -498,9 +499,18 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 
 // Middleware function to allow CORS (needed for frontend requests from Vite, since they're hosted on different servers):
 func corsMiddleware(next http.Handler) http.Handler {
+	// to use .env files in go:
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+		return nil
+	}
+
 	allowedOrigin := os.Getenv("CORS_ALLOWED_ORIGIN")
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		origin := r.Header.Get("Origin")
+
+		fmt.Println("DEBUG: The value of allowedOrigin => ", allowedOrigin)
 
 		if origin == allowedOrigin {
 			w.Header().Set("Access-Control-Allow-Origin", origin)

@@ -158,14 +158,14 @@ const MainTable: React.FC<MainTableProps> = ({data, userData, columns}) => {
             {/* [2] - The actual "Main Table": */}
             <div id="mtTableScrollContainer">
                 <table id="mtTable">
-                    <thead >
+                    <thead>
                         {table.getHeaderGroups().map((headerGroup) => (
                             <tr key={headerGroup.id}>
                                 {headerGroup.headers.map((header) => (
                                     <th title="Click to sort by ascending and descending value" 
                                         key={header.id} 
                                         onClick={header.column.getToggleSortingHandler()} 
-                                        style={{position:"sticky", top:"0", zIndex:"2", backgroundColor: "#2c3440", boxShadow: "5px 5px 10px 2px rgb(0 0 0 / 0.8)"}}
+                                        style={{position:"sticky", top:"0", zIndex:"2", backgroundColor: "#2c3440", boxShadow: "5px 5px 10px 2px rgb(0 0 0 / 0.8)", }}
                                     >
                                         {flexRender(header.column.columnDef.header, header.getContext())}
                                         {header.column.getIsSorted() === "asc" && " ▲"}
