@@ -76,6 +76,10 @@ function MainPage() {
     }, [mutualFilms]);
 
     useEffect(() => {
+
+        console.log("DEBUG: The value of mutualFilms.length => ", mutualFilms.length);
+        console.log("DEBUG: The value of usersData.length => ", usersData.length);
+
         if(mutualFilms.length > 0 && usersData.length > 1) {
             console.log("When both [mutualFilms] and [usersData] are retrieved, I should set some flag here to generate the Table.");
             /* NOTE: ^ Will this cause race conditions with the other UseEffect hooks? Should I instead turn this current UseEffect hook
@@ -85,6 +89,9 @@ function MainPage() {
             setHeatMapBtn(true);
         } else {
             // When I generate an invalid table, I should make it so that this and setGenTable are set to false!:
+
+            console.log("DEBUG: Is this entered at any point???");
+
             setGenTable(false);
             setHeatMapBtn(false);
         }
