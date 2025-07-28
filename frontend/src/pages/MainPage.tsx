@@ -20,6 +20,9 @@ import testData10 from "../assets/sampleData/testData10.json";
 
 //const API_BASE_URL = import.meta.env.VITE_API_BASE;
 
+// DEBUG:
+import LoadingSpinner from "../components/LoadingSpinner.tsx"
+
 function MainPage() {
     const [profileUrls, setProfileUrls] = useState(["", ""]);
     const [loading, setLoading] = useState(false);  // state var for when (TO-DO: pair with loading animation? -- that temp freezes webpage?)
@@ -237,8 +240,60 @@ function MainPage() {
         setShowHeatMap(false);
     }
 
+
+
+
+
+    const debugFunction = () => {
+        console.log("Entered the debug function...");
+        console.log("The value of loading => ", loading);
+        setLoading(true);
+    }
+
+
+
+
+
     return(
         <div id="mpWrapper" className="wrapper">
+
+            {/* When the user clicks the "Find Mutual Ratings" button and initiates the fetch request to the backend, 
+            I'm going to have the [1] - screen "greyed out" with the contents of the Main Page being unclickable. There's going to be
+            a [2] - loading animation that resembles Newton's Cradle but with three balls (orange, green, and blue in reference to the LB logo).
+            Beneath that, a button that says [3] - "Click to Cancel the Mutual Ratings Search" that does just that. (Mimicking "Ctrl + C" on cmd-line). */}
+            {loading && (
+                /* [1] - The "Greyed Out" screen overlay: */
+                <div
+                    style={{
+                        position: 'fixed',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                        zIndex: 99990,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                    onClick={()=> {console.log("Idk what I'm doing anymore.");}}
+                >
+                    {/* [2] - The Newton's Cradle loading animation: */}
+                    {/* DEBUG: For now, just subbing in my old circular loading animation. */}
+                    <LoadingSpinner/>
+
+                    {/* [3] - The "Click to Cancel the Mutual Ratings Search" button: */}
+                    <button style={{
+                        fontFamily: 'monospace',
+                        marginTop: '20px', // space below the spinner
+                        padding: '10px 20px',
+                        fontSize: '16px',
+                        cursor: 'pointer',
+                    }}>Click to Cancel the Mutual Ratings Search (TO-DO: Implement this)</button>
+                </div>
+            )}
+
             <div className="navBar">
                 <nav>
                     {" "}<a href="/main" style={{textDecoration:"none"}}>Main Page</a> {" "}<a href="/about" style={{textDecoration:"none"}}>About Page</a>
@@ -370,7 +425,15 @@ function MainPage() {
                         </div>
                     </div>
                 )}
-            </main>            
+            </main>
+
+
+
+
+            <button onClick={()=>debugFunction()} >DEBUG BUTTON</button>
+
+
+
         </div>
     )
 }
