@@ -5,6 +5,7 @@ import MainTable from "../components/MainTable.tsx";
 import { ResponsiveHeatMap } from "@nivo/heatmap";
 import {type ColumnDef} from "@tanstack/react-table";
 import {type User, type MutualFilm, type HeatMapRow} from "../utility/types.ts";
+import NewtonsCradleLB from "../components/NewtonsCradleLB/NewtonsCradleLB.tsx";
 
 // Test Data imports:
 import testData1 from "../assets/sampleData/testData1.json";
@@ -20,14 +21,11 @@ import testData10 from "../assets/sampleData/testData10.json";
 
 //const API_BASE_URL = import.meta.env.VITE_API_BASE;
 
-// DEBUG:
-import LoadingSpinner from "../components/LoadingSpinner.tsx"
-import NewtonsCradleLB from "../components/NewtonsCradleLB/NewtonsCradleLB.tsx";
-
 function MainPage() {
     const [profileUrls, setProfileUrls] = useState(["", ""]);
     const [loading, setLoading] = useState(false);  // state var for when (TO-DO: pair with loading animation? -- that temp freezes webpage?)
-    
+    const [abortController, setAbortController] = useState<AbortController | null>(null);
+
     // These state variables below are for containing the data extracted from the fetch call.
     const [results, setResults] = useState(null);
     //const [usersData, setUsersData] = useState <User[] | null>(null);
@@ -152,15 +150,24 @@ function MainPage() {
             // DEBUG: ^ Basically if there's less than 2 fields filled, I'll have the pop-up that lasts 1-2 seconds that goes "Must have minimum of 2 fields filled".
             return;
         }
-        setLoading(true); // <-- DEBUG:+TO-DO: UseEffect(()=>{...}) hook to trigger a loading animation here? (that turns off when it's set back to false ofc).
+        
+        const controller = new AbortController();
+        setAbortController(controller);
+        setLoading(true);
+        
         try {
-            const res = await getMutualData(cleanInput);
+            const res = await getMutualData(cleanInput, controller.signal);
             setResults(res); // <--DEBUG:+TO-DO: UseEffect hook to catch when its value changes to display for now?
-        } catch(err) {
-            console.error("ERROR: The \"goGetMutualData\" API call FAILED because => ", err);
-            alert("THE API CALL FAILED!!! RAHHH"); // <--DEBUG:+TO-DO: I should have a HTML pop-up here for this.
+        } catch(err: any) {
+            if(err.name === "AbortError") {
+                console.warn("Fetch aborted by the user.");
+            } else {
+                console.error("ERROR: The \"goGetMutualData\" API call FAILED because => ", err);
+                alert("THE API CALL FAILED!!! RAHHH"); // <--DEBUG:+TO-DO: I should have a HTML pop-up here for this.
+            }
         } finally {
             setLoading(false);
+            setAbortController(null);
         }
     }
 
@@ -249,11 +256,8 @@ function MainPage() {
 
     const cancelRatingsReq = () => {
         setLoading(false)
+        abortController?.abort()
     }
-
-
-
-
 
     return(
         <div id="mpWrapper" className="wrapper">
@@ -278,13 +282,10 @@ function MainPage() {
                         justifyContent: 'center',
                         alignItems: 'center',
                     }}
-                    onClick={()=> {console.log("Idk what I'm doing anymore.");}}
                 >
                     <h1 style={{fontFamily:"monospace", color:"#d1dad9"}} >LOADING...</h1>
 
                     {/* [2] - The Newton's Cradle loading animation: */}
-                    {/* DEBUG: For now, just subbing in my old circular loading animation.
-                    <LoadingSpinner/> */}
                     <NewtonsCradleLB/>
 
                     {/* [3] - The "Click to Cancel the Mutual Ratings Search" button: */}
@@ -294,7 +295,7 @@ function MainPage() {
                         padding: '10px 20px',
                         fontSize: '16px',
                         cursor: 'pointer',
-                    }} onClick={()=>cancelRatingsReq()} >Click to Cancel the Mutual Ratings Search (TO-DO: Implement this)</button>
+                    }} onClick={()=>cancelRatingsReq()} >Click to Cancel the Mutual Ratings Search</button>
                 </div>
             )}
 
