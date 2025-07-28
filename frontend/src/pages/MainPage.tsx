@@ -22,6 +22,7 @@ import testData10 from "../assets/sampleData/testData10.json";
 
 // DEBUG:
 import LoadingSpinner from "../components/LoadingSpinner.tsx"
+import NewtonsCradleLB from "../components/NewtonsCradleLB/NewtonsCradleLB.tsx";
 
 function MainPage() {
     const [profileUrls, setProfileUrls] = useState(["", ""]);
@@ -240,14 +241,14 @@ function MainPage() {
         setShowHeatMap(false);
     }
 
-
-
-
-
     const debugFunction = () => {
         console.log("Entered the debug function...");
         console.log("The value of loading => ", loading);
         setLoading(true);
+    }
+
+    const cancelRatingsReq = () => {
+        setLoading(false)
     }
 
 
@@ -270,7 +271,7 @@ function MainPage() {
                         left: 0,
                         width: '100%',
                         height: '100%',
-                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                        backgroundColor: 'rgba(0, 0, 0, 0.73)',
                         zIndex: 99990,
                         display: 'flex',
                         flexDirection: 'column',
@@ -279,9 +280,12 @@ function MainPage() {
                     }}
                     onClick={()=> {console.log("Idk what I'm doing anymore.");}}
                 >
+                    <h1 style={{fontFamily:"monospace", color:"#d1dad9"}} >LOADING...</h1>
+
                     {/* [2] - The Newton's Cradle loading animation: */}
-                    {/* DEBUG: For now, just subbing in my old circular loading animation. */}
-                    <LoadingSpinner/>
+                    {/* DEBUG: For now, just subbing in my old circular loading animation.
+                    <LoadingSpinner/> */}
+                    <NewtonsCradleLB/>
 
                     {/* [3] - The "Click to Cancel the Mutual Ratings Search" button: */}
                     <button style={{
@@ -290,7 +294,7 @@ function MainPage() {
                         padding: '10px 20px',
                         fontSize: '16px',
                         cursor: 'pointer',
-                    }}>Click to Cancel the Mutual Ratings Search (TO-DO: Implement this)</button>
+                    }} onClick={()=>cancelRatingsReq()} >Click to Cancel the Mutual Ratings Search (TO-DO: Implement this)</button>
                 </div>
             )}
 

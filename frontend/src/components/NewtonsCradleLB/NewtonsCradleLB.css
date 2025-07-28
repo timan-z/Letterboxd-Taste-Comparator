@@ -1,0 +1,36 @@
+.newton-cradle-lb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  width: 300px;
+}
+.ball {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 0 8px;
+}
+
+/* LETTERBOXD THEMED HAHAHAHAHAHAHAHHAHAHAHA */
+.ball.left   { background-color: #ff8000; }
+.ball.middle { background-color: #00e054; }
+.ball.right  { background-color: #40bcf4; }
+
+/* SWING BACK AND FORTH (Middle ball will just stay static for simplicity). */
+@keyframes hit-from-left {
+  0%, 15% { transform: translateX(0); }
+  7.5%    { transform: translateX(-30px); }
+  15%, 100% { transform: translateX(0); }
+}
+@keyframes hit-from-right {
+  50%, 65% { transform: translateX(0); }
+  57.5%    { transform: translateX(30px); }
+  65%, 100% { transform: translateX(0); }
+}
+.ball.left {
+  animation: hit-from-left 1s ease-in-out infinite;
+}
+.ball.right {
+  animation: hit-from-right 1s ease-in-out infinite;
+}
