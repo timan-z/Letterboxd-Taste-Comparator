@@ -40,7 +40,7 @@ function AboutPage() {
                     </p>
 
                     <p>
-                        I was then inspired by the work of <u>Cheers, Derek</u> (<u>Derek Ahmedzai</u>, who has coded quite a few Letterboxd-related bots and sites) 
+                        I was then inspired by the work of <a href="https://cheersderek.com/" target="_blank">Cheers, Derek</a> (<a href="https://derekahmedzai.com/" target="_blank">Derek Ahmedzai</a>, who has coded quite a few Letterboxd-related bots and sites) 
                         to write a frontend to interact with this .go script and then render the data it obtains in a creative manner. As a big film nerd, Letterboxd
                         is a service that I use frequently and even have paid for in the past, so this ended up being a mini-passion project of mine. Having said that,
                         at the end of the day, this is just a <b>resume project</b> that I have no intentions of sharing on social media, "film twitter", or whatever.
@@ -50,7 +50,7 @@ function AboutPage() {
                         <b>Breaking it down:</b><br/><ul>
                         <li>The <u>backend</u> was written in <b>Go (Golang)</b> with the assistance of <b>Colly</b> (Go framework for building web crawlers) for all that is related to data scraping.</li><br/>
                         <li>The <u>frontend</u> was written using <b>React</b> with <b>TypeScript</b> (<i>another language I used this project as an excuse to familiarize with</i>) by way of <b>Vite</b> with <b>standard CSS</b> for styling.</li></ul>
-                        For more a comprehensive breakdown of all the technologies used, visit my public GitHub repo (see: README).<br/><br/>
+                        For more a comprehensive breakdown of all the technologies used, visit my <a href="https://github.com/timan-z/Letterboxd-Taste-Comparator" target="_blank">public GitHub repo</a> (see: README).<br/><br/>
                         As of this moment, I am hosting my frontend on <b>Netlify</b> and my backend on <b>Railway</b> (although I intend to switch the latter to <b>Fly.io</b> at some point).
                     </p>
                 </div>
@@ -64,11 +64,12 @@ function AboutPage() {
                     about allowing web crawler bots to operate on their domains, particularly in the age of artificial intelligence.
                     (For instance, a similar site RateYourMusic has a firewall set up to automatically block all web scraping and crawling bots).</p>
                     
-                    <p>As of 7/25/2025, Letterboxd does <b>not</b> have any official policy regarding web crawling or web scraping in its <u>Terms of Use</u> documentation. 
-                    However, it does expose its <u>robots.txt</u> which <b>does</b> offer explicit indication about what is and is not accepted.</p>
+                    <p>As of 7/25/2025, Letterboxd does <b>not</b> have any official policy regarding web crawling or web scraping in its <a href="https://letterboxd.com/legal/terms-of-use/" target="_blank">Terms of Use</a> documentation. 
+                    However, it does expose its <a href="https://letterboxd.com/robots.txt" target="_blank">robots.txt</a> which <b>does</b> offer explicit indication about what is and is not accepted.</p>
 
-                    <p>This project was built with respect to Letterboxd's robots.txt file (in its current form as of 7/25/2025 — a copy of which is saved in my GitHub repo). 
-                    In my project, only two routes are ever scraped:</p>
+                    <p>This project was built with respect to Letterboxd's robots.txt file 
+                    (in its current form as of 7/25/2025 — <a href="https://github.com/timan-z/Letterboxd-Taste-Comparator/blob/main/robots-7-25-2025.txt" target="_blank">
+                    a copy of which is saved in my GitHub repo</a>). In my project, only two routes are ever scraped:</p>
                     
                     <ol className="aboutPageList">
                         <li><code style={{fontSize:"16px"}}>/&lt;user&gt;/films/rated/.5-5/</code></li>

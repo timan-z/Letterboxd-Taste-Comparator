@@ -51,8 +51,9 @@ The process of backend scraping relies entirely on the current Letterboxd DOM st
 <b>Usage of the site</b> pretty much follows this pattern. The UI is intuitive enough that navigating the table and heatmap controls, accessing the test data, should come naturally. It should be noted that the time the scraping process takes in step 2 may scale in length dependent on the film count of the profiles provided.
 
 ## Local Development
- 
-- TO-DO:[INSERT BIT ON LOCAL DEVELOPMENT HERE LATER]
+- Host the frontend with `npm run dev` and the backend with `go run main.go`.
+- Add a `.env` file to the `/backend` directory with `CORS_ALLOWED_ORIGIN` set to where the frontend is hosted (locally).
+- Add a `.env` file to the `/frontend` directory with `VITE_API_BASE` set to where the backend is hosted (locally).
 
 ## Hosting
 - Currently hosting the <b>frontend</b> on <b>Netlify</b> at: https://letterboxd-comparator.netlify.app/
@@ -164,3 +165,18 @@ if !(ValidUrls) {
 }
 ```
 - Even my limiting of profiles the user can provide relates to the proactive reduction of bandwidth, scraping volume, concurrency load, and backend pressure. I am sure that Railway/Fly.io appreciate this.
+
+## Contact Information
+
+If you're Letterboxd staff with concerns about this project, please reach out to me via the contact email below. I am absolutely happy to shut down the backend portion of this project and/or adapt accordingly with changes to the TOS, robots.txt file, and so on. Thank you.
+
+<b>My professional email:</b>timanzproper@gmail.com<br>
+<b>My GitHub:</b> https://github.com/timan-z<br>
+<b>My LinkedIn:</b> https://www.linkedin.com/in/timan-zheng/
+
+The web crawler backend for this project is currently hosted at:
+https://letterboxd-taste-comparator.up.railway.app/
+
+If you are the Letterboxd team and observe any scraping traffic from this domain or server that is abusive or misaligned with our ethics policy outlined above, please contact me immediately via the email address listed above. I will temporarily suspend the backend and investigate the issue.
+
+<b>IMPORTANT NOTE</b>: If scraping is observed from another IP, domain, or server using a similar User-Agent or logic, please note that this code is open-source and may have been repurposed by third parties. Regardless, I am happy to collaborate on mitigation efforts.
