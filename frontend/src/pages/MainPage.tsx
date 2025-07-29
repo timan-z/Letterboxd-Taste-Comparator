@@ -216,8 +216,7 @@ function MainPage() {
             setMutualFilms(testData5.mutualFilms);
         } else if (whichOne == 6) {
             setUsersData(testData6.users);
-            /*setMutualFilms(null);*/ // DEBUG:+TO-DO: Don't forget I need to be able to handle "null" (no intersection) values properly. (Don't believe I officially do yet).
-            // DEBUG:+TO-DO: ^ Yeah, I'll need to do this for sure. For now, it only shows the first user's (full) film ratings and the rest is just "--" for the other... (I should have "No Intersection" appear or smth),
+            setMutualFilms([]);
         } else if (whichOne == 7) {
             setUsersData(testData7.users);
             setMutualFilms(testData7.mutualFilms);
@@ -248,16 +247,16 @@ function MainPage() {
         setShowHeatMap(false);
     }
 
-    const debugFunction = () => {
-        console.log("Entered the debug function...");
-        console.log("The value of loading => ", loading);
-        setLoading(true);
-    }
-
     const cancelRatingsReq = () => {
         setLoading(false)
         abortController?.abort()
     }
+
+
+    const toggleLoadAnim = () => {
+        setLoading(true);
+    }
+
 
     return(
         <div id="mpWrapper" className="wrapper">
@@ -276,7 +275,7 @@ function MainPage() {
                         width: '100%',
                         height: '100%',
                         backgroundColor: 'rgba(0, 0, 0, 0.73)',
-                        zIndex: 99990,
+                        zIndex: 99999,
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'center',
@@ -430,14 +429,13 @@ function MainPage() {
                         </div>
                     </div>
                 )}
+
+                {/* Super last minute addition. In the event that my scraping logic is rendered obsolete from any future firewalls (changes to robots.txt),
+                drastic overhauls of the Letterboxd DOM, or so on, I want to keep the work I did for the loading animation still viewable: */}
+                <div>
+                    <button onClick={()=>toggleLoadAnim()} style={{height:"35px", width:"275px", fontFamily:"monospace", cursor:"pointer", border:"none", borderRadius:"20px", boxShadow:"-5px -5px 10px 0px rgba(0, 0, 0, 0.5)"}}>View Loading Animation & Controls</button>
+                </div>
             </main>
-
-
-
-
-            <button onClick={()=>debugFunction()} >DEBUG BUTTON</button>
-
-
 
         </div>
     )

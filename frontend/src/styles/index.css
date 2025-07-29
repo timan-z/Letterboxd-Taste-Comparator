@@ -8,44 +8,36 @@ body, div {
 body {
   background-color:#1f262d;
 }
-h1, h2 {
+h1, h2, h3 {
   font-family:monospace;
 }
-
 main {
   display:grid;
   place-items:center;
 }
-
 div {
   margin:8px;
 }
 div.navBar {
   margin:0px;
 }
+
 /* Styling for MainPage.tsx: */
 .navBar {
   width:100%;
   font-family:monospace;
   background-color:white;
 }
-
 #mpWrapper {
   background-image: url('../assets/images/lb-colour-scheme.png');
 }
-
 #apWrapper {
   background-color:#d1dad9;
 }
-
 .wrapper {
   display:grid;
   place-items:center;
-  /*min-height:100%;
-  min-width:100%;*/
   min-height: 100vh;
-  /*min-width: 100vw;*/
-  /*background-image: url('../assets/images/lb-colour-scheme.png');*/
   background-position: center center;
   background-size:cover;
   background-attachment:fixed;
@@ -58,7 +50,6 @@ div.navBar {
 }
 #pageTitle {
   padding:1rem 0 0rem 0;
-  /*background-color:#1f262d;*/
 }
 #pageUndertext {
   padding-bottom:1rem;
@@ -117,7 +108,6 @@ div.navBar {
   width:100%;
   margin-top:0.5rem;
 }
-
 #addProfileBtn {
   color: #1f262d;
   background-color:#00e054;
@@ -162,7 +152,7 @@ div.navBar {
 }
 #mtMinAvgSlider {
   height:85%;
-  width:50%; /* <-- DEBUG: Subject to change, especially after I make the Table dimensions fixed. */
+  width:50%;
   display:flex;
   align-items:center;
   box-shadow:5px 5px 10px 2px rgb(0 0 0 / 0.8);
@@ -191,8 +181,8 @@ div.navBar {
 }
 #mtTable {
   width:100%;
-  table-layout:fixed;       /* <-- DEBUG: This line here will make sure there's no table resizing when I move the slider etc. */
-  border-collapse:collapse; /* <-- DEBUG: Will remove like the "differentiating lines"/border lines between columns more or less. (Do I want this?) */
+  table-layout:fixed;
+  border-collapse:collapse;
 }
 #mtTable th, #Table td {
   border: 1px solid #2a2a2a;
@@ -320,7 +310,6 @@ elements (so that the two inside #testDataHeader can be closer together): */
 }
 #hmExtraControls button {
   width: 50%;
-  /*background-color: #40bcf4;*/
   font-size: 0.85rem;
   font-family: monospace;
   border:5px solid #1f262d;
@@ -336,3 +325,25 @@ elements (so that the two inside #testDataHeader can be closer together): */
   background-color: #ff8000;
   width:75%;
 }
+
+/* Styling for AboutPage.tsx: */
+.aboutPageDiv {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background-color:white;
+  border-radius:10px;
+  width:100%;
+  max-width:1000px;
+  box-shadow:-5px -5px 10px 0px rgba(0, 0, 0, 0.5);
+  padding-left:10px;
+  padding-right:10px;
+}
+
+
+p.aboutPageDiv {
+  font-size:20px;
+  font-family:monospace;
+}
+

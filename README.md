@@ -2,7 +2,7 @@
 <u>Version</u>: <b>1.0</b> (<i>To be updated contingent on future changes to the Letterboxd TOS and drastic structural alterations to the Letterboxd site DOM</i>)<br>
 <u>Author</u>: <b>Timan Zheng</b><br>
 <u>Date</u>: <b>7/25/2025</b><br>
-<u>Description</u>: <b>This is (small-scale) full-stack web development project: It is a GO-based web crawler that iterates over a user-input list of (public) Letterboxd profiles, aggregates their film ratings, and then finds the intersecting data between the profiles — if applicable. That mutual data is then displayed on the front-end in a table where it can be interacted with (filtered, sorted, converted to a heat map, and so on).</b>
+<u>Description</u>: <b>This is a (small-scale) full-stack web development project: It is a GO-based web crawler that iterates over a user-input list of (public) Letterboxd profiles, aggregates their film ratings, and then finds the intersecting data between the profiles — if applicable. That mutual data is then displayed on the front-end in a table where it can be interacted with (filtered, sorted, converted to a heat map, and so on).</b>
 
 [<b>Skip to Project Ethics Section</b>](#project-ethics---important)
 
