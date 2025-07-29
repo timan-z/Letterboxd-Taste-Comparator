@@ -163,7 +163,9 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 		Delay:       10 * time.Second, // Set a delay between requests to these domains. (10 seconds here and below to be an extra good netizen).
 		RandomDelay: 10 * time.Second, // Addtional random delay.
 	})
-	c.UserAgent = "LBTasteComparator/0.1 (Learning Golang Colly, have delays put in effect, async disabled, and more to REDUCE TRAFFIC!!!)" // TO-DO:+DEBUG:+NOTE: Come back here and attach business email.
+	c.UserAgent = "LBTasteComparator (SWE project that aligns with /robots.txt (7/25/2025) | Contact can be found: https://letterboxd-taste-comparator.netlify.app/about)"
+
+	// https://letterboxd-get-mutual-ratings.netlify.app/about
 
 	// My obligatory [1] On-Request method and my [2] On-Error method:
 	c.OnRequest(func(r *colly.Request) {

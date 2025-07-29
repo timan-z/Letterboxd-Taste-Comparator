@@ -266,6 +266,7 @@ elements (so that the two inside #testDataHeader can be closer together): */
   box-shadow:-5px -5px 10px 0px rgba(0, 0, 0, 0.5);
   max-width:475px;
   width:100%;
+  padding:10px;
 }
 #heatMapBtn {
   width:75%;
@@ -327,6 +328,25 @@ elements (so that the two inside #testDataHeader can be closer together): */
 #apWrapper {
   background-color:#d1dad9;
 }
+.apTableOfContents {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background-color:#444;
+  color:white;
+  box-shadow:-5px -5px 10px 0px rgba(0, 0, 0, 0.5);
+  padding:10px;
+}
+.apTableOfContents > ul {
+  font-size:16px;
+  font-family:monospace;
+}
+.apTableOfContents > p {
+  font-size:16px;
+  font-family:monospace;
+}
+
 .aboutPageDiv {
   display:flex;
   flex-direction:column;
@@ -340,9 +360,20 @@ elements (so that the two inside #testDataHeader can be closer together): */
   padding-left:10px;
   padding-right:10px;
 }
-
 .aboutPageDiv > p {
-  font-size:18px;
+  font-size:16px;
   font-family:monospace;
 }
+.aboutPageList {
+  display:flex;
+  border-radius:10px;
+  box-shadow:-5px -5px 10px 0px rgba(0, 0, 0, 0.5);
+  flex-direction:column;
+  justify-content:center;
+  font-family:monospace;
+  font-size:18px;
+  height:75px;
+  width:250px;
+}
+
 

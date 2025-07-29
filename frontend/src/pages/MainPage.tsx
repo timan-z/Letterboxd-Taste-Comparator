@@ -370,6 +370,11 @@ function MainPage() {
                 its existence rather than potentially miss it if it were to appear dynamically after the table generates). */}
                 <div id="heatMapBtnWrapper">
                     <button id="heatMapBtn" disabled={!heatMapBtn} onClick={()=>goGetHeatMapData()}>Generate Heatmap</button><br/>
+                    <p style={{fontFamily:"monospace", color:"white"}}>
+                        Note that the backend is required to generate the values required for hydrating the HeatMap.
+                        You may think: You can just do all that on the frontend? You're right! But I built this with the intention
+                        of learning Go and using it wherever I possibly could.
+                    </p>
                 </div>
 
                 {/* [4] - The fourth <div> where the HeatMap will be generated!: */}

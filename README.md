@@ -55,9 +55,10 @@ The process of backend scraping relies entirely on the current Letterboxd DOM st
 - TO-DO:[INSERT BIT ON LOCAL DEVELOPMENT HERE LATER]
 
 ## Hosting
+- Currently hosting the <b>frontend</b> on <b>Netlify</b> at: https://letterboxd-comparator.netlify.app/
+- Currently hosting the <b>backend</b> on <b>Railway</b> at: https://letterboxd-taste-comparator.up.railway.app/
 
-- TO-DO:[INSERT BIT ON HOSTING HERE LATER]
-- TO-DO:[REMEMBER: FRONT-END = NETLIFY; BACK-END = RAILWAY/FLY.IO]
+<b>NOTE</b>: I intend to switch the backend hosting domain to Fly.io eventually.
 
 ## Technologies and Skills Demonstrated
 - <b>Golang</b>
