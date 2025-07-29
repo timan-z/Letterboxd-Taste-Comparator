@@ -359,6 +359,9 @@ function MainPage() {
                         <br/><br/>
                         This test data comprises six archival accounts — that I created — for the French film critics of 50s-60s Cahiers du Cinéma 
                         (e.g., Jean-Luc Godard and François Truffaut, names that a cultured eye may recognize for their subsequent affluential filmmaking careers). 
+                        <br/><br/>
+                        Here are the usernames for those profiles, if you would like to scrape them:{" "}
+                        [<b>jeanluc_godard</b>], [<b>franco_truffaut</b>], [<b>jacquesrivette_</b>], [<b>ericrohmer_</b>], [<b>andre_bazin_</b>], and lastly [<b>luc_moullet</b>].
                     </p>
                 </div>
 
@@ -432,8 +435,13 @@ function MainPage() {
 
                 {/* Super last minute addition. In the event that my scraping logic is rendered obsolete from any future firewalls (changes to robots.txt),
                 drastic overhauls of the Letterboxd DOM, or so on, I want to keep the work I did for the loading animation still viewable: */}
-                <div>
+                <div style={{display:"flex", flexDirection:"column", alignItems:"center", width:"500px" }}>
                     <button onClick={()=>toggleLoadAnim()} style={{height:"35px", width:"275px", fontFamily:"monospace", cursor:"pointer", border:"none", borderRadius:"20px", boxShadow:"-5px -5px 10px 0px rgba(0, 0, 0, 0.5)"}}>View Loading Animation & Controls</button>
+                    <p style={{color:"white", fontFamily:"monospace"}}>
+                        In the event that the Letterboxd DOM is drastically overhauled or any firewalls or policies are put in place such that my scraping backend
+                        is rendered obsolete or has to be taken down in accordance with TOS updates — I still want the work I put into the loading animation to be visible lol.
+                        (Mainly the LB-themed "Newton's Cradle" animation as well as the "greyed out" overlay that blocks out interactivity).
+                    </p>
                 </div>
             </main>
 

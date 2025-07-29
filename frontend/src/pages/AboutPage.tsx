@@ -41,7 +41,7 @@ function AboutPage() {
                         <b>Breaking it down:</b><br/><ul>
                         <li>The <u>backend</u> was written in <b>Go (Golang)</b> with the assistance of <b>Colly</b> (Go framework for building web crawlers) for all related to data scraping.</li><br/>
                         <li>The <u>frontend</u> was written using <b>React</b> with <b>TypeScript</b> (another language I used this project as an excuse to familiarize with) by way of <b>Vite</b> with <b>standard CSS</b> for styling.</li></ul>
-                        For more a comprehensive breakdown of all the technologies used, feel free to visit my public GitHub repo.<br/><br/>
+                        For more a comprehensive breakdown of all the technologies used, visit my public GitHub repo.<br/><br/>
                         As of this moment, I am hosting my frontend on <b>Netlify</b> and my backend on <b>Railway</b> (although I intend to switch the latter to <b>Fly.io</b> at some point).
                     </p>
                 </div>
@@ -96,13 +96,13 @@ function AboutPage() {
                         <b>https://letterboxd-mutual-ratings-scraper-production.up.railway.app/</b> {/* <--NOTE:+TO-DO:+DEBUG: When I switch to Fly.io, I must change this!!! */}
                     </p>
 
-                    <p style={{ fontSize: "18px" }}>
+                    <p>
                         If you are the Letterboxd team and observe any scraping traffic from this
                         domain or server that is abusive or misaligned with our ethics policy outlined above,
                         <b>please contact me immediately</b> via the email address listed below. I will temporarily
                         suspend the backend and investigate the issue.
                     </p>
-                    <p style={{ fontSize: "18px" }}>
+                    <p>
                         If scraping is observed from another IP, domain, or server using a similar User-Agent or logic,
                         please note that this code is open-source and may have been repurposed by third parties.
                         Regardless, I am happy to collaborate on mitigation efforts.
@@ -110,9 +110,7 @@ function AboutPage() {
 
                 </div>
 
-
             </main>
-
 
         </div>
     )

@@ -31,9 +31,6 @@ div.navBar {
 #mpWrapper {
   background-image: url('../assets/images/lb-colour-scheme.png');
 }
-#apWrapper {
-  background-color:#d1dad9;
-}
 .wrapper {
   display:grid;
   place-items:center;
@@ -327,6 +324,9 @@ elements (so that the two inside #testDataHeader can be closer together): */
 }
 
 /* Styling for AboutPage.tsx: */
+#apWrapper {
+  background-color:#d1dad9;
+}
 .aboutPageDiv {
   display:flex;
   flex-direction:column;
@@ -341,9 +341,8 @@ elements (so that the two inside #testDataHeader can be closer together): */
   padding-right:10px;
 }
 
-
-p.aboutPageDiv {
-  font-size:20px;
+.aboutPageDiv > p {
+  font-size:18px;
   font-family:monospace;
 }
 
