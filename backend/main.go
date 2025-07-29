@@ -501,14 +501,21 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 
 // Middleware function to allow CORS (needed for frontend requests from Vite, since they're hosted on different servers):
 func corsMiddleware(next http.Handler) http.Handler {
-	// to use .env files in go:
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-		return nil
+	/* IMPORTANT NOTE: When developing locally, I'm going to load CORS_ALLOWED_ORIGIN from a .env file
+	that I have locally in my /backend directory. BUT, when this file is being ran on Railway/Fly.io, it
+	shouldn't be using .env at all and should just be accessing environmental variables directory.
+
+	RIGHT NOW I AM USING RAILWAY -- so let's bypass the .env file loading if Railway is running the script: */
+	if os.Getenv("RAILWAY_ENVIRONMENT") == "" {
+		// to use .env files in go:
+		err := godotenv.Load()
+		if err != nil {
+			log.Fatal("Error loading .env file")
+			return nil
+		}
 	}
 
-	allowedOrigin := os.Getenv("CORS_ALLOWED_ORIGIN")
+	allowedOrigin := os.Getenv("CORS_ALLOWED_ORIGIN") // <-- this will be provided by Railway/Fly.io if I'm just running it off the backend hosting place.
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		origin := r.Header.Get("Origin")
 
