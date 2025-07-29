@@ -306,7 +306,7 @@ function MainPage() {
             
             <header id="pageTitle">
                 <h1 className="headerEl">
-                    <img style={{width:"50px"}} src="./src/assets/images/straub.png" alt="Picture of old-man Jean-Marie Straub" title="This was originally supposed to be the Letterboxd icon but after reviewing their TOS, might be best to avoid doing that! Instead here's a picture of grumpy old-man Jean-Marie Straub."/>
+                    <img style={{width:"50px"}} src="frontend/src/assets/images/straub.png" alt="Picture of old-man Jean-Marie Straub" title="This was originally supposed to be the Letterboxd icon but after reviewing their TOS, might be best to avoid doing that! Instead here's a picture of grumpy old-man Jean-Marie Straub."/>
                     Letterboxd Taste Comparator
                 </h1>
                 <p id="pageUndertext">Compare your mutual film ratings with other Letterboxd profiles!</p>
