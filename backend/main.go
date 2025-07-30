@@ -532,7 +532,8 @@ func corsMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		origin := r.Header.Get("Origin")
 
-		fmt.Println("DEBUG: The value of allowedOrigin => ", allowedOrigin)
+		fmt.Println("1.DEBUG: The value of origin => ", origin)
+		fmt.Println("2.DEBUG: The value of allowedOrigin => ", allowedOrigin)
 
 		if origin == allowedOrigin {
 			w.Header().Set("Access-Control-Allow-Origin", origin)
