@@ -506,6 +506,9 @@ func corsMiddleware(next http.Handler) http.Handler {
 	shouldn't be using .env at all and should just be accessing environmental variables directory.
 
 	RIGHT NOW I AM USING RAILWAY -- so let's bypass the .env file loading if Railway is running the script: */
+
+	fmt.Println("DEBUG: hey macarena!")
+
 	if os.Getenv("RAILWAY_ENVIRONMENT") == "" {
 		// to use .env files in go:
 		err := godotenv.Load()
@@ -516,10 +519,13 @@ func corsMiddleware(next http.Handler) http.Handler {
 	}
 
 	for _, e := range os.Environ() {
-		fmt.Println(e)
+		fmt.Println("debug: " + e)
+		if strings.HasPrefix(e, "CORS_ALLOWED_ORIGIN") {
+			fmt.Println("EXACT MATCH DEBUG:", e)
+		}
 	}
 
-	allowedOrigin := os.Getenv("CORS_ALLOWED_ORIGIN") // <-- this will be provided by Railway/Fly.io if I'm just running it off the backend hosting place.
+	allowedOrigin := os.Getenv("CORS_ALLOWED_ORIGIN ") // <-- this will be provided by Railway/Fly.io if I'm just running it off the backend hosting place.
 
 	fmt.Println("DEBUG: The value of allowedOrigin immediately after attempting to retrieve it => ", allowedOrigin)
 
