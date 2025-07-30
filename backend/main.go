@@ -12,6 +12,7 @@ import (
 	"os"
 	"regexp"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/gocolly/colly/v2"
@@ -19,6 +20,8 @@ import (
 	models "github.com/timan-z/letterboxd-mutual-ratings-scraper/models"
 	utils "github.com/timan-z/letterboxd-mutual-ratings-scraper/utility"
 )
+
+var scrapeMutex sync.Mutex // <-- DEBUG: ADDING THIS IN ATTEMPTS TO IMPLEMENT LOCKING/THROTTLING FOR CONCURRENT REQUESTS!
 
 func main() {
 	/* DEBUG: Function below is for testing to ensure that Railway is properly hosting my GO backend.
@@ -42,6 +45,15 @@ func main() {
 
 // Function for handling POST /api/mutual requests (when list of profile URLs are sent over):
 func handleMutualRatings(w http.ResponseWriter, r *http.Request) {
+
+	// DEBUG: For locking/throttling concurrent requests below!
+	if !scrapeMutex.TryLock() {
+		http.Error(w, "The Letterboxd Comparator Scraper/Crawler Bot is currently in use! Please try again later!", http.StatusTooManyRequests)
+		return
+	}
+	defer scrapeMutex.Unlock()
+	// DEBUG: For locking/throttling concurrent requests above!
+
 	if r.Method == http.MethodOptions {
 		// DEBUG: CORS preflight — return OK with headers already set by middleware
 		w.WriteHeader(http.StatusOK)
@@ -164,8 +176,6 @@ func scrapeMutualRatings(profiles []string) (models.MutualResponse, error) {
 		RandomDelay: 10 * time.Second, // Addtional random delay.
 	})
 	c.UserAgent = "LBTasteComparator (SWE project that aligns with /robots.txt (7/25/2025) | Contact can be found: https://letterboxd-taste-comparator.netlify.app/about)"
-
-	// https://letterboxd-get-mutual-ratings.netlify.app/about
 
 	// My obligatory [1] On-Request method and my [2] On-Error method:
 	c.OnRequest(func(r *colly.Request) {

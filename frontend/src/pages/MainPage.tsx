@@ -111,6 +111,13 @@ function MainPage() {
         
         try {
             const res = await getMutualData(cleanInput, controller.signal);
+
+            // StatusTooManySignals from the Go backend (scraper is currently in use -- I want throttling/locking for concurrent requests! Ethics!)
+            if(res.status === 429)  {
+                alert("Yeah, so the scraper is currently in use at the moment. Please try again in a bit.");
+                return;
+            }
+
             setResults(res); // <--DEBUG:+TO-DO: UseEffect hook to catch when its value changes to display for now?
         } catch(err: any) {
             if(err.name === "AbortError") {
