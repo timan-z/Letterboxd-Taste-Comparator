@@ -40,73 +40,28 @@ function MainPage() {
     const [heatMapWidth, setHeatMapWidth] = useState(0);
     const [showHeatMap, setShowHeatMap] = useState(true);
 
-    // DEBUG: Catches when changes are made to {loading} and displays it - [That's all for now]:
-    useEffect(() => {
-        if(loading) {
-            console.log("RAAAH: This UseEffect hook best be triggered DURING the goGetMutualData function call!!!");
-            console.log("[loading]: ", loading) // <-- should just be a boolean value.
-        }
-    }, [loading]);
-
-    // DEBUG: Catches when changes are made to {results} and displays them - [That's all for now]:
     useEffect(() => {
         if(results) {
-            console.log("RAAAH: This UseEffect hook best be triggered AFTER the goGetMutualData function call!!!");
-            console.log("[results]: ", results);
-
             /* And I guess, since results will have numerous values, I should extract its two "sections" out into different state variables...
             And I guess, when those variables are set -- and maybe I can have some flag var -- they will trigger the generation of the
             Table display of the mutual films -- and that'll be where the main action happens! */
-
             setUsersData(results["users"]);
             setMutualFilms(results["mutualFilms"]);
         }
     }, [results]);
 
-    // DEBUG: Catches when changes are made to {usersData} and displays them - [That's all for now]:
     useEffect(() => {
-        if(usersData) {
-            console.log("[usersData]: ", usersData);
-        }
-    }, [usersData]);
-
-    // DEBUG: Catches when changes are made to {mutualFilms} and displays them - [That's all for now]:
-    useEffect(() => {
-        if(mutualFilms) {
-            console.log("[mutualFilms]: ", mutualFilms);
-        }
-    }, [mutualFilms]);
-
-    useEffect(() => {
-
-        console.log("DEBUG: The value of mutualFilms.length => ", mutualFilms.length);
-        console.log("DEBUG: The value of usersData.length => ", usersData.length);
-
         if(mutualFilms.length > 0 && usersData.length > 1) {
-            console.log("When both [mutualFilms] and [usersData] are retrieved, I should set some flag here to generate the Table.");
-            /* NOTE: ^ Will this cause race conditions with the other UseEffect hooks? Should I instead turn this current UseEffect hook
-            into a function that can optionally be invoked by either of the UseEffect hooks above when they're entered (and checking to see
-            if both of the conditions are met)? */
             setGenTable(true);
             setHeatMapBtn(true);
         } else {
             // When I generate an invalid table, I should make it so that this and setGenTable are set to false!:
-
-            console.log("DEBUG: Is this entered at any point???");
-
             setGenTable(false);
             setHeatMapBtn(false);
         }
     }, [mutualFilms, usersData]);
 
-    useEffect(() => {
-        if(heatMapData.length > 0) {
-            console.log("Yeah dude");
-            console.log("Okay so the values of heatMapData are => ", heatMapData);
-        }
-    }, [heatMapData]);
-
-    // DEBUG: Just testing out a basic structure for the TanStack table:
+    // For the TanStack table:
     const columns: ColumnDef<MutualFilm>[] = [
         {
             accessorKey: "title",
@@ -142,7 +97,6 @@ function MainPage() {
 
     // Function to trigger the fetch('/api/mutual') call on button click and retrieve intersected film data:
     const goGetMutualData = async() => {
-        console.log("DEBUG: Function goGetMutualData was entered!!!");
 
         const cleanInput = profileUrls.map(p => p.trim()).filter(Boolean);  // This line here will trim out any empty input boxes (for usernames).
         if(cleanInput.length < 2) {
@@ -173,21 +127,16 @@ function MainPage() {
 
     // Function to trigger the fetch('/api/heatmap') call on button click and retrieve heatmap data:
     const goGetHeatMapData = async() => {
-        console.log("DEBUG: function getHeatMapData was entered!!!");
-
         // DEBUG: (Below) Temporary debugging guard for now -- afterwards, button shouldn't be accessible otherwise:
         if(!mutualFilms || !usersData) {
-            console.log("Debug: Temporary guard at the top of getHeatMapData was entered...");
             return;
         }
 
-        setLoading(true); // <-- DEBUG: I guess I should have it load during this too.
+        setLoading(true);
         try {
             //const res = await getHeatMapData()
             const res = await getHeatMapData(mutualFilms, usersData);
-            console.log("ALRIGHTY - THE RESULTS OF CALLING \"getHeatMapData\" ARE AS FOLLOWS: ", res);
-
-            setHeatMapData(res) // DEBUG: Remember that state var "heatMapData" won't update until the next re-render so maybe catch it with a UseEffect?
+            setHeatMapData(res)
             setShowHeatMap(true)
         } catch(err) {
             console.error("ERROR: The \"goGetMutualData\" API call FAILED because => ", err);
@@ -252,11 +201,9 @@ function MainPage() {
         abortController?.abort()
     }
 
-
     const toggleLoadAnim = () => {
         setLoading(true);
     }
-
 
     return(
         <div id="mpWrapper" className="wrapper">
