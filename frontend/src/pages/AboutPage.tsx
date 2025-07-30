@@ -109,7 +109,6 @@ function AboutPage() {
                         <ul>
                             <li><b>Email: </b>timanzproper@gmail.com</li>
                             <li><b>GitHub: </b>https://github.com/timan-z</li>
-                            <li><b>LinkedIn: </b>https://www.linkedin.com/in/timan-zheng/</li>
                         </ul>
                     </div>
 
