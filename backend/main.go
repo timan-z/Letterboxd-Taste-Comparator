@@ -531,6 +531,7 @@ func corsMiddleware(next http.Handler) http.Handler {
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		origin := r.Header.Get("Origin")
+		origin = strings.TrimSuffix(origin, "/") // <-- DEBUG: RailWay will append a trailing slash that I need to get rid of...
 
 		fmt.Println("1.DEBUG: The value of origin => ", origin)
 		fmt.Println("2.DEBUG: The value of allowedOrigin => ", allowedOrigin)
