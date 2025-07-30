@@ -116,15 +116,18 @@ function MainPage() {
             if(res.status === 429)  {
                 alert("Yeah, so the scraper is currently in use at the moment. Please try again in a bit.");
                 return;
-            }
+            }   // <-- TO-DO:+DEBUG: Doesn't seem like this will ever be reached since getMutualData would trigger a catch error if this is ever met?
 
-            setResults(res); // <--DEBUG:+TO-DO: UseEffect hook to catch when its value changes to display for now?
+            setResults(res);
         } catch(err: any) {
             if(err.name === "AbortError") {
                 console.warn("Fetch aborted by the user.");
             } else {
                 console.error("ERROR: The \"goGetMutualData\" API call FAILED because => ", err);
-                alert("THE API CALL FAILED!!! RAHHH"); // <--DEBUG:+TO-DO: I should have a HTML pop-up here for this.
+                alert(`ERROR: The API call failed! Now, there might a good reason for this! Check the console to see if status 429 was returned.
+                IF SO, well that simply means the Scraper is currently being used by someone else, and for ethical reasons I've implemented
+                Locking/Throttling to make it so that we can only have ONE Scraping Request at a time. Clearly, I added this last minute.
+                (If you don't see 429 in the console, well the backend server might be down, crashed, or something).`); // <--DEBUG:+TO-DO: I should have a HTML pop-up here for this.
             }
         } finally {
             setLoading(false);
@@ -147,7 +150,7 @@ function MainPage() {
             setShowHeatMap(true)
         } catch(err) {
             console.error("ERROR: The \"goGetMutualData\" API call FAILED because => ", err);
-            alert("THE API CALL FAILED!!! RAHHH"); // <--DEBUG:+TO-DO: I should have a HTML pop-up here for this.
+            alert("THE API CALL FOR THE HEATMAP FAILED!!! Backend server might be down!"); // <--DEBUG:+TO-DO: I should have a HTML pop-up here for this.
         } finally {
             setLoading(false);
         }
@@ -267,6 +270,15 @@ function MainPage() {
             </header>
 
             <main>
+                {/* NOTE: Last-minute disclaimer addition: */}
+                <div style={{display:"flex", flexDirection:"column", alignItems:"center", width:"500px" }}>
+                    <p style={{color:"white", fontFamily:"monospace"}}>
+                        <b>NOTE:</b> This was a last-minute addition, but I have added locking/throttling for concurrent requests. 
+                        MEANING, you can only perform ONE "Find Mutual Ratings" (scraping) request at ONE TIME across clients.
+                        I added this for ethics! To further reduce traffic.
+                    </p>
+                </div>
+
                 {/* [1] - This first <div> will be for the area where the user types and inputs their profile URLs, is able to add more 
                 and subtract profile input boxes (contingent on the current amount, min of 2 and max of 6), then submit them for backend, etc. */}
                 <div id="profileInputWrapper">

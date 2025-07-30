@@ -166,6 +166,22 @@ if !(ValidUrls) {
 ```
 - Even my limiting of profiles the user can provide relates to the proactive reduction of bandwidth, scraping volume, concurrency load, and backend pressure. I am sure that Railway/Fly.io appreciate this.
 
+<b>ONE LAST-MINUTE ADDITION:</b> I have implemented locking and throttling for concurrent requests in my `main.go` code on my backend. (And this is recognized by my frontend). That is, I have made it so that, across all the clients that visit the frontend, there can be one scraping request made to the backend <b>ONE AT A TIME</b> (done for ethical reasons to further reduce traffic to Letterboxd).<br>
+
+I have implemented this with the following code:
+```
+var scrapeMutex sync.Mutex
+```
+and
+```
+if !scrapeMutex.TryLock() {
+		http.Error(w, "The Letterboxd Comparator Scraper/Crawler Bot is currently in use! Please try again later!", http.StatusTooManyRequests)
+		return
+}
+```
+
+
+
 ## Contact Information
 
 If you're Letterboxd staff with concerns about this project, please reach out to me via the contact email below. I am absolutely happy to shut down the backend portion of this project and/or adapt accordingly with changes to the TOS, robots.txt file, and so on. Thank you.
