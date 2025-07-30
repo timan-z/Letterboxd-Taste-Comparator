@@ -525,13 +525,13 @@ func corsMiddleware(next http.Handler) http.Handler {
 		}
 	}
 
-	allowedOrigin := os.Getenv("CORS_ALLOWED_ORIGIN") // <-- this will be provided by Railway/Fly.io if I'm just running it off the backend hosting place.
+	allowedOrigin := os.Getenv("CORS_ALLOWED_ORIGIN")      // <-- this will be provided by Railway/Fly.io if I'm just running it off the backend hosting place.
+	allowedOrigin = strings.TrimSuffix(allowedOrigin, "/") // <-- DEBUG: RailWay will append a trailing slash that I need to get rid of...
 
 	fmt.Println("DEBUG: The value of allowedOrigin immediately after attempting to retrieve it => ", allowedOrigin)
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		origin := r.Header.Get("Origin")
-		origin = strings.TrimSuffix(origin, "/") // <-- DEBUG: RailWay will append a trailing slash that I need to get rid of...
 
 		fmt.Println("1.DEBUG: The value of origin => ", origin)
 		fmt.Println("2.DEBUG: The value of allowedOrigin => ", allowedOrigin)
