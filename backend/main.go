@@ -525,7 +525,7 @@ func corsMiddleware(next http.Handler) http.Handler {
 		}
 	}
 
-	allowedOrigin := os.Getenv("CORS_ALLOWED_ORIGIN ") // <-- this will be provided by Railway/Fly.io if I'm just running it off the backend hosting place.
+	allowedOrigin := strings.TrimSpace(os.Getenv("CORS_ALLOWED_ORIGIN")) // <-- this will be provided by Railway/Fly.io if I'm just running it off the backend hosting place.
 
 	fmt.Println("DEBUG: The value of allowedOrigin immediately after attempting to retrieve it => ", allowedOrigin)
 
