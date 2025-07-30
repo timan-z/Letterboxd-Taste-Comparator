@@ -180,8 +180,6 @@ if !scrapeMutex.TryLock() {
 }
 ```
 
-
-
 ## Contact Information
 
 If you're Letterboxd staff with concerns about this project, please reach out to me via the contact email below. I am absolutely happy to shut down the backend portion of this project and/or adapt accordingly with changes to the TOS, robots.txt file, and so on. Thank you.
